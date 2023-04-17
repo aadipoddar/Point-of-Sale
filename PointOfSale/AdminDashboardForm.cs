@@ -2,13 +2,13 @@
 
 namespace PointOfSale;
 
-public partial class AdminDashboard : Form
+public partial class AdminDashboardForm : Form
 {
     SqlConnection cn = new SqlConnection();
     SqlCommand cm = new SqlCommand();
     DBConnection dbcon = new DBConnection();
 
-    public AdminDashboard()
+    public AdminDashboardForm()
     {
         InitializeComponent();
         cn = new SqlConnection(dbcon.MyConnection());

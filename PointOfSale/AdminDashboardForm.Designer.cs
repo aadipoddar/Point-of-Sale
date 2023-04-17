@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale;
 
-partial class AdminDashboard
+partial class AdminDashboardForm
 {
     /// <summary>
     /// Required designer variable.
@@ -59,15 +59,15 @@ partial class AdminDashboard
         leftPanel.Controls.Add(usernameLabel);
         leftPanel.Location = new Point(0, 0);
         leftPanel.Name = "leftPanel";
-        leftPanel.Size = new Size(250, 700);
+        leftPanel.Size = new Size(250, 618);
         leftPanel.TabIndex = 0;
         // 
         // logoutButton
         // 
         logoutButton.BackColor = Color.Transparent;
-        logoutButton.Location = new Point(38, 626);
+        logoutButton.Location = new Point(38, 552);
         logoutButton.Name = "logoutButton";
-        logoutButton.Size = new Size(176, 35);
+        logoutButton.Size = new Size(176, 31);
         logoutButton.TabIndex = 10;
         logoutButton.Text = "Log Out";
         logoutButton.UseVisualStyleBackColor = false;
@@ -75,9 +75,9 @@ partial class AdminDashboard
         // userSettingsButton
         // 
         userSettingsButton.BackColor = Color.Transparent;
-        userSettingsButton.Location = new Point(28, 543);
+        userSettingsButton.Location = new Point(28, 479);
         userSettingsButton.Name = "userSettingsButton";
-        userSettingsButton.Size = new Size(194, 45);
+        userSettingsButton.Size = new Size(194, 40);
         userSettingsButton.TabIndex = 9;
         userSettingsButton.Text = "User Settings";
         userSettingsButton.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@ partial class AdminDashboard
         // systemSettingsButton
         // 
         systemSettingsButton.BackColor = Color.Transparent;
-        systemSettingsButton.Location = new Point(28, 492);
+        systemSettingsButton.Location = new Point(28, 434);
         systemSettingsButton.Name = "systemSettingsButton";
-        systemSettingsButton.Size = new Size(194, 45);
+        systemSettingsButton.Size = new Size(194, 40);
         systemSettingsButton.TabIndex = 8;
         systemSettingsButton.Text = "System Settings";
         systemSettingsButton.UseVisualStyleBackColor = false;
@@ -95,9 +95,9 @@ partial class AdminDashboard
         // recordsButton
         // 
         recordsButton.BackColor = Color.Transparent;
-        recordsButton.Location = new Point(28, 421);
+        recordsButton.Location = new Point(28, 371);
         recordsButton.Name = "recordsButton";
-        recordsButton.Size = new Size(194, 45);
+        recordsButton.Size = new Size(194, 40);
         recordsButton.TabIndex = 7;
         recordsButton.Text = "Records";
         recordsButton.UseVisualStyleBackColor = false;
@@ -105,9 +105,9 @@ partial class AdminDashboard
         // manageBrandButton
         // 
         manageBrandButton.BackColor = Color.Transparent;
-        manageBrandButton.Location = new Point(28, 347);
+        manageBrandButton.Location = new Point(28, 306);
         manageBrandButton.Name = "manageBrandButton";
-        manageBrandButton.Size = new Size(194, 45);
+        manageBrandButton.Size = new Size(194, 40);
         manageBrandButton.TabIndex = 6;
         manageBrandButton.Text = "Manage Brand";
         manageBrandButton.UseVisualStyleBackColor = false;
@@ -115,9 +115,9 @@ partial class AdminDashboard
         // manageCategoryButton
         // 
         manageCategoryButton.BackColor = Color.Transparent;
-        manageCategoryButton.Location = new Point(28, 290);
+        manageCategoryButton.Location = new Point(28, 256);
         manageCategoryButton.Name = "manageCategoryButton";
-        manageCategoryButton.Size = new Size(194, 45);
+        manageCategoryButton.Size = new Size(194, 40);
         manageCategoryButton.TabIndex = 5;
         manageCategoryButton.Text = "Manage Category";
         manageCategoryButton.UseVisualStyleBackColor = false;
@@ -125,9 +125,9 @@ partial class AdminDashboard
         // manageProductButton
         // 
         manageProductButton.BackColor = Color.Transparent;
-        manageProductButton.Location = new Point(28, 234);
+        manageProductButton.Location = new Point(28, 206);
         manageProductButton.Name = "manageProductButton";
-        manageProductButton.Size = new Size(194, 45);
+        manageProductButton.Size = new Size(194, 40);
         manageProductButton.TabIndex = 4;
         manageProductButton.Text = "Manage Products";
         manageProductButton.UseVisualStyleBackColor = false;
@@ -135,9 +135,9 @@ partial class AdminDashboard
         // manageSalesButton
         // 
         manageSalesButton.BackColor = Color.Transparent;
-        manageSalesButton.Location = new Point(28, 179);
+        manageSalesButton.Location = new Point(28, 158);
         manageSalesButton.Name = "manageSalesButton";
-        manageSalesButton.Size = new Size(194, 45);
+        manageSalesButton.Size = new Size(194, 40);
         manageSalesButton.TabIndex = 3;
         manageSalesButton.Text = "Manage Sales";
         manageSalesButton.UseVisualStyleBackColor = false;
@@ -145,9 +145,9 @@ partial class AdminDashboard
         // dashboardButton
         // 
         dashboardButton.BackColor = Color.Transparent;
-        dashboardButton.Location = new Point(28, 107);
+        dashboardButton.Location = new Point(28, 94);
         dashboardButton.Name = "dashboardButton";
-        dashboardButton.Size = new Size(194, 45);
+        dashboardButton.Size = new Size(194, 40);
         dashboardButton.TabIndex = 2;
         dashboardButton.Text = "Dashboard";
         dashboardButton.UseVisualStyleBackColor = false;
@@ -155,9 +155,9 @@ partial class AdminDashboard
         // adminLabel
         // 
         adminLabel.ForeColor = Color.White;
-        adminLabel.Location = new Point(68, 55);
+        adminLabel.Location = new Point(68, 49);
         adminLabel.Name = "adminLabel";
-        adminLabel.Size = new Size(108, 27);
+        adminLabel.Size = new Size(108, 24);
         adminLabel.TabIndex = 1;
         adminLabel.Text = "Admin";
         adminLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -167,20 +167,20 @@ partial class AdminDashboard
         usernameLabel.ForeColor = Color.White;
         usernameLabel.Location = new Point(24, 0);
         usernameLabel.Name = "usernameLabel";
-        usernameLabel.Size = new Size(198, 37);
+        usernameLabel.Size = new Size(198, 33);
         usernameLabel.TabIndex = 0;
         usernameLabel.Text = "Username";
         usernameLabel.TextAlign = ContentAlignment.MiddleCenter;
         // 
-        // AdminDashboard
+        // AdminDashboardForm
         // 
-        AutoScaleDimensions = new SizeF(7F, 17F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(1184, 661);
+        ClientSize = new Size(1184, 583);
         Controls.Add(leftPanel);
-        Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-        Name = "AdminDashboard";
+        Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+        Name = "AdminDashboardForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Admin Dashboard";
         leftPanel.ResumeLayout(false);
