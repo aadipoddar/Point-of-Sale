@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale;
 
-partial class BrandsForm
+partial class BrandsListForm
 {
     /// <summary>
     /// Required designer variable.
@@ -37,7 +37,10 @@ partial class BrandsForm
         brandColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
+        topPanel = new Panel();
+        addBrandButton = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridViewbrands).BeginInit();
+        topPanel.SuspendLayout();
         SuspendLayout();
         // 
         // dataGridViewbrands
@@ -52,14 +55,13 @@ partial class BrandsForm
         dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
         dataGridViewbrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridViewbrands.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, brandColumn, editColumn, deleteColumn });
-        dataGridViewbrands.Dock = DockStyle.Fill;
         dataGridViewbrands.EnableHeadersVisualStyles = false;
-        dataGridViewbrands.Location = new Point(0, 0);
+        dataGridViewbrands.Location = new Point(0, 53);
         dataGridViewbrands.Name = "dataGridViewbrands";
         dataGridViewbrands.RowHeadersVisible = false;
         dataGridViewbrands.RowTemplate.Height = 25;
         dataGridViewbrands.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridViewbrands.Size = new Size(800, 450);
+        dataGridViewbrands.Size = new Size(800, 397);
         dataGridViewbrands.TabIndex = 0;
         // 
         // Column1
@@ -114,17 +116,37 @@ partial class BrandsForm
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
         // 
-        // BrandsForm
+        // topPanel
+        // 
+        topPanel.Controls.Add(addBrandButton);
+        topPanel.Location = new Point(0, 0);
+        topPanel.Name = "topPanel";
+        topPanel.Size = new Size(800, 51);
+        topPanel.TabIndex = 1;
+        // 
+        // addBrandButton
+        // 
+        addBrandButton.Location = new Point(403, 12);
+        addBrandButton.Name = "addBrandButton";
+        addBrandButton.Size = new Size(226, 35);
+        addBrandButton.TabIndex = 0;
+        addBrandButton.Text = "Add Brand";
+        addBrandButton.UseVisualStyleBackColor = true;
+        addBrandButton.Click += addBrandButton_Click;
+        // 
+        // BrandsListForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
         ClientSize = new Size(800, 450);
+        Controls.Add(topPanel);
         Controls.Add(dataGridViewbrands);
-        Name = "BrandsForm";
+        Name = "BrandsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Brands";
         ((System.ComponentModel.ISupportInitialize)dataGridViewbrands).EndInit();
+        topPanel.ResumeLayout(false);
         ResumeLayout(false);
     }
 
@@ -136,4 +158,6 @@ partial class BrandsForm
     private DataGridViewTextBoxColumn brandColumn;
     private DataGridViewButtonColumn editColumn;
     private DataGridViewButtonColumn deleteColumn;
+    private Panel topPanel;
+    private Button addBrandButton;
 }
