@@ -111,6 +111,7 @@ partial class AdminDashboardForm
         manageBrandButton.TabIndex = 6;
         manageBrandButton.Text = "Manage Brand";
         manageBrandButton.UseVisualStyleBackColor = false;
+        manageBrandButton.Click += manageBrandButton_Click;
         // 
         // manageCategoryButton
         // 
