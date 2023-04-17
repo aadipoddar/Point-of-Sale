@@ -7,12 +7,14 @@ public partial class BrandsEditForm : Form
     SqlConnection cn = new SqlConnection();
     SqlCommand cm = new SqlCommand();
     DBConnection dbcon = new DBConnection();
+    BrandsListForm brandsListForm;
 
-    public BrandsEditForm()
+    public BrandsEditForm(BrandsListForm brandsListForm)
     {
         InitializeComponent();
 
         cn = new SqlConnection(dbcon.MyConnection());
+        this.brandsListForm = brandsListForm;
     }
 
     private void TextBoxClear()
@@ -38,6 +40,8 @@ public partial class BrandsEditForm : Form
 
                 MessageBox.Show("Brand Name has been successfully saved");
                 TextBoxClear();
+
+                brandsListForm.LoadRecords();
             }
         }
         catch (Exception ex)
@@ -49,5 +53,6 @@ public partial class BrandsEditForm : Form
     private void cancelButton_Click(object sender, EventArgs e)
     {
         Close();
+        brandsListForm.LoadRecords();
     }
 }
