@@ -28,7 +28,6 @@ partial class AdminDashboardForm
     /// </summary>
     private void InitializeComponent()
     {
-        leftPanel = new Panel();
         logoutButton = new Button();
         userSettingsButton = new Button();
         systemSettingsButton = new Button();
@@ -40,123 +39,112 @@ partial class AdminDashboardForm
         dashboardButton = new Button();
         adminLabel = new Label();
         usernameLabel = new Label();
-        leftPanel.SuspendLayout();
         SuspendLayout();
-        // 
-        // leftPanel
-        // 
-        leftPanel.BackColor = Color.Black;
-        leftPanel.Controls.Add(logoutButton);
-        leftPanel.Controls.Add(userSettingsButton);
-        leftPanel.Controls.Add(systemSettingsButton);
-        leftPanel.Controls.Add(recordsButton);
-        leftPanel.Controls.Add(manageBrandButton);
-        leftPanel.Controls.Add(manageCategoryButton);
-        leftPanel.Controls.Add(manageProductButton);
-        leftPanel.Controls.Add(manageSalesButton);
-        leftPanel.Controls.Add(dashboardButton);
-        leftPanel.Controls.Add(adminLabel);
-        leftPanel.Controls.Add(usernameLabel);
-        leftPanel.Location = new Point(0, 0);
-        leftPanel.Name = "leftPanel";
-        leftPanel.Size = new Size(250, 618);
-        leftPanel.TabIndex = 0;
         // 
         // logoutButton
         // 
         logoutButton.BackColor = Color.Transparent;
-        logoutButton.Location = new Point(38, 552);
+        logoutButton.Location = new Point(14, 556);
         logoutButton.Name = "logoutButton";
         logoutButton.Size = new Size(176, 31);
         logoutButton.TabIndex = 10;
         logoutButton.Text = "Log Out";
         logoutButton.UseVisualStyleBackColor = false;
+        logoutButton.KeyDown += logoutButton_KeyDown;
         // 
         // userSettingsButton
         // 
         userSettingsButton.BackColor = Color.Transparent;
-        userSettingsButton.Location = new Point(28, 479);
+        userSettingsButton.Location = new Point(4, 483);
         userSettingsButton.Name = "userSettingsButton";
         userSettingsButton.Size = new Size(194, 40);
         userSettingsButton.TabIndex = 9;
         userSettingsButton.Text = "User Settings";
         userSettingsButton.UseVisualStyleBackColor = false;
+        userSettingsButton.KeyDown += userSettingsButton_KeyDown;
         // 
         // systemSettingsButton
         // 
         systemSettingsButton.BackColor = Color.Transparent;
-        systemSettingsButton.Location = new Point(28, 434);
+        systemSettingsButton.Location = new Point(4, 438);
         systemSettingsButton.Name = "systemSettingsButton";
         systemSettingsButton.Size = new Size(194, 40);
         systemSettingsButton.TabIndex = 8;
         systemSettingsButton.Text = "System Settings";
         systemSettingsButton.UseVisualStyleBackColor = false;
+        systemSettingsButton.KeyDown += systemSettingsButton_KeyDown;
         // 
         // recordsButton
         // 
         recordsButton.BackColor = Color.Transparent;
-        recordsButton.Location = new Point(28, 371);
+        recordsButton.Location = new Point(4, 375);
         recordsButton.Name = "recordsButton";
         recordsButton.Size = new Size(194, 40);
         recordsButton.TabIndex = 7;
         recordsButton.Text = "Records";
         recordsButton.UseVisualStyleBackColor = false;
+        recordsButton.KeyDown += recordsButton_KeyDown;
         // 
         // manageBrandButton
         // 
         manageBrandButton.BackColor = Color.Transparent;
-        manageBrandButton.Location = new Point(28, 306);
+        manageBrandButton.Location = new Point(4, 310);
         manageBrandButton.Name = "manageBrandButton";
         manageBrandButton.Size = new Size(194, 40);
         manageBrandButton.TabIndex = 6;
-        manageBrandButton.Text = "Manage Brand";
+        manageBrandButton.Text = "Manage Brand (B)";
         manageBrandButton.UseVisualStyleBackColor = false;
         manageBrandButton.Click += manageBrandButton_Click;
+        manageBrandButton.KeyDown += manageBrandButton_KeyDown;
         // 
         // manageCategoryButton
         // 
         manageCategoryButton.BackColor = Color.Transparent;
-        manageCategoryButton.Location = new Point(28, 256);
+        manageCategoryButton.Location = new Point(4, 260);
         manageCategoryButton.Name = "manageCategoryButton";
         manageCategoryButton.Size = new Size(194, 40);
         manageCategoryButton.TabIndex = 5;
         manageCategoryButton.Text = "Manage Category";
         manageCategoryButton.UseVisualStyleBackColor = false;
+        manageCategoryButton.KeyDown += manageCategoryButton_KeyDown;
         // 
         // manageProductButton
         // 
         manageProductButton.BackColor = Color.Transparent;
-        manageProductButton.Location = new Point(28, 206);
+        manageProductButton.Location = new Point(4, 210);
         manageProductButton.Name = "manageProductButton";
         manageProductButton.Size = new Size(194, 40);
         manageProductButton.TabIndex = 4;
         manageProductButton.Text = "Manage Products";
         manageProductButton.UseVisualStyleBackColor = false;
+        manageProductButton.KeyDown += manageProductButton_KeyDown;
         // 
         // manageSalesButton
         // 
         manageSalesButton.BackColor = Color.Transparent;
-        manageSalesButton.Location = new Point(28, 158);
+        manageSalesButton.Location = new Point(4, 162);
         manageSalesButton.Name = "manageSalesButton";
         manageSalesButton.Size = new Size(194, 40);
         manageSalesButton.TabIndex = 3;
         manageSalesButton.Text = "Manage Sales";
         manageSalesButton.UseVisualStyleBackColor = false;
+        manageSalesButton.KeyDown += manageSalesButton_KeyDown;
         // 
         // dashboardButton
         // 
         dashboardButton.BackColor = Color.Transparent;
-        dashboardButton.Location = new Point(28, 94);
+        dashboardButton.Location = new Point(4, 98);
         dashboardButton.Name = "dashboardButton";
         dashboardButton.Size = new Size(194, 40);
         dashboardButton.TabIndex = 2;
         dashboardButton.Text = "Dashboard";
         dashboardButton.UseVisualStyleBackColor = false;
+        dashboardButton.KeyDown += dashboardButton_KeyDown;
         // 
         // adminLabel
         // 
-        adminLabel.ForeColor = Color.White;
-        adminLabel.Location = new Point(68, 49);
+        adminLabel.ForeColor = Color.Black;
+        adminLabel.Location = new Point(44, 53);
         adminLabel.Name = "adminLabel";
         adminLabel.Size = new Size(108, 24);
         adminLabel.TabIndex = 1;
@@ -165,8 +153,8 @@ partial class AdminDashboardForm
         // 
         // usernameLabel
         // 
-        usernameLabel.ForeColor = Color.White;
-        usernameLabel.Location = new Point(24, 0);
+        usernameLabel.ForeColor = Color.Black;
+        usernameLabel.Location = new Point(0, 4);
         usernameLabel.Name = "usernameLabel";
         usernameLabel.Size = new Size(198, 33);
         usernameLabel.TabIndex = 0;
@@ -179,18 +167,26 @@ partial class AdminDashboardForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
         ClientSize = new Size(1184, 583);
-        Controls.Add(leftPanel);
+        Controls.Add(logoutButton);
+        Controls.Add(userSettingsButton);
+        Controls.Add(manageProductButton);
+        Controls.Add(systemSettingsButton);
+        Controls.Add(usernameLabel);
+        Controls.Add(recordsButton);
+        Controls.Add(adminLabel);
+        Controls.Add(manageBrandButton);
+        Controls.Add(dashboardButton);
+        Controls.Add(manageCategoryButton);
+        Controls.Add(manageSalesButton);
         Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         Name = "AdminDashboardForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Admin Dashboard";
-        leftPanel.ResumeLayout(false);
+        KeyDown += AdminDashboardForm_KeyDown;
         ResumeLayout(false);
     }
 
     #endregion
-
-    private Panel leftPanel;
     private Label usernameLabel;
     private Label adminLabel;
     private Button dashboardButton;

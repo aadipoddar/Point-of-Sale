@@ -33,6 +33,7 @@ partial class BrandsEditForm
         saveButton = new Button();
         updateButton = new Button();
         cancelButton = new Button();
+        originalBrandId = new Label();
         SuspendLayout();
         // 
         // brandNameLabel
@@ -53,6 +54,7 @@ partial class BrandsEditForm
         brandNameTextBox.PlaceholderText = "Brand Name";
         brandNameTextBox.Size = new Size(352, 39);
         brandNameTextBox.TabIndex = 1;
+        brandNameTextBox.KeyDown += brandNameTextBox_KeyDown;
         // 
         // saveButton
         // 
@@ -64,6 +66,7 @@ partial class BrandsEditForm
         saveButton.Text = "Save";
         saveButton.UseVisualStyleBackColor = true;
         saveButton.Click += saveButton_Click;
+        saveButton.KeyDown += saveButton_KeyDown;
         // 
         // updateButton
         // 
@@ -74,6 +77,8 @@ partial class BrandsEditForm
         updateButton.TabIndex = 3;
         updateButton.Text = "Update";
         updateButton.UseVisualStyleBackColor = true;
+        updateButton.Click += updateButton_Click;
+        updateButton.KeyDown += updateButton_KeyDown;
         // 
         // cancelButton
         // 
@@ -85,6 +90,17 @@ partial class BrandsEditForm
         cancelButton.Text = "Cancel";
         cancelButton.UseVisualStyleBackColor = true;
         cancelButton.Click += cancelButton_Click;
+        cancelButton.KeyDown += cancelButton_KeyDown;
+        // 
+        // originalBrandId
+        // 
+        originalBrandId.AutoSize = true;
+        originalBrandId.Location = new Point(492, 97);
+        originalBrandId.Name = "originalBrandId";
+        originalBrandId.Size = new Size(62, 15);
+        originalBrandId.TabIndex = 5;
+        originalBrandId.Text = "Original Id";
+        originalBrandId.Visible = false;
         // 
         // BrandsEditForm
         // 
@@ -92,6 +108,7 @@ partial class BrandsEditForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
         ClientSize = new Size(554, 131);
+        Controls.Add(originalBrandId);
         Controls.Add(cancelButton);
         Controls.Add(updateButton);
         Controls.Add(saveButton);
@@ -100,6 +117,7 @@ partial class BrandsEditForm
         Name = "BrandsEditForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Manage Brand";
+        KeyDown += BrandsEditForm_KeyDown;
         ResumeLayout(false);
         PerformLayout();
     }
@@ -107,8 +125,9 @@ partial class BrandsEditForm
     #endregion
 
     private Label brandNameLabel;
-    private TextBox brandNameTextBox;
-    private Button saveButton;
-    private Button updateButton;
     private Button cancelButton;
+    public TextBox brandNameTextBox;
+    public Label originalBrandId;
+    public Button saveButton;
+    public Button updateButton;
 }

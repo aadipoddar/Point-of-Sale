@@ -28,9 +28,9 @@ partial class BrandsListForm
     /// </summary>
     private void InitializeComponent()
     {
-        DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
         dataGridViewbrands = new DataGridView();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
@@ -45,36 +45,44 @@ partial class BrandsListForm
         // 
         // dataGridViewbrands
         // 
+        dataGridViewbrands.AllowUserToAddRows = false;
+        dataGridViewbrands.AllowUserToDeleteRows = false;
+        dataGridViewbrands.AllowUserToOrderColumns = true;
         dataGridViewbrands.BackgroundColor = Color.White;
-        dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-        dataGridViewCellStyle1.BackColor = Color.Black;
-        dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-        dataGridViewCellStyle1.ForeColor = Color.White;
-        dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-        dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-        dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-        dataGridViewbrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+        dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle4.BackColor = Color.Black;
+        dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+        dataGridViewCellStyle4.ForeColor = Color.White;
+        dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+        dataGridViewbrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
         dataGridViewbrands.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, brandColumn, editColumn, deleteColumn });
         dataGridViewbrands.EnableHeadersVisualStyles = false;
         dataGridViewbrands.Location = new Point(0, 53);
         dataGridViewbrands.Name = "dataGridViewbrands";
+        dataGridViewbrands.ReadOnly = true;
         dataGridViewbrands.RowHeadersVisible = false;
         dataGridViewbrands.RowTemplate.Height = 25;
         dataGridViewbrands.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewbrands.Size = new Size(800, 397);
         dataGridViewbrands.TabIndex = 0;
+        dataGridViewbrands.CellContentClick += dataGridViewbrands_CellContentClick;
+        dataGridViewbrands.KeyDown += dataGridViewbrands_KeyDown;
         // 
         // Column1
         // 
         Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         Column1.HeaderText = "#";
         Column1.Name = "Column1";
+        Column1.ReadOnly = true;
         Column1.Width = 39;
         // 
         // idColumn
         // 
         idColumn.HeaderText = "ID";
         idColumn.Name = "idColumn";
+        idColumn.ReadOnly = true;
         idColumn.Visible = false;
         // 
         // brandColumn
@@ -82,19 +90,21 @@ partial class BrandsListForm
         brandColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         brandColumn.HeaderText = "BRAND";
         brandColumn.Name = "brandColumn";
+        brandColumn.ReadOnly = true;
         // 
         // editColumn
         // 
         editColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 128, 255);
-        editColumn.DefaultCellStyle = dataGridViewCellStyle2;
+        dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle5.BackColor = Color.FromArgb(128, 128, 255);
+        editColumn.DefaultCellStyle = dataGridViewCellStyle5;
         editColumn.FlatStyle = FlatStyle.Popup;
         editColumn.HeaderText = "Edit";
         editColumn.Name = "editColumn";
+        editColumn.ReadOnly = true;
         editColumn.Resizable = DataGridViewTriState.True;
         editColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-        editColumn.Text = "EDIT";
+        editColumn.Text = "EDIT (E)";
         editColumn.ToolTipText = "Edit Brand Details";
         editColumn.UseColumnTextForButtonValue = true;
         editColumn.Width = 52;
@@ -102,16 +112,17 @@ partial class BrandsListForm
         // deleteColumn
         // 
         deleteColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 128, 128);
-        dataGridViewCellStyle3.ForeColor = Color.White;
-        deleteColumn.DefaultCellStyle = dataGridViewCellStyle3;
+        dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 128, 128);
+        dataGridViewCellStyle6.ForeColor = Color.White;
+        deleteColumn.DefaultCellStyle = dataGridViewCellStyle6;
         deleteColumn.FlatStyle = FlatStyle.Popup;
         deleteColumn.HeaderText = "Delete";
         deleteColumn.Name = "deleteColumn";
+        deleteColumn.ReadOnly = true;
         deleteColumn.Resizable = DataGridViewTriState.True;
         deleteColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-        deleteColumn.Text = "DEL";
+        deleteColumn.Text = "DEL (D)";
         deleteColumn.ToolTipText = "Del";
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
@@ -130,7 +141,7 @@ partial class BrandsListForm
         addBrandButton.Name = "addBrandButton";
         addBrandButton.Size = new Size(226, 35);
         addBrandButton.TabIndex = 0;
-        addBrandButton.Text = "Add Brand";
+        addBrandButton.Text = "Add Brand (A)";
         addBrandButton.UseVisualStyleBackColor = true;
         addBrandButton.Click += addBrandButton_Click;
         // 
@@ -145,6 +156,7 @@ partial class BrandsListForm
         Name = "BrandsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Brands";
+        KeyDown += BrandsListForm_KeyDown;
         ((System.ComponentModel.ISupportInitialize)dataGridViewbrands).EndInit();
         topPanel.ResumeLayout(false);
         ResumeLayout(false);
@@ -153,11 +165,11 @@ partial class BrandsListForm
     #endregion
 
     private DataGridView dataGridViewbrands;
+    private Panel topPanel;
+    private Button addBrandButton;
     private DataGridViewTextBoxColumn Column1;
     private DataGridViewTextBoxColumn idColumn;
     private DataGridViewTextBoxColumn brandColumn;
     private DataGridViewButtonColumn editColumn;
     private DataGridViewButtonColumn deleteColumn;
-    private Panel topPanel;
-    private Button addBrandButton;
 }
