@@ -62,7 +62,7 @@ public partial class CategoriesEditForm : Form
                 cn.Close();
 
                 MessageBox.Show("Category Name has been successfully updated");
-                TextBoxClear();
+
                 cancelButton_Click(sender, e);
             }
         }

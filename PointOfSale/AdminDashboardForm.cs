@@ -1,4 +1,5 @@
 ﻿using PointOfSale.Categories;
+using PointOfSale.Products;
 
 namespace PointOfSale;
 
@@ -21,6 +22,11 @@ public partial class AdminDashboardForm : Form
         if (e.KeyCode == Keys.B)
         {
             manageBrandButton_Click(sender, e);
+        }
+
+        if (e.KeyCode == Keys.P)
+        {
+            manageProductButton_Click(sender, e);
         }
 
         if (e.KeyCode == Keys.Escape)
@@ -83,6 +89,12 @@ public partial class AdminDashboardForm : Form
 
 
     #region Button Click Events
+
+    private void manageProductButton_Click(object sender, EventArgs e)
+    {
+        ProductsListForm frm = new ProductsListForm();
+        frm.Show();
+    }
 
     private void manageCategoryButton_Click(object sender, EventArgs e)
     {

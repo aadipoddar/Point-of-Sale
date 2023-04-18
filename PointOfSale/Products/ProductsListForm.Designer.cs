@@ -1,6 +1,6 @@
-﻿namespace PointOfSale.Categories;
+﻿namespace PointOfSale.Products;
 
-partial class CategoriesListForm
+partial class ProductsListForm
 {
     /// <summary>
     /// Required designer variable.
@@ -33,25 +33,62 @@ partial class CategoriesListForm
         DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-        dataGridViewCategories = new DataGridView();
+        searchTextBox = new TextBox();
+        topPanel = new Panel();
+        addProductButton = new Button();
+        dataGridViewProducts = new DataGridView();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
+        descriptionColumn = new DataGridViewTextBoxColumn();
+        brandColumn = new DataGridViewTextBoxColumn();
         categoryColumn = new DataGridViewTextBoxColumn();
+        priceColumn = new DataGridViewTextBoxColumn();
+        quantityColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
-        topPanel = new Panel();
-        addCategoryButton = new Button();
-        searchTextBox = new TextBox();
-        ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).BeginInit();
         topPanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
         SuspendLayout();
         // 
-        // dataGridViewCategories
+        // searchTextBox
         // 
-        dataGridViewCategories.AllowUserToAddRows = false;
-        dataGridViewCategories.AllowUserToDeleteRows = false;
-        dataGridViewCategories.AllowUserToOrderColumns = true;
-        dataGridViewCategories.BackgroundColor = Color.Black;
+        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(85, 15);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.PlaceholderText = "Search (S)";
+        searchTextBox.Size = new Size(332, 33);
+        searchTextBox.TabIndex = 0;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
+        // 
+        // topPanel
+        // 
+        topPanel.BackColor = Color.Black;
+        topPanel.Controls.Add(addProductButton);
+        topPanel.Controls.Add(searchTextBox);
+        topPanel.Location = new Point(0, 0);
+        topPanel.Name = "topPanel";
+        topPanel.Size = new Size(800, 65);
+        topPanel.TabIndex = 6;
+        // 
+        // addProductButton
+        // 
+        addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        addProductButton.BackColor = Color.White;
+        addProductButton.Location = new Point(495, 16);
+        addProductButton.Name = "addProductButton";
+        addProductButton.Size = new Size(226, 35);
+        addProductButton.TabIndex = 1;
+        addProductButton.Text = "Add Product (A)";
+        addProductButton.UseVisualStyleBackColor = false;
+        addProductButton.Click += addProductButton_Click;
+        addProductButton.KeyDown += addProductButton_KeyDown;
+        // 
+        // dataGridViewProducts
+        // 
+        dataGridViewProducts.AllowUserToAddRows = false;
+        dataGridViewProducts.AllowUserToDeleteRows = false;
+        dataGridViewProducts.AllowUserToOrderColumns = true;
+        dataGridViewProducts.BackgroundColor = Color.Black;
         dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
         dataGridViewCellStyle1.BackColor = Color.Black;
         dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -59,20 +96,20 @@ partial class CategoriesListForm
         dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
         dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
         dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-        dataGridViewCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-        dataGridViewCategories.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, categoryColumn, editColumn, deleteColumn });
-        dataGridViewCategories.EnableHeadersVisualStyles = false;
-        dataGridViewCategories.GridColor = Color.White;
-        dataGridViewCategories.Location = new Point(0, 58);
-        dataGridViewCategories.Name = "dataGridViewCategories";
-        dataGridViewCategories.ReadOnly = true;
-        dataGridViewCategories.RowHeadersVisible = false;
-        dataGridViewCategories.RowTemplate.Height = 25;
-        dataGridViewCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridViewCategories.Size = new Size(798, 401);
-        dataGridViewCategories.TabIndex = 4;
-        dataGridViewCategories.CellContentClick += dataGridViewCategories_CellContentClick;
-        dataGridViewCategories.KeyDown += dataGridViewCategories_KeyDown;
+        dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+        dataGridViewProducts.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, descriptionColumn, brandColumn, categoryColumn, priceColumn, quantityColumn, editColumn, deleteColumn });
+        dataGridViewProducts.EnableHeadersVisualStyles = false;
+        dataGridViewProducts.GridColor = Color.White;
+        dataGridViewProducts.Location = new Point(1, 61);
+        dataGridViewProducts.Name = "dataGridViewProducts";
+        dataGridViewProducts.ReadOnly = true;
+        dataGridViewProducts.RowHeadersVisible = false;
+        dataGridViewProducts.RowTemplate.Height = 25;
+        dataGridViewProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dataGridViewProducts.Size = new Size(798, 401);
+        dataGridViewProducts.TabIndex = 7;
+        dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
+        dataGridViewProducts.KeyDown += dataGridViewProducts_KeyDown;
         // 
         // Column1
         // 
@@ -87,20 +124,51 @@ partial class CategoriesListForm
         // 
         // idColumn
         // 
-        idColumn.HeaderText = "ID";
+        idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        idColumn.HeaderText = "PCODE";
         idColumn.Name = "idColumn";
         idColumn.ReadOnly = true;
         idColumn.Visible = false;
         // 
-        // categoryColumn
+        // descriptionColumn
         // 
-        categoryColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        descriptionColumn.HeaderText = "DESCRIPTION";
+        descriptionColumn.Name = "descriptionColumn";
+        descriptionColumn.ReadOnly = true;
+        // 
+        // brandColumn
+        // 
+        brandColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         dataGridViewCellStyle3.BackColor = Color.Black;
         dataGridViewCellStyle3.ForeColor = Color.White;
-        categoryColumn.DefaultCellStyle = dataGridViewCellStyle3;
+        brandColumn.DefaultCellStyle = dataGridViewCellStyle3;
+        brandColumn.HeaderText = "BRAND";
+        brandColumn.Name = "brandColumn";
+        brandColumn.ReadOnly = true;
+        // 
+        // categoryColumn
+        // 
+        categoryColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         categoryColumn.HeaderText = "CATEGORY";
         categoryColumn.Name = "categoryColumn";
         categoryColumn.ReadOnly = true;
+        categoryColumn.Width = 90;
+        // 
+        // priceColumn
+        // 
+        priceColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        priceColumn.HeaderText = "PRICE";
+        priceColumn.Name = "priceColumn";
+        priceColumn.ReadOnly = true;
+        priceColumn.Width = 63;
+        // 
+        // quantityColumn
+        // 
+        quantityColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        quantityColumn.HeaderText = "QTY";
+        quantityColumn.Name = "quantityColumn";
+        quantityColumn.ReadOnly = true;
+        quantityColumn.Width = 53;
         // 
         // editColumn
         // 
@@ -137,65 +205,36 @@ partial class CategoriesListForm
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
         // 
-        // topPanel
-        // 
-        topPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-        topPanel.BackColor = Color.Black;
-        topPanel.Controls.Add(addCategoryButton);
-        topPanel.Controls.Add(searchTextBox);
-        topPanel.Location = new Point(0, 1);
-        topPanel.Name = "topPanel";
-        topPanel.Size = new Size(800, 60);
-        topPanel.TabIndex = 5;
-        // 
-        // addCategoryButton
-        // 
-        addCategoryButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        addCategoryButton.BackColor = Color.White;
-        addCategoryButton.Location = new Point(484, 15);
-        addCategoryButton.Name = "addCategoryButton";
-        addCategoryButton.Size = new Size(226, 35);
-        addCategoryButton.TabIndex = 2;
-        addCategoryButton.Text = "Add Category (A)";
-        addCategoryButton.UseVisualStyleBackColor = false;
-        addCategoryButton.Click += addCategoryButton_Click;
-        addCategoryButton.KeyDown += addCategoryButton_KeyDown;
-        // 
-        // searchTextBox
-        // 
-        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        searchTextBox.Location = new Point(85, 15);
-        searchTextBox.Name = "searchTextBox";
-        searchTextBox.PlaceholderText = "Search (S)";
-        searchTextBox.Size = new Size(332, 33);
-        searchTextBox.TabIndex = 1;
-        searchTextBox.TextChanged += searchTextBox_TextChanged;
-        // 
-        // CategoriesListForm
+        // ProductsListForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        BackColor = Color.White;
         ClientSize = new Size(800, 450);
+        Controls.Add(dataGridViewProducts);
         Controls.Add(topPanel);
-        Controls.Add(dataGridViewCategories);
-        Name = "CategoriesListForm";
+        Name = "ProductsListForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "Categories";
-        KeyDown += CategoriesListForm_KeyDown;
-        ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).EndInit();
+        Text = "Products";
+        KeyDown += ProductsListForm_KeyDown;
         topPanel.ResumeLayout(false);
         topPanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
         ResumeLayout(false);
     }
 
     #endregion
-    private DataGridView dataGridViewCategories;
-    private Panel topPanel;
     private TextBox searchTextBox;
-    private Button addCategoryButton;
+    private Panel topPanel;
+    private Button addProductButton;
+    private DataGridView dataGridViewProducts;
     private DataGridViewTextBoxColumn Column1;
     private DataGridViewTextBoxColumn idColumn;
+    private DataGridViewTextBoxColumn descriptionColumn;
+    private DataGridViewTextBoxColumn brandColumn;
     private DataGridViewTextBoxColumn categoryColumn;
+    private DataGridViewTextBoxColumn priceColumn;
+    private DataGridViewTextBoxColumn quantityColumn;
     private DataGridViewButtonColumn editColumn;
     private DataGridViewButtonColumn deleteColumn;
 }
