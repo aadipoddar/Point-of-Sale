@@ -25,6 +25,11 @@ public partial class BrandsListForm : Form
             addBrandButton_Click(sender, e);
         }
 
+        if (e.KeyCode == Keys.S)
+        {
+            searchTextBox.Focus();
+        }
+
         if (e.KeyCode == Keys.Escape)
         {
             Close();
@@ -49,15 +54,18 @@ public partial class BrandsListForm : Form
     public void LoadRecords()
     {
         int i = 0;
+
         dataGridViewbrands.Rows.Clear();
         cn.Open();
         cm = new SqlCommand("select * from Brand order by brand", cn);
         dr = cm.ExecuteReader();
+
         while (dr.Read())
         {
             i += 1;
             dataGridViewbrands.Rows.Add(i, dr["id"].ToString(), dr["brand"].ToString());
         }
+
         dr.Close();
         cn.Close();
     }
@@ -104,5 +112,24 @@ public partial class BrandsListForm : Form
     private void dataGridViewbrands_KeyDown(object sender, KeyEventArgs e)
     {
         KeyEvents(sender, e);
+    }
+
+    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    {
+        dataGridViewbrands.Rows.Clear();
+
+        cn.Open();
+        cm = new SqlCommand("select * from Brand where brand like '%" + searchTextBox.Text + "%' order by brand", cn);
+        dr = cm.ExecuteReader();
+
+        int i = 0;
+        while (dr.Read())
+        {
+            i += 1;
+            dataGridViewbrands.Rows.Add(i, dr["id"].ToString(), dr["brand"].ToString());
+        }
+
+        dr.Close();
+        cn.Close();
     }
 }

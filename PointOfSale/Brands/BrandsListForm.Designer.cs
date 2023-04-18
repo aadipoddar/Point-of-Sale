@@ -28,9 +28,9 @@ partial class BrandsListForm
     /// </summary>
     private void InitializeComponent()
     {
-        DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         dataGridViewbrands = new DataGridView();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
@@ -38,6 +38,7 @@ partial class BrandsListForm
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
         topPanel = new Panel();
+        searchTextBox = new TextBox();
         addBrandButton = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridViewbrands).BeginInit();
         topPanel.SuspendLayout();
@@ -49,14 +50,14 @@ partial class BrandsListForm
         dataGridViewbrands.AllowUserToDeleteRows = false;
         dataGridViewbrands.AllowUserToOrderColumns = true;
         dataGridViewbrands.BackgroundColor = Color.White;
-        dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-        dataGridViewCellStyle4.BackColor = Color.Black;
-        dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-        dataGridViewCellStyle4.ForeColor = Color.White;
-        dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-        dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-        dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-        dataGridViewbrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+        dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle1.BackColor = Color.Black;
+        dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+        dataGridViewCellStyle1.ForeColor = Color.White;
+        dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+        dataGridViewbrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridViewbrands.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, brandColumn, editColumn, deleteColumn });
         dataGridViewbrands.EnableHeadersVisualStyles = false;
         dataGridViewbrands.Location = new Point(0, 53);
@@ -95,9 +96,9 @@ partial class BrandsListForm
         // editColumn
         // 
         editColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle5.BackColor = Color.FromArgb(128, 128, 255);
-        editColumn.DefaultCellStyle = dataGridViewCellStyle5;
+        dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 128, 255);
+        editColumn.DefaultCellStyle = dataGridViewCellStyle2;
         editColumn.FlatStyle = FlatStyle.Popup;
         editColumn.HeaderText = "Edit";
         editColumn.Name = "editColumn";
@@ -112,10 +113,10 @@ partial class BrandsListForm
         // deleteColumn
         // 
         deleteColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 128, 128);
-        dataGridViewCellStyle6.ForeColor = Color.White;
-        deleteColumn.DefaultCellStyle = dataGridViewCellStyle6;
+        dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 128, 128);
+        dataGridViewCellStyle3.ForeColor = Color.White;
+        deleteColumn.DefaultCellStyle = dataGridViewCellStyle3;
         deleteColumn.FlatStyle = FlatStyle.Popup;
         deleteColumn.HeaderText = "Delete";
         deleteColumn.Name = "deleteColumn";
@@ -129,15 +130,26 @@ partial class BrandsListForm
         // 
         // topPanel
         // 
+        topPanel.Controls.Add(searchTextBox);
         topPanel.Controls.Add(addBrandButton);
         topPanel.Location = new Point(0, 0);
         topPanel.Name = "topPanel";
         topPanel.Size = new Size(800, 51);
         topPanel.TabIndex = 1;
         // 
+        // searchTextBox
+        // 
+        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(49, 11);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.PlaceholderText = "Search (S)";
+        searchTextBox.Size = new Size(332, 33);
+        searchTextBox.TabIndex = 1;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
+        // 
         // addBrandButton
         // 
-        addBrandButton.Location = new Point(403, 12);
+        addBrandButton.Location = new Point(460, 10);
         addBrandButton.Name = "addBrandButton";
         addBrandButton.Size = new Size(226, 35);
         addBrandButton.TabIndex = 0;
@@ -159,6 +171,7 @@ partial class BrandsListForm
         KeyDown += BrandsListForm_KeyDown;
         ((System.ComponentModel.ISupportInitialize)dataGridViewbrands).EndInit();
         topPanel.ResumeLayout(false);
+        topPanel.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -172,4 +185,5 @@ partial class BrandsListForm
     private DataGridViewTextBoxColumn brandColumn;
     private DataGridViewButtonColumn editColumn;
     private DataGridViewButtonColumn deleteColumn;
+    private TextBox searchTextBox;
 }
