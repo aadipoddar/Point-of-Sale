@@ -1,4 +1,6 @@
-﻿namespace PointOfSale;
+﻿using PointOfSale.Categories;
+
+namespace PointOfSale;
 
 public partial class AdminDashboardForm : Form
 {
@@ -11,6 +13,11 @@ public partial class AdminDashboardForm : Form
 
     private void KeyEvents(object sender, KeyEventArgs e)
     {
+        if (e.KeyCode == Keys.C)
+        {
+            manageCategoryButton_Click(sender, e);
+        }
+
         if (e.KeyCode == Keys.B)
         {
             manageBrandButton_Click(sender, e);
@@ -74,9 +81,20 @@ public partial class AdminDashboardForm : Form
 
     #endregion
 
+
+    #region Button Click Events
+
+    private void manageCategoryButton_Click(object sender, EventArgs e)
+    {
+        CategoriesListForm frm = new CategoriesListForm();
+        frm.Show();
+    }
+
     private void manageBrandButton_Click(object sender, EventArgs e)
     {
         BrandsListForm frm = new BrandsListForm();
         frm.Show();
     }
+
+    #endregion
 }

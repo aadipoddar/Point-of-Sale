@@ -104,8 +104,9 @@ partial class AdminDashboardForm
         manageCategoryButton.Name = "manageCategoryButton";
         manageCategoryButton.Size = new Size(194, 40);
         manageCategoryButton.TabIndex = 5;
-        manageCategoryButton.Text = "Manage Category";
+        manageCategoryButton.Text = "Manage Category (C)";
         manageCategoryButton.UseVisualStyleBackColor = false;
+        manageCategoryButton.Click += manageCategoryButton_Click;
         manageCategoryButton.KeyDown += manageCategoryButton_KeyDown;
         // 
         // manageProductButton
@@ -132,7 +133,8 @@ partial class AdminDashboardForm
         // 
         // dashboardButton
         // 
-        dashboardButton.BackColor = Color.Transparent;
+        dashboardButton.BackColor = Color.White;
+        dashboardButton.ForeColor = Color.Black;
         dashboardButton.Location = new Point(4, 98);
         dashboardButton.Name = "dashboardButton";
         dashboardButton.Size = new Size(194, 40);
@@ -143,7 +145,7 @@ partial class AdminDashboardForm
         // 
         // adminLabel
         // 
-        adminLabel.ForeColor = Color.Black;
+        adminLabel.ForeColor = Color.White;
         adminLabel.Location = new Point(44, 53);
         adminLabel.Name = "adminLabel";
         adminLabel.Size = new Size(108, 24);
@@ -153,7 +155,8 @@ partial class AdminDashboardForm
         // 
         // usernameLabel
         // 
-        usernameLabel.ForeColor = Color.Black;
+        usernameLabel.BackColor = Color.Transparent;
+        usernameLabel.ForeColor = Color.White;
         usernameLabel.Location = new Point(0, 4);
         usernameLabel.Name = "usernameLabel";
         usernameLabel.Size = new Size(198, 33);
@@ -165,7 +168,7 @@ partial class AdminDashboardForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        BackColor = Color.White;
+        BackColor = Color.Black;
         ClientSize = new Size(1184, 583);
         Controls.Add(logoutButton);
         Controls.Add(userSettingsButton);

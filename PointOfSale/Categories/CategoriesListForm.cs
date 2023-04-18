@@ -1,8 +1,10 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Windows.Forms;
 
-namespace PointOfSale;
+using Microsoft.Data.SqlClient;
 
-public partial class BrandsListForm : Form
+namespace PointOfSale.Categories;
+
+public partial class CategoriesListForm : Form
 {
     SqlConnection cn = new SqlConnection();
     SqlCommand cm = new SqlCommand();
@@ -10,7 +12,7 @@ public partial class BrandsListForm : Form
 
     DBConnection dbcon = new DBConnection();
 
-    public BrandsListForm()
+    public CategoriesListForm()
     {
         InitializeComponent();
 
@@ -24,7 +26,7 @@ public partial class BrandsListForm : Form
     {
         if (e.KeyCode == Keys.A)
         {
-            addBrandButton_Click(sender, e);
+            addCategoryButton_Click(sender, e);
         }
 
         if (e.KeyCode == Keys.S)
@@ -39,26 +41,26 @@ public partial class BrandsListForm : Form
 
         if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.E)
         {
-            dataGridViewbrands_CellContentClick(sender, new DataGridViewCellEventArgs(3, dataGridViewBrands.CurrentRow.Index));
+            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(3, dataGridViewCategories.CurrentRow.Index));
         }
 
         if (e.KeyCode == Keys.Delete)
         {
-            dataGridViewbrands_CellContentClick(sender, new DataGridViewCellEventArgs(4, dataGridViewBrands.CurrentRow.Index));
+            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(4, dataGridViewCategories.CurrentRow.Index));
         }
     }
 
-    private void BrandsListForm_KeyDown(object sender, KeyEventArgs e)
+    private void CategoriesListForm_KeyDown(object sender, KeyEventArgs e)
     {
         KeyEvents(sender, e);
     }
 
-    private void dataGridViewbrands_KeyDown(object sender, KeyEventArgs e)
+    private void dataGridViewCategories_KeyDown(object sender, KeyEventArgs e)
     {
         KeyEvents(sender, e);
     }
 
-    private void addBrandButton_KeyDown(object sender, KeyEventArgs e)
+    private void addCategoryButton_KeyDown(object sender, KeyEventArgs e)
     {
         KeyEvents(sender, e);
     }
@@ -69,42 +71,43 @@ public partial class BrandsListForm : Form
     {
         int i = 0;
 
-        dataGridViewBrands.Rows.Clear();
+        dataGridViewCategories.Rows.Clear();
         cn.Open();
-        cm = new SqlCommand("select * from Brand order by brand", cn);
+        cm = new SqlCommand("select * from Category order by category", cn);
         dr = cm.ExecuteReader();
 
         while (dr.Read())
         {
             i += 1;
-            dataGridViewBrands.Rows.Add(i, dr["id"].ToString(), dr["brand"].ToString());
+            dataGridViewCategories.Rows.Add(i, dr["id"].ToString(), dr["category"].ToString());
         }
 
         dr.Close();
         cn.Close();
     }
 
-    private void addBrandButton_Click(object sender, EventArgs e)
+    private void addCategoryButton_Click(object sender, EventArgs e)
     {
-        BrandsEditForm frm = new BrandsEditForm(this);
+        CategoriesEditForm frm = new CategoriesEditForm(this);
         frm.Show();
         frm.updateButton.Visible = false;
         frm.updateButton.Enabled = false;
-        frm.Text = "Add New Brand";
+        frm.Text = "Add New Category";
     }
 
-    private void dataGridViewbrands_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void dataGridViewCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        string colName = dataGridViewBrands.Columns[e.ColumnIndex].Name;
+        string colName = dataGridViewCategories.Columns[e.ColumnIndex].Name;
 
         if (colName == "editColumn")
         {
-            BrandsEditForm frm = new BrandsEditForm(this);
-            frm.originalBrandId.Text = dataGridViewBrands.Rows[e.RowIndex].Cells[1].Value.ToString();
-            frm.brandNameTextBox.Text = dataGridViewBrands.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            CategoriesEditForm frm = new CategoriesEditForm(this);
+            frm.originalCategoryId.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
+            frm.categoryNameTextBox.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[2].Value.ToString();
             frm.saveButton.Visible = false;
             frm.saveButton.Enabled = false;
-            frm.Text = "Edit Brand";
+            frm.Text = "Edit Category";
             frm.Show();
         }
 
@@ -113,7 +116,7 @@ public partial class BrandsListForm : Form
             if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 cn.Open();
-                cm = new SqlCommand("delete from Brand where id like '" + dataGridViewBrands.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
+                cm = new SqlCommand("delete from Category where id like '" + dataGridViewCategories.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
 
@@ -125,17 +128,17 @@ public partial class BrandsListForm : Form
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        dataGridViewBrands.Rows.Clear();
+        dataGridViewCategories.Rows.Clear();
 
         cn.Open();
-        cm = new SqlCommand("select * from Brand where brand like '%" + searchTextBox.Text + "%' order by brand", cn);
+        cm = new SqlCommand("select * from Category where category like '%" + searchTextBox.Text + "%' order by category", cn);
         dr = cm.ExecuteReader();
 
         int i = 0;
         while (dr.Read())
         {
             i += 1;
-            dataGridViewBrands.Rows.Add(i, dr["id"].ToString(), dr["brand"].ToString());
+            dataGridViewCategories.Rows.Add(i, dr["id"].ToString(), dr["category"].ToString());
         }
 
         dr.Close();
