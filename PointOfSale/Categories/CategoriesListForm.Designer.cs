@@ -34,16 +34,14 @@ partial class CategoriesListForm
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
         dataGridViewCategories = new DataGridView();
+        addCategoryButton = new Button();
+        searchTextBox = new TextBox();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
         categoryColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
-        topPanel = new Panel();
-        addCategoryButton = new Button();
-        searchTextBox = new TextBox();
         ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).BeginInit();
-        topPanel.SuspendLayout();
         SuspendLayout();
         // 
         // dataGridViewCategories
@@ -51,7 +49,7 @@ partial class CategoriesListForm
         dataGridViewCategories.AllowUserToAddRows = false;
         dataGridViewCategories.AllowUserToDeleteRows = false;
         dataGridViewCategories.AllowUserToOrderColumns = true;
-        dataGridViewCategories.BackgroundColor = Color.Black;
+        dataGridViewCategories.BackgroundColor = Color.White;
         dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
         dataGridViewCellStyle1.BackColor = Color.Black;
         dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -62,7 +60,7 @@ partial class CategoriesListForm
         dataGridViewCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridViewCategories.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, categoryColumn, editColumn, deleteColumn });
         dataGridViewCategories.EnableHeadersVisualStyles = false;
-        dataGridViewCategories.GridColor = Color.White;
+        dataGridViewCategories.GridColor = Color.Black;
         dataGridViewCategories.Location = new Point(0, 58);
         dataGridViewCategories.Name = "dataGridViewCategories";
         dataGridViewCategories.ReadOnly = true;
@@ -73,6 +71,29 @@ partial class CategoriesListForm
         dataGridViewCategories.TabIndex = 4;
         dataGridViewCategories.CellContentClick += dataGridViewCategories_CellContentClick;
         dataGridViewCategories.KeyDown += dataGridViewCategories_KeyDown;
+        // 
+        // addCategoryButton
+        // 
+        addCategoryButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        addCategoryButton.BackColor = Color.White;
+        addCategoryButton.Location = new Point(564, 12);
+        addCategoryButton.Name = "addCategoryButton";
+        addCategoryButton.Size = new Size(226, 35);
+        addCategoryButton.TabIndex = 2;
+        addCategoryButton.Text = "Add Category (A)";
+        addCategoryButton.UseVisualStyleBackColor = false;
+        addCategoryButton.Click += addCategoryButton_Click;
+        addCategoryButton.KeyDown += addCategoryButton_KeyDown;
+        // 
+        // searchTextBox
+        // 
+        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(12, 12);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.PlaceholderText = "Search (S)";
+        searchTextBox.Size = new Size(332, 33);
+        searchTextBox.TabIndex = 1;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
         // 
         // Column1
         // 
@@ -95,8 +116,8 @@ partial class CategoriesListForm
         // categoryColumn
         // 
         categoryColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridViewCellStyle3.BackColor = Color.Black;
-        dataGridViewCellStyle3.ForeColor = Color.White;
+        dataGridViewCellStyle3.BackColor = Color.White;
+        dataGridViewCellStyle3.ForeColor = Color.Black;
         categoryColumn.DefaultCellStyle = dataGridViewCellStyle3;
         categoryColumn.HeaderText = "CATEGORY";
         categoryColumn.Name = "categoryColumn";
@@ -137,60 +158,25 @@ partial class CategoriesListForm
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
         // 
-        // topPanel
-        // 
-        topPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-        topPanel.BackColor = Color.Black;
-        topPanel.Controls.Add(addCategoryButton);
-        topPanel.Controls.Add(searchTextBox);
-        topPanel.Location = new Point(0, 1);
-        topPanel.Name = "topPanel";
-        topPanel.Size = new Size(800, 60);
-        topPanel.TabIndex = 5;
-        // 
-        // addCategoryButton
-        // 
-        addCategoryButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        addCategoryButton.BackColor = Color.White;
-        addCategoryButton.Location = new Point(484, 15);
-        addCategoryButton.Name = "addCategoryButton";
-        addCategoryButton.Size = new Size(226, 35);
-        addCategoryButton.TabIndex = 2;
-        addCategoryButton.Text = "Add Category (A)";
-        addCategoryButton.UseVisualStyleBackColor = false;
-        addCategoryButton.Click += addCategoryButton_Click;
-        addCategoryButton.KeyDown += addCategoryButton_KeyDown;
-        // 
-        // searchTextBox
-        // 
-        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        searchTextBox.Location = new Point(85, 15);
-        searchTextBox.Name = "searchTextBox";
-        searchTextBox.PlaceholderText = "Search (S)";
-        searchTextBox.Size = new Size(332, 33);
-        searchTextBox.TabIndex = 1;
-        searchTextBox.TextChanged += searchTextBox_TextChanged;
-        // 
         // CategoriesListForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
-        Controls.Add(topPanel);
+        ClientSize = new Size(802, 450);
+        Controls.Add(searchTextBox);
+        Controls.Add(addCategoryButton);
         Controls.Add(dataGridViewCategories);
         Name = "CategoriesListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Categories";
         KeyDown += CategoriesListForm_KeyDown;
         ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).EndInit();
-        topPanel.ResumeLayout(false);
-        topPanel.PerformLayout();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
     private DataGridView dataGridViewCategories;
-    private Panel topPanel;
     private TextBox searchTextBox;
     private Button addCategoryButton;
     private DataGridViewTextBoxColumn Column1;

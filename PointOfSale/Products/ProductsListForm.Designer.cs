@@ -33,10 +33,9 @@ partial class ProductsListForm
         DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-        searchTextBox = new TextBox();
-        topPanel = new Panel();
-        addProductButton = new Button();
         dataGridViewProducts = new DataGridView();
+        searchTextBox = new TextBox();
+        addProductButton = new Button();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
         descriptionColumn = new DataGridViewTextBoxColumn();
@@ -46,49 +45,15 @@ partial class ProductsListForm
         quantityColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
-        topPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
         SuspendLayout();
-        // 
-        // searchTextBox
-        // 
-        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        searchTextBox.Location = new Point(85, 15);
-        searchTextBox.Name = "searchTextBox";
-        searchTextBox.PlaceholderText = "Search (S)";
-        searchTextBox.Size = new Size(332, 33);
-        searchTextBox.TabIndex = 0;
-        searchTextBox.TextChanged += searchTextBox_TextChanged;
-        // 
-        // topPanel
-        // 
-        topPanel.BackColor = Color.Black;
-        topPanel.Controls.Add(addProductButton);
-        topPanel.Controls.Add(searchTextBox);
-        topPanel.Location = new Point(0, 0);
-        topPanel.Name = "topPanel";
-        topPanel.Size = new Size(800, 65);
-        topPanel.TabIndex = 6;
-        // 
-        // addProductButton
-        // 
-        addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        addProductButton.BackColor = Color.White;
-        addProductButton.Location = new Point(495, 16);
-        addProductButton.Name = "addProductButton";
-        addProductButton.Size = new Size(226, 35);
-        addProductButton.TabIndex = 1;
-        addProductButton.Text = "Add Product (A)";
-        addProductButton.UseVisualStyleBackColor = false;
-        addProductButton.Click += addProductButton_Click;
-        addProductButton.KeyDown += addProductButton_KeyDown;
         // 
         // dataGridViewProducts
         // 
         dataGridViewProducts.AllowUserToAddRows = false;
         dataGridViewProducts.AllowUserToDeleteRows = false;
         dataGridViewProducts.AllowUserToOrderColumns = true;
-        dataGridViewProducts.BackgroundColor = Color.Black;
+        dataGridViewProducts.BackgroundColor = Color.White;
         dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
         dataGridViewCellStyle1.BackColor = Color.Black;
         dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -99,17 +64,40 @@ partial class ProductsListForm
         dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridViewProducts.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, descriptionColumn, brandColumn, categoryColumn, priceColumn, quantityColumn, editColumn, deleteColumn });
         dataGridViewProducts.EnableHeadersVisualStyles = false;
-        dataGridViewProducts.GridColor = Color.White;
+        dataGridViewProducts.GridColor = Color.Black;
         dataGridViewProducts.Location = new Point(1, 61);
         dataGridViewProducts.Name = "dataGridViewProducts";
         dataGridViewProducts.ReadOnly = true;
         dataGridViewProducts.RowHeadersVisible = false;
         dataGridViewProducts.RowTemplate.Height = 25;
         dataGridViewProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridViewProducts.Size = new Size(798, 401);
+        dataGridViewProducts.Size = new Size(946, 478);
         dataGridViewProducts.TabIndex = 7;
         dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
         dataGridViewProducts.KeyDown += dataGridViewProducts_KeyDown;
+        // 
+        // searchTextBox
+        // 
+        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(12, 12);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.PlaceholderText = "Search (S)";
+        searchTextBox.Size = new Size(552, 33);
+        searchTextBox.TabIndex = 0;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
+        // 
+        // addProductButton
+        // 
+        addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        addProductButton.BackColor = Color.White;
+        addProductButton.Location = new Point(709, 12);
+        addProductButton.Name = "addProductButton";
+        addProductButton.Size = new Size(226, 35);
+        addProductButton.TabIndex = 1;
+        addProductButton.Text = "Add Product (A)";
+        addProductButton.UseVisualStyleBackColor = false;
+        addProductButton.Click += addProductButton_Click;
+        addProductButton.KeyDown += addProductButton_KeyDown;
         // 
         // Column1
         // 
@@ -128,23 +116,25 @@ partial class ProductsListForm
         idColumn.HeaderText = "PCODE";
         idColumn.Name = "idColumn";
         idColumn.ReadOnly = true;
-        idColumn.Visible = false;
+        idColumn.Width = 70;
         // 
         // descriptionColumn
         // 
+        descriptionColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         descriptionColumn.HeaderText = "DESCRIPTION";
         descriptionColumn.Name = "descriptionColumn";
         descriptionColumn.ReadOnly = true;
         // 
         // brandColumn
         // 
-        brandColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridViewCellStyle3.BackColor = Color.Black;
-        dataGridViewCellStyle3.ForeColor = Color.White;
+        brandColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        dataGridViewCellStyle3.BackColor = Color.White;
+        dataGridViewCellStyle3.ForeColor = Color.Black;
         brandColumn.DefaultCellStyle = dataGridViewCellStyle3;
         brandColumn.HeaderText = "BRAND";
         brandColumn.Name = "brandColumn";
         brandColumn.ReadOnly = true;
+        brandColumn.Width = 71;
         // 
         // categoryColumn
         // 
@@ -183,7 +173,7 @@ partial class ProductsListForm
         editColumn.Resizable = DataGridViewTriState.True;
         editColumn.SortMode = DataGridViewColumnSortMode.Automatic;
         editColumn.Text = "EDIT (E)";
-        editColumn.ToolTipText = "Edit Brand Details";
+        editColumn.ToolTipText = "Edit Product Details";
         editColumn.UseColumnTextForButtonValue = true;
         editColumn.Width = 52;
         // 
@@ -201,7 +191,7 @@ partial class ProductsListForm
         deleteColumn.Resizable = DataGridViewTriState.True;
         deleteColumn.SortMode = DataGridViewColumnSortMode.Automatic;
         deleteColumn.Text = "DEL (D)";
-        deleteColumn.ToolTipText = "Del";
+        deleteColumn.ToolTipText = "Delete Product";
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
         // 
@@ -210,24 +200,23 @@ partial class ProductsListForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(947, 535);
+        Controls.Add(addProductButton);
         Controls.Add(dataGridViewProducts);
-        Controls.Add(topPanel);
+        Controls.Add(searchTextBox);
         Name = "ProductsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Products";
         KeyDown += ProductsListForm_KeyDown;
-        topPanel.ResumeLayout(false);
-        topPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
-    private TextBox searchTextBox;
-    private Panel topPanel;
-    private Button addProductButton;
     private DataGridView dataGridViewProducts;
+    private TextBox searchTextBox;
+    private Button addProductButton;
     private DataGridViewTextBoxColumn Column1;
     private DataGridViewTextBoxColumn idColumn;
     private DataGridViewTextBoxColumn descriptionColumn;

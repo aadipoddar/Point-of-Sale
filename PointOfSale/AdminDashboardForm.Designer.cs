@@ -39,6 +39,7 @@ partial class AdminDashboardForm
         dashboardButton = new Button();
         adminLabel = new Label();
         usernameLabel = new Label();
+        stockInButton = new Button();
         SuspendLayout();
         // 
         // logoutButton
@@ -55,7 +56,7 @@ partial class AdminDashboardForm
         // userSettingsButton
         // 
         userSettingsButton.BackColor = Color.Transparent;
-        userSettingsButton.Location = new Point(4, 483);
+        userSettingsButton.Location = new Point(965, 251);
         userSettingsButton.Name = "userSettingsButton";
         userSettingsButton.Size = new Size(194, 40);
         userSettingsButton.TabIndex = 9;
@@ -66,7 +67,7 @@ partial class AdminDashboardForm
         // systemSettingsButton
         // 
         systemSettingsButton.BackColor = Color.Transparent;
-        systemSettingsButton.Location = new Point(4, 438);
+        systemSettingsButton.Location = new Point(964, 206);
         systemSettingsButton.Name = "systemSettingsButton";
         systemSettingsButton.Size = new Size(194, 40);
         systemSettingsButton.TabIndex = 8;
@@ -77,7 +78,7 @@ partial class AdminDashboardForm
         // recordsButton
         // 
         recordsButton.BackColor = Color.Transparent;
-        recordsButton.Location = new Point(4, 375);
+        recordsButton.Location = new Point(644, 220);
         recordsButton.Name = "recordsButton";
         recordsButton.Size = new Size(194, 40);
         recordsButton.TabIndex = 7;
@@ -88,7 +89,7 @@ partial class AdminDashboardForm
         // manageBrandButton
         // 
         manageBrandButton.BackColor = Color.Transparent;
-        manageBrandButton.Location = new Point(4, 310);
+        manageBrandButton.Location = new Point(316, 472);
         manageBrandButton.Name = "manageBrandButton";
         manageBrandButton.Size = new Size(194, 40);
         manageBrandButton.TabIndex = 6;
@@ -100,7 +101,7 @@ partial class AdminDashboardForm
         // manageCategoryButton
         // 
         manageCategoryButton.BackColor = Color.Transparent;
-        manageCategoryButton.Location = new Point(4, 260);
+        manageCategoryButton.Location = new Point(316, 422);
         manageCategoryButton.Name = "manageCategoryButton";
         manageCategoryButton.Size = new Size(194, 40);
         manageCategoryButton.TabIndex = 5;
@@ -112,7 +113,7 @@ partial class AdminDashboardForm
         // manageProductButton
         // 
         manageProductButton.BackColor = Color.Transparent;
-        manageProductButton.Location = new Point(4, 210);
+        manageProductButton.Location = new Point(316, 372);
         manageProductButton.Name = "manageProductButton";
         manageProductButton.Size = new Size(194, 40);
         manageProductButton.TabIndex = 4;
@@ -124,7 +125,7 @@ partial class AdminDashboardForm
         // manageSalesButton
         // 
         manageSalesButton.BackColor = Color.Transparent;
-        manageSalesButton.Location = new Point(4, 162);
+        manageSalesButton.Location = new Point(315, 324);
         manageSalesButton.Name = "manageSalesButton";
         manageSalesButton.Size = new Size(194, 40);
         manageSalesButton.TabIndex = 3;
@@ -136,7 +137,7 @@ partial class AdminDashboardForm
         // 
         dashboardButton.BackColor = Color.White;
         dashboardButton.ForeColor = Color.Black;
-        dashboardButton.Location = new Point(4, 98);
+        dashboardButton.Location = new Point(4, 220);
         dashboardButton.Name = "dashboardButton";
         dashboardButton.Size = new Size(194, 40);
         dashboardButton.TabIndex = 2;
@@ -165,12 +166,25 @@ partial class AdminDashboardForm
         usernameLabel.Text = "Username";
         usernameLabel.TextAlign = ContentAlignment.MiddleCenter;
         // 
+        // stockInButton
+        // 
+        stockInButton.BackColor = Color.Transparent;
+        stockInButton.Location = new Point(324, 101);
+        stockInButton.Name = "stockInButton";
+        stockInButton.Size = new Size(194, 40);
+        stockInButton.TabIndex = 11;
+        stockInButton.Text = "Stock In (I)";
+        stockInButton.UseVisualStyleBackColor = false;
+        stockInButton.Click += manageStockInButton_Click;
+        stockInButton.KeyDown += stockInButton_KeyDown;
+        // 
         // AdminDashboardForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Black;
         ClientSize = new Size(1184, 583);
+        Controls.Add(stockInButton);
         Controls.Add(logoutButton);
         Controls.Add(userSettingsButton);
         Controls.Add(manageProductButton);
@@ -202,4 +216,5 @@ partial class AdminDashboardForm
     private Button systemSettingsButton;
     private Button userSettingsButton;
     private Button logoutButton;
+    private Button stockInButton;
 }

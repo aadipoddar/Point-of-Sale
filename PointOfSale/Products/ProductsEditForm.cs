@@ -1,7 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 
-using PointOfSale.Categories;
-
 namespace PointOfSale.Products;
 
 public partial class ProductsEditForm : Form
@@ -235,7 +233,7 @@ public partial class ProductsEditForm : Form
             }
         }
 
-        else if (e.KeyCode == Keys.Escape)
+        if (e.KeyCode == Keys.Escape)
         {
             cancelButton_Click(this, new EventArgs());
         }

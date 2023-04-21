@@ -33,7 +33,6 @@ partial class BrandsListForm
         DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-        topPanel = new Panel();
         searchTextBox = new TextBox();
         addBrandButton = new Button();
         dataGridViewBrands = new DataGridView();
@@ -42,25 +41,13 @@ partial class BrandsListForm
         brandColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
-        topPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dataGridViewBrands).BeginInit();
         SuspendLayout();
-        // 
-        // topPanel
-        // 
-        topPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        topPanel.BackColor = Color.Black;
-        topPanel.Controls.Add(searchTextBox);
-        topPanel.Controls.Add(addBrandButton);
-        topPanel.Location = new Point(0, 0);
-        topPanel.Name = "topPanel";
-        topPanel.Size = new Size(800, 51);
-        topPanel.TabIndex = 1;
         // 
         // searchTextBox
         // 
         searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        searchTextBox.Location = new Point(49, 11);
+        searchTextBox.Location = new Point(12, 12);
         searchTextBox.Name = "searchTextBox";
         searchTextBox.PlaceholderText = "Search (S)";
         searchTextBox.Size = new Size(332, 33);
@@ -71,7 +58,7 @@ partial class BrandsListForm
         // 
         addBrandButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         addBrandButton.BackColor = Color.White;
-        addBrandButton.Location = new Point(460, 10);
+        addBrandButton.Location = new Point(563, 10);
         addBrandButton.Name = "addBrandButton";
         addBrandButton.Size = new Size(226, 35);
         addBrandButton.TabIndex = 0;
@@ -85,7 +72,7 @@ partial class BrandsListForm
         dataGridViewBrands.AllowUserToAddRows = false;
         dataGridViewBrands.AllowUserToDeleteRows = false;
         dataGridViewBrands.AllowUserToOrderColumns = true;
-        dataGridViewBrands.BackgroundColor = Color.Black;
+        dataGridViewBrands.BackgroundColor = Color.White;
         dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
         dataGridViewCellStyle1.BackColor = Color.Black;
         dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -96,7 +83,7 @@ partial class BrandsListForm
         dataGridViewBrands.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridViewBrands.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, brandColumn, editColumn, deleteColumn });
         dataGridViewBrands.EnableHeadersVisualStyles = false;
-        dataGridViewBrands.GridColor = Color.White;
+        dataGridViewBrands.GridColor = Color.Black;
         dataGridViewBrands.Location = new Point(2, 51);
         dataGridViewBrands.Name = "dataGridViewBrands";
         dataGridViewBrands.ReadOnly = true;
@@ -129,8 +116,8 @@ partial class BrandsListForm
         // brandColumn
         // 
         brandColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridViewCellStyle3.BackColor = Color.Black;
-        dataGridViewCellStyle3.ForeColor = Color.White;
+        dataGridViewCellStyle3.BackColor = Color.White;
+        dataGridViewCellStyle3.ForeColor = Color.Black;
         brandColumn.DefaultCellStyle = dataGridViewCellStyle3;
         brandColumn.HeaderText = "BRAND";
         brandColumn.Name = "brandColumn";
@@ -176,21 +163,20 @@ partial class BrandsListForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(801, 450);
+        Controls.Add(searchTextBox);
         Controls.Add(dataGridViewBrands);
-        Controls.Add(topPanel);
+        Controls.Add(addBrandButton);
         Name = "BrandsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Brands";
         KeyDown += BrandsListForm_KeyDown;
-        topPanel.ResumeLayout(false);
-        topPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)dataGridViewBrands).EndInit();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
-    private Panel topPanel;
     private Button addBrandButton;
     private TextBox searchTextBox;
     private DataGridView dataGridViewBrands;

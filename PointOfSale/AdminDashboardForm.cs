@@ -1,5 +1,6 @@
 ﻿using PointOfSale.Categories;
 using PointOfSale.Products;
+using PointOfSale.StockIn;
 
 namespace PointOfSale;
 
@@ -14,6 +15,11 @@ public partial class AdminDashboardForm : Form
 
     private void KeyEvents(object sender, KeyEventArgs e)
     {
+        if (e.KeyCode == Keys.I)
+        {
+            manageStockInButton_Click(sender, e);
+        }
+
         if (e.KeyCode == Keys.C)
         {
             manageCategoryButton_Click(sender, e);
@@ -41,6 +47,11 @@ public partial class AdminDashboardForm : Form
     }
 
     private void dashboardButton_KeyDown(object sender, KeyEventArgs e)
+    {
+        KeyEvents(sender, e);
+    }
+
+    private void stockInButton_KeyDown(object sender, KeyEventArgs e)
     {
         KeyEvents(sender, e);
     }
@@ -90,6 +101,11 @@ public partial class AdminDashboardForm : Form
 
     #region Button Click Events
 
+    private void manageStockInButton_Click(object sender, EventArgs e)
+    {
+        StockInForm frm = new StockInForm();
+        frm.Show();
+    }
     private void manageProductButton_Click(object sender, EventArgs e)
     {
         ProductsListForm frm = new ProductsListForm();
