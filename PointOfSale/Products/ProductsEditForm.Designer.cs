@@ -152,6 +152,8 @@ partial class ProductsEditForm
         // 
         // brandComboBox
         // 
+        brandComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        brandComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         brandComboBox.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
         brandComboBox.FormattingEnabled = true;
         brandComboBox.Location = new Point(219, 127);
@@ -162,6 +164,8 @@ partial class ProductsEditForm
         // 
         // categoryComboBox
         // 
+        categoryComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        categoryComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         categoryComboBox.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
         categoryComboBox.FormattingEnabled = true;
         categoryComboBox.Location = new Point(219, 189);

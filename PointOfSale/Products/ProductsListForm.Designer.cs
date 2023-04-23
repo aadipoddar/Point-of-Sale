@@ -34,8 +34,6 @@ partial class ProductsListForm
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
         dataGridViewProducts = new DataGridView();
-        searchTextBox = new TextBox();
-        addProductButton = new Button();
         Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
         descriptionColumn = new DataGridViewTextBoxColumn();
@@ -45,6 +43,8 @@ partial class ProductsListForm
         quantityColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
         deleteColumn = new DataGridViewButtonColumn();
+        searchTextBox = new TextBox();
+        addProductButton = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
         SuspendLayout();
         // 
@@ -69,35 +69,13 @@ partial class ProductsListForm
         dataGridViewProducts.Name = "dataGridViewProducts";
         dataGridViewProducts.ReadOnly = true;
         dataGridViewProducts.RowHeadersVisible = false;
+        dataGridViewProducts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
         dataGridViewProducts.RowTemplate.Height = 25;
         dataGridViewProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewProducts.Size = new Size(946, 478);
         dataGridViewProducts.TabIndex = 7;
         dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
         dataGridViewProducts.KeyDown += dataGridViewProducts_KeyDown;
-        // 
-        // searchTextBox
-        // 
-        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-        searchTextBox.Location = new Point(12, 12);
-        searchTextBox.Name = "searchTextBox";
-        searchTextBox.PlaceholderText = "Search (S)";
-        searchTextBox.Size = new Size(552, 33);
-        searchTextBox.TabIndex = 0;
-        searchTextBox.TextChanged += searchTextBox_TextChanged;
-        // 
-        // addProductButton
-        // 
-        addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        addProductButton.BackColor = Color.White;
-        addProductButton.Location = new Point(709, 12);
-        addProductButton.Name = "addProductButton";
-        addProductButton.Size = new Size(226, 35);
-        addProductButton.TabIndex = 1;
-        addProductButton.Text = "Add Product (A)";
-        addProductButton.UseVisualStyleBackColor = false;
-        addProductButton.Click += addProductButton_Click;
-        addProductButton.KeyDown += addProductButton_KeyDown;
         // 
         // Column1
         // 
@@ -194,6 +172,29 @@ partial class ProductsListForm
         deleteColumn.ToolTipText = "Delete Product";
         deleteColumn.UseColumnTextForButtonValue = true;
         deleteColumn.Width = 65;
+        // 
+        // searchTextBox
+        // 
+        searchTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(12, 12);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.PlaceholderText = "Search (S)";
+        searchTextBox.Size = new Size(552, 33);
+        searchTextBox.TabIndex = 0;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
+        // 
+        // addProductButton
+        // 
+        addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        addProductButton.BackColor = Color.White;
+        addProductButton.Location = new Point(709, 12);
+        addProductButton.Name = "addProductButton";
+        addProductButton.Size = new Size(226, 35);
+        addProductButton.TabIndex = 1;
+        addProductButton.Text = "Add Product (A)";
+        addProductButton.UseVisualStyleBackColor = false;
+        addProductButton.Click += addProductButton_Click;
+        addProductButton.KeyDown += addProductButton_KeyDown;
         // 
         // ProductsListForm
         // 

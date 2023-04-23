@@ -129,8 +129,9 @@ partial class AdminDashboardForm
         manageSalesButton.Name = "manageSalesButton";
         manageSalesButton.Size = new Size(194, 40);
         manageSalesButton.TabIndex = 3;
-        manageSalesButton.Text = "Manage Sales";
+        manageSalesButton.Text = "Manage Sales (S)";
         manageSalesButton.UseVisualStyleBackColor = false;
+        manageSalesButton.Click += manageSalesButton_Click;
         manageSalesButton.KeyDown += manageSalesButton_KeyDown;
         // 
         // dashboardButton

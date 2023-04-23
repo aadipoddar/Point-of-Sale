@@ -48,11 +48,15 @@ public partial class StockInForm : Form
 
         stockInHistoryDataGridView.Rows.Clear();
 
-        DateTime dt = DateTime.ParseExact(startDateTimePicker.Value.ToShortDateString(), "dd-MM-yyyy", CultureInfo.InvariantCulture);
-        string startDate = dt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        DateTime startDateDt = DateTime.ParseExact(startDateTimePicker.Value.ToShortDateString(), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+        string startDate = startDateDt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+        DateTime endDateDt = DateTime.ParseExact(endDateTimePicker.Value.ToShortDateString(), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+        string endDate = endDateDt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+
 
         cn.Open();
-        cm = new SqlCommand("SELECT * FROM vwStockIn WHERE cast(stockInDate as date) LIKE '" + startDate + "' AND status LIKE 'Done'", cn);
+        cm = new SqlCommand("SELECT* FROM vwStockIn WHERE cast(stockInDate as date) BETWEEN '" + startDate + "' AND '" + endDate + "' AND status LIKE 'Done'", cn);
         dr = cm.ExecuteReader();
 
         while (dr.Read())

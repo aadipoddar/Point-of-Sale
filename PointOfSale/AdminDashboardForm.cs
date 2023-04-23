@@ -1,4 +1,5 @@
-﻿using PointOfSale.Categories;
+﻿using PointOfSale.Cashier;
+using PointOfSale.Categories;
 using PointOfSale.Products;
 using PointOfSale.StockIn;
 
@@ -18,6 +19,11 @@ public partial class AdminDashboardForm : Form
         if (e.KeyCode == Keys.I)
         {
             manageStockInButton_Click(sender, e);
+        }
+
+        if (e.KeyCode == Keys.S)
+        {
+            manageSalesButton_Click(sender, e);
         }
 
         if (e.KeyCode == Keys.C)
@@ -125,4 +131,10 @@ public partial class AdminDashboardForm : Form
     }
 
     #endregion
+
+    private void manageSalesButton_Click(object sender, EventArgs e)
+    {
+        BaseCashierModuleForm frm = new BaseCashierModuleForm();
+        frm.Show();
+    }
 }
