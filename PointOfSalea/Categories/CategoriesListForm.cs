@@ -1,6 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.Data;
+using System.Windows.Forms;
 
 using Microsoft.Data.SqlClient;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PointOfSale.Categories;
 
@@ -41,12 +44,12 @@ public partial class CategoriesListForm : Form
 
         if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.E)
         {
-            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(3, dataGridViewCategories.CurrentRow.Index));
+            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(2, dataGridViewCategories.CurrentRow.Index));
         }
 
-        if (e.KeyCode == Keys.Delete)
+        if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.D)
         {
-            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(4, dataGridViewCategories.CurrentRow.Index));
+            dataGridViewCategories_CellContentClick(sender, new DataGridViewCellEventArgs(3, dataGridViewCategories.CurrentRow.Index));
         }
     }
 
@@ -69,17 +72,18 @@ public partial class CategoriesListForm : Form
 
     public void LoadRecords()
     {
-        int i = 0;
-
         dataGridViewCategories.Rows.Clear();
         cn.Open();
-        cm = new SqlCommand("select * from Category order by category", cn);
+        cm = new SqlCommand("SELECT * FROM Category WHERE category LIKE '%" + searchTextBox.Text + "%' ORDER BY category", cn);
         dr = cm.ExecuteReader();
 
         while (dr.Read())
         {
-            i += 1;
-            dataGridViewCategories.Rows.Add(i, dr["id"].ToString(), dr["category"].ToString());
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(dataGridViewCategories);
+            row.Cells[0].Value = dr["id"];
+            row.Cells[1].Value = dr["category"];
+            dataGridViewCategories.Rows.Add(row);
         }
 
         dr.Close();
@@ -103,8 +107,8 @@ public partial class CategoriesListForm : Form
         {
 
             CategoriesEditForm frm = new CategoriesEditForm(this);
-            frm.originalCategoryId.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
-            frm.categoryNameTextBox.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[2].Value.ToString();
+            frm.originalCategoryId.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[0].Value.ToString();
+            frm.categoryNameTextBox.Text = dataGridViewCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
             frm.saveButton.Visible = false;
             frm.saveButton.Enabled = false;
             frm.Text = "Edit Category";
@@ -128,20 +132,6 @@ public partial class CategoriesListForm : Form
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        dataGridViewCategories.Rows.Clear();
-
-        cn.Open();
-        cm = new SqlCommand("select * from Category where category like '%" + searchTextBox.Text + "%' order by category", cn);
-        dr = cm.ExecuteReader();
-
-        int i = 0;
-        while (dr.Read())
-        {
-            i += 1;
-            dataGridViewCategories.Rows.Add(i, dr["id"].ToString(), dr["category"].ToString());
-        }
-
-        dr.Close();
-        cn.Close();
+        LoadRecords();
     }
 }

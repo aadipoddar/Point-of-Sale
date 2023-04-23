@@ -1,6 +1,6 @@
-﻿namespace PointOfSale.Products
+﻿namespace test
 {
-    partial class ProductsListForm
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -29,59 +29,67 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
+            this.pointOfSaleDataSet = new test.PointOfSaleDataSet();
+            this.vwShowProductsTableAdapter = new test.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.addProductButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewProducts
+            // dataGridView1
             // 
-            this.dataGridViewProducts.AllowUserToAddRows = false;
-            this.dataGridViewProducts.AllowUserToDeleteRows = false;
-            this.dataGridViewProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewProducts.AutoGenerateColumns = false;
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pcodeDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.brandDataGridViewTextBoxColumn,
             this.categoryDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
-            this.dataGridViewProducts.DataSource = this.vwShowProductsBindingSource;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(1, 70);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.ReadOnly = true;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(786, 442);
-            this.dataGridViewProducts.TabIndex = 3;
-            this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
-            // 
-            // pointOfSaleDataSet
-            // 
-            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.quantityDataGridViewTextBoxColumn,
+            this.Edit});
+            this.dataGridView1.DataSource = this.vwShowProductsBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 47);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(837, 442);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // vwShowProductsBindingSource
             // 
             this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
             this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
             // 
+            // pointOfSaleDataSet
+            // 
+            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
+            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // vwShowProductsTableAdapter
             // 
             this.vwShowProductsTableAdapter.ClearBeforeFill = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(371, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(345, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // pcodeDataGridViewTextBoxColumn
             // 
@@ -126,42 +134,28 @@
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // searchTextBox
+            // Edit
             // 
-            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Location = new System.Drawing.Point(12, 12);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(412, 31);
-            this.searchTextBox.TabIndex = 1;
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Edit.DataPropertyName = "pcode";
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Width = 31;
             // 
-            // addProductButton
-            // 
-            this.addProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addProductButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductButton.Location = new System.Drawing.Point(490, 12);
-            this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(272, 31);
-            this.addProductButton.TabIndex = 2;
-            this.addProductButton.Text = "Add Product (A)";
-            this.addProductButton.UseVisualStyleBackColor = true;
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
-            // 
-            // ProductsListForm
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 511);
-            this.Controls.Add(this.addProductButton);
-            this.Controls.Add(this.searchTextBox);
-            this.Controls.Add(this.dataGridViewProducts);
-            this.Name = "ProductsListForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Products";
-            this.Load += new System.EventHandler(this.ProductsListForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
+            this.ClientSize = new System.Drawing.Size(840, 491);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,17 +163,18 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewProducts;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private PointOfSaleDataSet pointOfSaleDataSet;
         private System.Windows.Forms.BindingSource vwShowProductsBindingSource;
         private PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter vwShowProductsTableAdapter;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox searchTextBox;
-        private System.Windows.Forms.Button addProductButton;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
     }
 }
+

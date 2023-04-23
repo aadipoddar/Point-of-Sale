@@ -32,11 +32,9 @@ partial class CategoriesListForm
         DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
         dataGridViewCategories = new DataGridView();
         addCategoryButton = new Button();
         searchTextBox = new TextBox();
-        Column1 = new DataGridViewTextBoxColumn();
         idColumn = new DataGridViewTextBoxColumn();
         categoryColumn = new DataGridViewTextBoxColumn();
         editColumn = new DataGridViewButtonColumn();
@@ -58,7 +56,7 @@ partial class CategoriesListForm
         dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
         dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
         dataGridViewCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-        dataGridViewCategories.Columns.AddRange(new DataGridViewColumn[] { Column1, idColumn, categoryColumn, editColumn, deleteColumn });
+        dataGridViewCategories.Columns.AddRange(new DataGridViewColumn[] { idColumn, categoryColumn, editColumn, deleteColumn });
         dataGridViewCategories.EnableHeadersVisualStyles = false;
         dataGridViewCategories.GridColor = Color.Black;
         dataGridViewCategories.Location = new Point(0, 58);
@@ -95,30 +93,18 @@ partial class CategoriesListForm
         searchTextBox.TabIndex = 1;
         searchTextBox.TextChanged += searchTextBox_TextChanged;
         // 
-        // Column1
-        // 
-        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle2.BackColor = Color.Black;
-        dataGridViewCellStyle2.ForeColor = Color.White;
-        Column1.DefaultCellStyle = dataGridViewCellStyle2;
-        Column1.HeaderText = "#";
-        Column1.Name = "Column1";
-        Column1.ReadOnly = true;
-        Column1.Width = 39;
-        // 
         // idColumn
         // 
         idColumn.HeaderText = "ID";
         idColumn.Name = "idColumn";
         idColumn.ReadOnly = true;
-        idColumn.Visible = false;
         // 
         // categoryColumn
         // 
         categoryColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        dataGridViewCellStyle3.BackColor = Color.White;
-        dataGridViewCellStyle3.ForeColor = Color.Black;
-        categoryColumn.DefaultCellStyle = dataGridViewCellStyle3;
+        dataGridViewCellStyle2.BackColor = Color.White;
+        dataGridViewCellStyle2.ForeColor = Color.Black;
+        categoryColumn.DefaultCellStyle = dataGridViewCellStyle2;
         categoryColumn.HeaderText = "CATEGORY";
         categoryColumn.Name = "categoryColumn";
         categoryColumn.ReadOnly = true;
@@ -126,9 +112,9 @@ partial class CategoriesListForm
         // editColumn
         // 
         editColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 128, 255);
-        editColumn.DefaultCellStyle = dataGridViewCellStyle4;
+        dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 128, 255);
+        editColumn.DefaultCellStyle = dataGridViewCellStyle3;
         editColumn.FlatStyle = FlatStyle.Popup;
         editColumn.HeaderText = "Edit";
         editColumn.Name = "editColumn";
@@ -143,10 +129,10 @@ partial class CategoriesListForm
         // deleteColumn
         // 
         deleteColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 128, 128);
-        dataGridViewCellStyle5.ForeColor = Color.White;
-        deleteColumn.DefaultCellStyle = dataGridViewCellStyle5;
+        dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 128, 128);
+        dataGridViewCellStyle4.ForeColor = Color.White;
+        deleteColumn.DefaultCellStyle = dataGridViewCellStyle4;
         deleteColumn.FlatStyle = FlatStyle.Popup;
         deleteColumn.HeaderText = "Delete";
         deleteColumn.Name = "deleteColumn";
@@ -179,7 +165,6 @@ partial class CategoriesListForm
     private DataGridView dataGridViewCategories;
     private TextBox searchTextBox;
     private Button addCategoryButton;
-    private DataGridViewTextBoxColumn Column1;
     private DataGridViewTextBoxColumn idColumn;
     private DataGridViewTextBoxColumn categoryColumn;
     private DataGridViewButtonColumn editColumn;
