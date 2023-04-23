@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace test.Properties {
+namespace PointOfSale.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,7 +26,7 @@ namespace test.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AADILAPI\\SQLEXPRESS;Initial Catalog=PointOfSale;Integrated Security=T" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=aadilapi\\sqlexpress;Initial Catalog=PointOfSale;Integrated Security=T" +
             "rue")]
         public string PointOfSaleConnectionString {
             get {

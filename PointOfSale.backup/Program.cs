@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace test
+using PointOfSale.Products;
+
+namespace PointOfSale
 {
     internal static class Program
     {
@@ -16,7 +18,7 @@ namespace test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ProductsListForm());
         }
     }
 }

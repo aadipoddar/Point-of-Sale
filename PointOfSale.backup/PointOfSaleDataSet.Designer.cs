@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace test {
+namespace PointOfSale {
     
     
     /// <summary>
@@ -3660,7 +3660,7 @@ namespace test {
         }
     }
 }
-namespace test.PointOfSaleDataSetTableAdapters {
+namespace PointOfSale.PointOfSaleDataSetTableAdapters {
     
     
     /// <summary>
@@ -3817,7 +3817,7 @@ SELECT MigrationId, ProductVersion FROM __EFMigrationsHistory WHERE (MigrationId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4153,7 +4153,7 @@ SELECT MigrationId, ProductVersion FROM __EFMigrationsHistory WHERE (MigrationId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4457,7 +4457,7 @@ SELECT MigrationId, ProductVersion FROM __EFMigrationsHistory WHERE (MigrationId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4783,7 +4783,7 @@ SELECT pcode, description, brandId, categoryId, price, quantity FROM Product WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5165,7 +5165,7 @@ SELECT id, referenceNo, pcode, quantity, stockInDate, stockInBy, status FROM Sto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5609,34 +5609,18 @@ SELECT id, referenceNo, pcode, quantity, stockInDate, stockInBy, status FROM Sto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT pcode, description, brand, category, price, quantity FROM dbo.vwShowProduc" +
                 "ts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT pcode, description, brand, category, price, quantity FROM dbo.vwShowProduc" +
-                "ts\r\nWHERE description = @searchText";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@searchText", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT pcode, description, brand, category, price, quantity FROM dbo.vwShowProduc" +
-                "ts\r\nWHERE description LIKE \'%@search%\'";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT pcode, description, brand, category, price, quantity FROM dbo.vwShowProduc" +
-                "ts\r\nWHERE description LIKE \'%@search%\'";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5661,51 +5645,6 @@ SELECT id, referenceNo, pcode, quantity, stockInDate, stockInBy, status FROM Sto
             PointOfSaleDataSet.vwShowProductsDataTable dataTable = new PointOfSaleDataSet.vwShowProductsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(PointOfSaleDataSet.vwShowProductsDataTable dataTable, string searchText) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((searchText == null)) {
-                throw new global::System.ArgumentNullException("searchText");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(searchText));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy1(PointOfSaleDataSet.vwShowProductsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy2(PointOfSaleDataSet.vwShowProductsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
         }
     }
     
@@ -5845,7 +5784,7 @@ SELECT id, referenceNo, pcode, quantity, stockInDate, stockInBy, status FROM Sto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::test.Properties.Settings.Default.PointOfSaleConnectionString;
+            this._connection.ConnectionString = global::PointOfSale.Properties.Settings.Default.PointOfSaleConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

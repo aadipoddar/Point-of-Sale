@@ -28,143 +28,141 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
-            this.pcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.addProductButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            dataGridViewProducts = new DataGridView();
+            pcodeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            brandDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            vwShowProductsBindingSource = new BindingSource(components);
+            pointOfSaleDataSet = new PointOfSaleDataSet();
+            vwShowProductsTableAdapter = new PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
+            searchTextBox = new TextBox();
+            addProductButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)vwShowProductsBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pointOfSaleDataSet).BeginInit();
+            SuspendLayout();
             // 
             // dataGridViewProducts
             // 
-            this.dataGridViewProducts.AllowUserToAddRows = false;
-            this.dataGridViewProducts.AllowUserToDeleteRows = false;
-            this.dataGridViewProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewProducts.AutoGenerateColumns = false;
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.pcodeDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.brandDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
-            this.dataGridViewProducts.DataSource = this.vwShowProductsBindingSource;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(1, 70);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.ReadOnly = true;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(786, 442);
-            this.dataGridViewProducts.TabIndex = 3;
-            this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
-            // 
-            // pointOfSaleDataSet
-            // 
-            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vwShowProductsBindingSource
-            // 
-            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
-            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
-            // 
-            // vwShowProductsTableAdapter
-            // 
-            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
+            dataGridViewProducts.AllowUserToAddRows = false;
+            dataGridViewProducts.AllowUserToDeleteRows = false;
+            dataGridViewProducts.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewProducts.AutoGenerateColumns = false;
+            dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProducts.Columns.AddRange(new DataGridViewColumn[] { pcodeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, brandDataGridViewTextBoxColumn, categoryDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, quantityDataGridViewTextBoxColumn });
+            dataGridViewProducts.DataSource = vwShowProductsBindingSource;
+            dataGridViewProducts.Location = new Point(1, 81);
+            dataGridViewProducts.Margin = new Padding(4, 3, 4, 3);
+            dataGridViewProducts.Name = "dataGridViewProducts";
+            dataGridViewProducts.ReadOnly = true;
+            dataGridViewProducts.Size = new Size(917, 510);
+            dataGridViewProducts.TabIndex = 3;
+            dataGridViewProducts.KeyDown += dataGridViewProducts_KeyDown;
             // 
             // pcodeDataGridViewTextBoxColumn
             // 
-            this.pcodeDataGridViewTextBoxColumn.DataPropertyName = "pcode";
-            this.pcodeDataGridViewTextBoxColumn.HeaderText = "pcode";
-            this.pcodeDataGridViewTextBoxColumn.Name = "pcodeDataGridViewTextBoxColumn";
-            this.pcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            pcodeDataGridViewTextBoxColumn.DataPropertyName = "pcode";
+            pcodeDataGridViewTextBoxColumn.HeaderText = "pcode";
+            pcodeDataGridViewTextBoxColumn.Name = "pcodeDataGridViewTextBoxColumn";
+            pcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // brandDataGridViewTextBoxColumn
             // 
-            this.brandDataGridViewTextBoxColumn.DataPropertyName = "brand";
-            this.brandDataGridViewTextBoxColumn.HeaderText = "brand";
-            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
-            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
+            brandDataGridViewTextBoxColumn.DataPropertyName = "brand";
+            brandDataGridViewTextBoxColumn.HeaderText = "brand";
+            brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
+            brandDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // categoryDataGridViewTextBoxColumn
             // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
+            categoryDataGridViewTextBoxColumn.HeaderText = "category";
+            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            categoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // priceDataGridViewTextBoxColumn
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            priceDataGridViewTextBoxColumn.DataPropertyName = "price";
+            priceDataGridViewTextBoxColumn.HeaderText = "price";
+            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            priceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
+            quantityDataGridViewTextBoxColumn.HeaderText = "quantity";
+            quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vwShowProductsBindingSource
+            // 
+            vwShowProductsBindingSource.DataMember = "vwShowProducts";
+            vwShowProductsBindingSource.DataSource = pointOfSaleDataSet;
+            // 
+            // pointOfSaleDataSet
+            // 
+            pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
+            pointOfSaleDataSet.Namespace = "http://tempuri.org/PointOfSaleDataSet.xsd";
+            pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vwShowProductsTableAdapter
+            // 
+            vwShowProductsTableAdapter.ClearBeforeFill = true;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Location = new System.Drawing.Point(12, 12);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(412, 31);
-            this.searchTextBox.TabIndex = 1;
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            searchTextBox.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            searchTextBox.Location = new Point(14, 14);
+            searchTextBox.Margin = new Padding(4, 3, 4, 3);
+            searchTextBox.Name = "searchTextBox";
+            searchTextBox.PlaceholderText = "Search (S)";
+            searchTextBox.Size = new Size(480, 35);
+            searchTextBox.TabIndex = 1;
+            searchTextBox.TextChanged += searchTextBox_TextChanged;
             // 
             // addProductButton
             // 
-            this.addProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addProductButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductButton.Location = new System.Drawing.Point(490, 12);
-            this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(272, 31);
-            this.addProductButton.TabIndex = 2;
-            this.addProductButton.Text = "Add Product (A)";
-            this.addProductButton.UseVisualStyleBackColor = true;
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
+            addProductButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            addProductButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            addProductButton.Location = new Point(572, 12);
+            addProductButton.Margin = new Padding(4, 3, 4, 3);
+            addProductButton.Name = "addProductButton";
+            addProductButton.Size = new Size(317, 43);
+            addProductButton.TabIndex = 2;
+            addProductButton.Text = "Add Product (A)";
+            addProductButton.UseVisualStyleBackColor = true;
+            addProductButton.Click += addProductButton_Click;
             // 
             // ProductsListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 511);
-            this.Controls.Add(this.addProductButton);
-            this.Controls.Add(this.searchTextBox);
-            this.Controls.Add(this.dataGridViewProducts);
-            this.Name = "ProductsListForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Products";
-            this.Load += new System.EventHandler(this.ProductsListForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(915, 590);
+            Controls.Add(addProductButton);
+            Controls.Add(searchTextBox);
+            Controls.Add(dataGridViewProducts);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ProductsListForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Products";
+            Load += ProductsListForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)vwShowProductsBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pointOfSaleDataSet).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
