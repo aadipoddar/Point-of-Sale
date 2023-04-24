@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using PointOfSale.Products;
 
 namespace PointOfSale
 {
@@ -17,9 +12,8 @@ namespace PointOfSale
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProductsListForm());
+            Application.Run(new AdminDashboardForm());
         }
     }
 }
