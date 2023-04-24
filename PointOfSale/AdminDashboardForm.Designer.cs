@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.manageProductsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // manageProductsButton
+            // 
+            this.manageProductsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageProductsButton.Location = new System.Drawing.Point(12, 12);
+            this.manageProductsButton.Name = "manageProductsButton";
+            this.manageProductsButton.Size = new System.Drawing.Size(199, 50);
+            this.manageProductsButton.TabIndex = 0;
+            this.manageProductsButton.Text = "Manage Products";
+            this.manageProductsButton.UseVisualStyleBackColor = true;
+            this.manageProductsButton.Click += new System.EventHandler(this.manageProductsButton_Click);
             // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.manageProductsButton);
             this.Name = "AdminDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
@@ -43,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button manageProductsButton;
     }
 }

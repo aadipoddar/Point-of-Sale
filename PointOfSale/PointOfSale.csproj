@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,10 +53,34 @@
     <Compile Include="AdminDashboardForm.Designer.cs">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConnection.cs" />
+    <Compile Include="PointOfSaleDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointOfSaleDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProductsEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductsEditForm.Designer.cs">
+      <DependentUpon>ProductsEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProductsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductsListForm.Designer.cs">
+      <DependentUpon>ProductsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductsEditForm.resx">
+      <DependentUpon>ProductsEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductsListForm.resx">
+      <DependentUpon>ProductsListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +91,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="PointOfSaleDataSet.xsc">
+      <DependentUpon>PointOfSaleDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PointOfSaleDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PointOfSaleDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PointOfSaleDataSet.xss">
+      <DependentUpon>PointOfSaleDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

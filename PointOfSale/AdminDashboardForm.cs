@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PointOfSale.Products;
+
 namespace PointOfSale
 {
     public partial class AdminDashboardForm : Form
@@ -15,6 +17,12 @@ namespace PointOfSale
         public AdminDashboardForm()
         {
             InitializeComponent();
+        }
+
+        public void manageProductsButton_Click(object sender, EventArgs e)
+        {
+            ProductsListForm productsListForm = new ProductsListForm();
+            productsListForm.Show();
         }
     }
 }
