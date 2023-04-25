@@ -9,17 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PointOfSale.Categories
+namespace PointOfSale.Brands
 {
-    public partial class CategoriesEditForm : Form
+    public partial class BrandsEditForm : Form
     {
         SqlConnection sqlConnection = new SqlConnection();
         SqlCommand sqlCommand = new SqlCommand();
         DBConnection dBConnection = new DBConnection();
 
-        public int categoryId;
+        public int brandId;
 
-        public CategoriesEditForm()
+        public BrandsEditForm()
         {
             InitializeComponent();
 
@@ -34,19 +34,19 @@ namespace PointOfSale.Categories
             updateButton.Enabled = false;
             updateButton.Visible = false;
 
-            categoryTextBox.Clear();
-            categoryTextBox.Focus();
+            brandTextBox.Clear();
+            brandTextBox.Focus();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this Category", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to save this Brand", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sqlConnection.Open();
-                    sqlCommand = new SqlCommand("INSERT INTO Category(category) VALUES (@category)", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@category", categoryTextBox.Text);
+                    sqlCommand = new SqlCommand("INSERT INTO Brand(brand) VALUES (@brand)", sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@brand", brandTextBox.Text);
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
 
@@ -63,11 +63,11 @@ namespace PointOfSale.Categories
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this Category name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to update this Brand Name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sqlConnection.Open();
-                    sqlCommand = new SqlCommand("UPDATE Category SET category = @category WHERE id =  '" + categoryId + "'", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@category", categoryTextBox.Text);
+                    sqlCommand = new SqlCommand("UPDATE Brand SET brand = @brand WHERE id = '" + brandId + "'", sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@brand", brandTextBox.Text);
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
 

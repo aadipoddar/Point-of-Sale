@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PointOfSale.Brands;
 using PointOfSale.Categories;
 using PointOfSale.Products;
 
@@ -30,6 +31,12 @@ namespace PointOfSale
         {
             CategoriesListForm categoriesListForm = new CategoriesListForm();
             categoriesListForm.Show();
+        }
+
+        private void manageBrandButton_Click(object sender, EventArgs e)
+        {
+            BrandsListForm brandsListForm = new BrandsListForm();
+            brandsListForm.Show();
         }
     }
 }

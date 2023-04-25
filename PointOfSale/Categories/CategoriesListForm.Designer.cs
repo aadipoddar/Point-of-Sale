@@ -118,7 +118,7 @@
             this.Controls.Add(this.addCategoriesButton);
             this.Name = "CategoriesListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CategoriesListForm";
+            this.Text = "Categories";
             this.Load += new System.EventHandler(this.CategoriesListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();

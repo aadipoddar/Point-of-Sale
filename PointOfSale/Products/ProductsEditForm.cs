@@ -59,6 +59,8 @@ namespace PointOfSale.Products
         private void TextBoxClear()
         {
             saveButton.Enabled = true;
+            saveButton.Visible = true;
+
             updateButton.Enabled = false;
             updateButton.Visible = false;
 

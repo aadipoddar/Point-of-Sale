@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using PointOfSale.Products;
-
 namespace PointOfSale.Categories
 {
     public partial class CategoriesListForm : Form
@@ -64,7 +62,7 @@ namespace PointOfSale.Categories
                         CategoriesEditForm categoriesEditForm = new CategoriesEditForm();
                         categoriesEditForm.Show();
 
-                        categoriesEditForm.Text = "Edit Product";
+                        categoriesEditForm.Text = "Edit Category";
 
                         categoriesEditForm.saveButton.Visible = false;
                         categoriesEditForm.saveButton.Enabled = false;
@@ -94,8 +92,6 @@ namespace PointOfSale.Categories
                             sqlCommand = new SqlCommand("DELETE FROM Category WHERE id = '" + dataGridViewCategories.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
                             sqlCommand.ExecuteNonQuery();
                             sqlConnection.Close();
-
-                            MessageBox.Show("Record has been successfully deleted");
                         }
                     }
                 }

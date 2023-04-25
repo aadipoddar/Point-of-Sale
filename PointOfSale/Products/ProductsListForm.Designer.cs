@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.addProductsButton = new System.Windows.Forms.Button();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             this.pcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
+            this.addProductsButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
@@ -66,40 +66,6 @@
             this.dataGridViewProducts.Size = new System.Drawing.Size(884, 402);
             this.dataGridViewProducts.TabIndex = 2;
             this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
-            // 
-            // vwShowProductsBindingSource
-            // 
-            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
-            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
-            // 
-            // pointOfSaleDataSet
-            // 
-            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // addProductsButton
-            // 
-            this.addProductsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductsButton.Location = new System.Drawing.Point(690, 9);
-            this.addProductsButton.Name = "addProductsButton";
-            this.addProductsButton.Size = new System.Drawing.Size(175, 40);
-            this.addProductsButton.TabIndex = 1;
-            this.addProductsButton.Text = "Add Products";
-            this.addProductsButton.UseVisualStyleBackColor = true;
-            this.addProductsButton.Click += new System.EventHandler(this.addProductsButton_Click);
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Location = new System.Drawing.Point(12, 12);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(573, 31);
-            this.searchTextBox.TabIndex = 0;
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
-            // 
-            // vwShowProductsTableAdapter
-            // 
-            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
             // 
             // pcodeDataGridViewTextBoxColumn
             // 
@@ -146,6 +112,40 @@
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // vwShowProductsBindingSource
+            // 
+            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
+            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
+            // 
+            // pointOfSaleDataSet
+            // 
+            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
+            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // addProductsButton
+            // 
+            this.addProductsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addProductsButton.Location = new System.Drawing.Point(690, 9);
+            this.addProductsButton.Name = "addProductsButton";
+            this.addProductsButton.Size = new System.Drawing.Size(175, 40);
+            this.addProductsButton.TabIndex = 1;
+            this.addProductsButton.Text = "Add Products";
+            this.addProductsButton.UseVisualStyleBackColor = true;
+            this.addProductsButton.Click += new System.EventHandler(this.addProductsButton_Click);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTextBox.Location = new System.Drawing.Point(12, 12);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(573, 31);
+            this.searchTextBox.TabIndex = 0;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            // 
+            // vwShowProductsTableAdapter
+            // 
+            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
+            // 
             // ProductsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,7 +156,7 @@
             this.Controls.Add(this.dataGridViewProducts);
             this.Name = "ProductsListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProductsListForm";
+            this.Text = "Products";
             this.Load += new System.EventHandler(this.ProductsListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).EndInit();

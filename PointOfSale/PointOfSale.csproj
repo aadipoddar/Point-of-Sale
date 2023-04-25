@@ -53,6 +53,18 @@
     <Compile Include="AdminDashboardForm.Designer.cs">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Brands\BrandsEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brands\BrandsEditForm.Designer.cs">
+      <DependentUpon>BrandsEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Brands\BrandsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brands\BrandsListForm.Designer.cs">
+      <DependentUpon>BrandsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Categories\CategoriesEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Brands\BrandsEditForm.resx">
+      <DependentUpon>BrandsEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Brands\BrandsListForm.resx">
+      <DependentUpon>BrandsListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Categories\CategoriesEditForm.resx">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>
