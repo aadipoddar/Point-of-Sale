@@ -18,11 +18,15 @@ namespace PointOfSale.Products
         DBConnection dbConnection = new DBConnection();
         SqlDataReader sqlDataReader;
 
-        public ProductsEditForm()
+        ProductsListForm productsListForm;
+
+        public ProductsEditForm(ProductsListForm productsListForm)
         {
             InitializeComponent();
 
             sqlConnection = new SqlConnection(dbConnection.MyConnection());
+            
+            this.productsListForm = productsListForm;
 
             GetPcode();
         }
@@ -97,6 +101,8 @@ namespace PointOfSale.Products
                     sqlConnection.Close();
 
                     TextBoxClear();
+
+                    productsListForm.DataGridRefresh();
                 }
             }
             catch (Exception ex)
@@ -135,6 +141,8 @@ namespace PointOfSale.Products
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+            
+            productsListForm.DataGridRefresh();
         }
     }
 }

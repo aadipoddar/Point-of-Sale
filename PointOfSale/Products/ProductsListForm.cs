@@ -26,7 +26,11 @@ namespace PointOfSale.Products
 
         private void ProductsListForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'pointOfSaleDataSet.vwShowProducts' table. You can move, or remove it, as needed.
+            DataGridRefresh();
+        }
+
+        public void DataGridRefresh()
+        {
             this.vwShowProductsTableAdapter.Fill(this.pointOfSaleDataSet.vwShowProducts);
         }
 
@@ -37,7 +41,7 @@ namespace PointOfSale.Products
 
         private void addProductsButton_Click(object sender, EventArgs e)
         {
-            ProductsEditForm productsEditForm = new ProductsEditForm();
+            ProductsEditForm productsEditForm = new ProductsEditForm(this);
             productsEditForm.Show();
             productsEditForm.Text = "Add Products";
 
@@ -58,7 +62,7 @@ namespace PointOfSale.Products
                     DataGridViewCell cell = dataGridViewProducts.Rows[rowIndex].Cells[1];
                     if (cell != null && cell.Value != null)
                     {
-                        ProductsEditForm productsEditForm = new ProductsEditForm();
+                        ProductsEditForm productsEditForm = new ProductsEditForm(this);
                         productsEditForm.Show();
 
                         productsEditForm.Text = "Edit Product";
@@ -83,13 +87,13 @@ namespace PointOfSale.Products
 
             else if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                int rowIndex = dataGridViewProducts.CurrentCell.RowIndex;
+                if (rowIndex >= 0 && rowIndex < dataGridViewProducts.Rows.Count)
                 {
-                    int rowIndex = dataGridViewProducts.CurrentCell.RowIndex;
-                    if (rowIndex >= 0 && rowIndex < dataGridViewProducts.Rows.Count)
+                    DataGridViewCell cell = dataGridViewProducts.Rows[rowIndex].Cells[1];
+                    if (cell != null && cell.Value != null)
                     {
-                        DataGridViewCell cell = dataGridViewProducts.Rows[rowIndex].Cells[1];
-                        if (cell != null && cell.Value != null)
+                        if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             sqlConnection.Open();
                             sqlCommand = new SqlCommand("DELETE FROM Product WHERE pcode = '" + dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
@@ -97,10 +101,36 @@ namespace PointOfSale.Products
                             sqlConnection.Close();
 
                             MessageBox.Show("Record has been successfully deleted");
+
+                            DataGridRefresh();
+
+                            // Select the previous row
+                            if (dataGridViewProducts.Rows.Count > 1)
+                            {
+                                int selectRowIndex = rowIndex - 1;
+                                if (selectRowIndex >= 0 && selectRowIndex < dataGridViewProducts.Rows.Count)
+                                {
+                                    dataGridViewProducts.CurrentCell = dataGridViewProducts.Rows[selectRowIndex].Cells[0];
+                                    dataGridViewProducts.Rows[selectRowIndex].Selected = true;
+                                }
+                            }
                         }
                     }
                 }
             }
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.vwShowProductsTableAdapter.FillBy(this.pointOfSaleDataSet.vwShowProducts);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

@@ -19,11 +19,15 @@ namespace PointOfSale.Categories
 
         public int categoryId;
 
-        public CategoriesEditForm()
+        CategoriesListForm categoriesListForm;
+
+        public CategoriesEditForm(CategoriesListForm categoriesListForm)
         {
             InitializeComponent();
 
             sqlConnection = new SqlConnection(dBConnection.MyConnection());
+
+            this.categoriesListForm = categoriesListForm;
         }
 
         private void TextBoxClear()
@@ -51,6 +55,8 @@ namespace PointOfSale.Categories
                     sqlConnection.Close();
 
                     TextBoxClear();
+
+                    categoriesListForm.DataGridRefresh();
                 }
             }
             catch (Exception ex)
@@ -83,6 +89,7 @@ namespace PointOfSale.Categories
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+            categoriesListForm.DataGridRefresh();
         }
     }
 }

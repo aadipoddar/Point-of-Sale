@@ -31,6 +31,8 @@
             this.manageProductsButton = new System.Windows.Forms.Button();
             this.manageCategoriesButton = new System.Windows.Forms.Button();
             this.manageBrandButton = new System.Windows.Forms.Button();
+            this.purchaseButton = new System.Windows.Forms.Button();
+            this.purchaseHistoryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // manageProductsButton
@@ -66,11 +68,35 @@
             this.manageBrandButton.UseVisualStyleBackColor = true;
             this.manageBrandButton.Click += new System.EventHandler(this.manageBrandButton_Click);
             // 
+            // purchaseButton
+            // 
+            this.purchaseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purchaseButton.Location = new System.Drawing.Point(339, 12);
+            this.purchaseButton.Name = "purchaseButton";
+            this.purchaseButton.Size = new System.Drawing.Size(208, 50);
+            this.purchaseButton.TabIndex = 3;
+            this.purchaseButton.Text = "Purcahse";
+            this.purchaseButton.UseVisualStyleBackColor = true;
+            this.purchaseButton.Click += new System.EventHandler(this.purchaseButton_Click);
+            // 
+            // purchaseHistoryButton
+            // 
+            this.purchaseHistoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purchaseHistoryButton.Location = new System.Drawing.Point(339, 80);
+            this.purchaseHistoryButton.Name = "purchaseHistoryButton";
+            this.purchaseHistoryButton.Size = new System.Drawing.Size(208, 50);
+            this.purchaseHistoryButton.TabIndex = 4;
+            this.purchaseHistoryButton.Text = "Purchase History";
+            this.purchaseHistoryButton.UseVisualStyleBackColor = true;
+            this.purchaseHistoryButton.Click += new System.EventHandler(this.purchaseHistoryButton_Click);
+            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.purchaseHistoryButton);
+            this.Controls.Add(this.purchaseButton);
             this.Controls.Add(this.manageBrandButton);
             this.Controls.Add(this.manageCategoriesButton);
             this.Controls.Add(this.manageProductsButton);
@@ -86,5 +112,7 @@
         private System.Windows.Forms.Button manageProductsButton;
         private System.Windows.Forms.Button manageCategoriesButton;
         private System.Windows.Forms.Button manageBrandButton;
+        private System.Windows.Forms.Button purchaseButton;
+        private System.Windows.Forms.Button purchaseHistoryButton;
     }
 }

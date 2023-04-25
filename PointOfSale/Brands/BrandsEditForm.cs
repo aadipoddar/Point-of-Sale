@@ -19,11 +19,15 @@ namespace PointOfSale.Brands
 
         public int brandId;
 
-        public BrandsEditForm()
+        BrandsListForm brandsListForm;
+
+        public BrandsEditForm(BrandsListForm  brandsListForm)
         {
             InitializeComponent();
 
             sqlConnection = new SqlConnection(dBConnection.MyConnection());
+
+            this.brandsListForm = brandsListForm;
         }
 
         private void TextBoxClear()
@@ -51,6 +55,8 @@ namespace PointOfSale.Brands
                     sqlConnection.Close();
 
                     TextBoxClear();
+
+                    brandsListForm.DataGridRefresh();
                 }
             }
             catch (Exception ex)
@@ -83,6 +89,7 @@ namespace PointOfSale.Brands
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+            brandsListForm.DataGridRefresh();
         }
     }
 }

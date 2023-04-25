@@ -26,7 +26,11 @@ namespace PointOfSale.Categories
 
         private void CategoriesListForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'pointOfSaleDataSet.Category' table. You can move, or remove it, as needed.
+            DataGridRefresh();
+        }
+
+        public void DataGridRefresh()
+        {
             this.categoryTableAdapter.Fill(this.pointOfSaleDataSet.Category);
         }
 
@@ -37,7 +41,7 @@ namespace PointOfSale.Categories
 
         private void addCategoriesButton_Click(object sender, EventArgs e)
         {
-            CategoriesEditForm categoriesEditForm = new CategoriesEditForm();
+            CategoriesEditForm categoriesEditForm = new CategoriesEditForm(this);
             categoriesEditForm.Show();
 
             categoriesEditForm.Text = "Add Category";
@@ -59,7 +63,7 @@ namespace PointOfSale.Categories
                     DataGridViewCell cell = dataGridViewCategories.Rows[rowIndex].Cells[1];
                     if (cell != null && cell.Value != null)
                     {
-                        CategoriesEditForm categoriesEditForm = new CategoriesEditForm();
+                        CategoriesEditForm categoriesEditForm = new CategoriesEditForm(this);
                         categoriesEditForm.Show();
 
                         categoriesEditForm.Text = "Edit Category";
@@ -80,18 +84,31 @@ namespace PointOfSale.Categories
 
             else if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                int rowIndex = dataGridViewCategories.CurrentCell.RowIndex;
+                if (rowIndex >= 0 && rowIndex < dataGridViewCategories.Rows.Count)
                 {
-                    int rowIndex = dataGridViewCategories.CurrentCell.RowIndex;
-                    if (rowIndex >= 0 && rowIndex < dataGridViewCategories.Rows.Count)
+                    DataGridViewCell cell = dataGridViewCategories.Rows[rowIndex].Cells[1];
+                    if (cell != null && cell.Value != null)
                     {
-                        DataGridViewCell cell = dataGridViewCategories.Rows[rowIndex].Cells[1];
-                        if (cell != null && cell.Value != null)
+                        if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             sqlConnection.Open();
                             sqlCommand = new SqlCommand("DELETE FROM Category WHERE id = '" + dataGridViewCategories.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
                             sqlCommand.ExecuteNonQuery();
                             sqlConnection.Close();
+
+                            DataGridRefresh();
+
+                            // Select the previous row
+                            if (dataGridViewCategories.Rows.Count > 1)
+                            {
+                                int selectRowIndex = rowIndex - 1;
+                                if (selectRowIndex >= 0 && selectRowIndex < dataGridViewCategories.Rows.Count)
+                                {
+                                    dataGridViewCategories.CurrentCell = dataGridViewCategories.Rows[selectRowIndex].Cells[0];
+                                    dataGridViewCategories.Rows[selectRowIndex].Selected = true;
+                                }
+                            }
                         }
                     }
                 }

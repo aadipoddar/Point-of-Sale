@@ -485,7 +485,7 @@ namespace PointOfSale {
             
             private global::System.Data.DataColumn columnprice;
             
-            private global::System.Data.DataColumn columnquantity;
+            private global::System.Data.DataColumn columntotal_quantity;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -562,9 +562,9 @@ namespace PointOfSale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn quantityColumn {
+            public global::System.Data.DataColumn total_quantityColumn {
                 get {
-                    return this.columnquantity;
+                    return this.columntotal_quantity;
                 }
             }
             
@@ -605,7 +605,7 @@ namespace PointOfSale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public vwShowProductsRow AddvwShowProductsRow(int pcode, string description, string brand, string category, decimal price, int quantity) {
+            public vwShowProductsRow AddvwShowProductsRow(int pcode, string description, string brand, string category, decimal price, int total_quantity) {
                 vwShowProductsRow rowvwShowProductsRow = ((vwShowProductsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         pcode,
@@ -613,7 +613,7 @@ namespace PointOfSale {
                         brand,
                         category,
                         price,
-                        quantity};
+                        total_quantity};
                 rowvwShowProductsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvwShowProductsRow);
                 return rowvwShowProductsRow;
@@ -648,7 +648,7 @@ namespace PointOfSale {
                 this.columnbrand = base.Columns["brand"];
                 this.columncategory = base.Columns["category"];
                 this.columnprice = base.Columns["price"];
-                this.columnquantity = base.Columns["quantity"];
+                this.columntotal_quantity = base.Columns["total_quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -664,8 +664,8 @@ namespace PointOfSale {
                 base.Columns.Add(this.columncategory);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnquantity);
+                this.columntotal_quantity = new global::System.Data.DataColumn("total_quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_quantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpcode}, true));
                 this.columnpcode.AllowDBNull = false;
@@ -2474,30 +2474,30 @@ namespace PointOfSale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int quantity {
+            public int total_quantity {
                 get {
                     try {
-                        return ((int)(this[this.tablevwShowProducts.quantityColumn]));
+                        return ((int)(this[this.tablevwShowProducts.total_quantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'vwShowProducts\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_quantity\' in table \'vwShowProducts\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevwShowProducts.quantityColumn] = value;
+                    this[this.tablevwShowProducts.total_quantityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsquantityNull() {
-                return this.IsNull(this.tablevwShowProducts.quantityColumn);
+            public bool Istotal_quantityNull() {
+                return this.IsNull(this.tablevwShowProducts.total_quantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetquantityNull() {
-                this[this.tablevwShowProducts.quantityColumn] = global::System.Convert.DBNull;
+            public void Settotal_quantityNull() {
+                this[this.tablevwShowProducts.total_quantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3472,7 +3472,7 @@ namespace PointOfSale.PointOfSaleDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("brand", "brand");
             tableMapping.ColumnMappings.Add("category", "category");
             tableMapping.ColumnMappings.Add("price", "price");
-            tableMapping.ColumnMappings.Add("quantity", "quantity");
+            tableMapping.ColumnMappings.Add("total_quantity", "total_quantity");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3486,12 +3486,17 @@ namespace PointOfSale.PointOfSaleDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT pcode, description, brand, category, price, quantity FROM dbo.vwShowProduc" +
-                "ts";
+            this._commandCollection[0].CommandText = "SELECT        pcode, description, brand, category, price, total_quantity\r\nFROM   " +
+                "         vwShowProducts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        pcode, description, brand, category, price, total_quantity\r\nFROM   " +
+                "         vwShowProducts";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3516,6 +3521,19 @@ namespace PointOfSale.PointOfSaleDataSetTableAdapters {
             PointOfSaleDataSet.vwShowProductsDataTable dataTable = new PointOfSaleDataSet.vwShowProductsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(PointOfSaleDataSet.vwShowProductsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
     }
     
@@ -3661,12 +3679,23 @@ namespace PointOfSale.PointOfSaleDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, referenceNo, pcode, description, quantity, stockInDate, stockInBy, sta" +
                 "tus FROM dbo.vwStockIn";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT id, referenceNo, pcode, description, quantity, stockInDate, stockInBy, sta" +
+                "tus\r\n FROM dbo.vwStockIn\r\nWHERE referenceNo = @referenceNo";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@referenceNo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "referenceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        id, referenceNo, pcode, description, quantity, stockInDate, stockIn" +
+                "By, status\r\nFROM            vwStockIn";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3691,6 +3720,38 @@ namespace PointOfSale.PointOfSaleDataSetTableAdapters {
             PointOfSaleDataSet.vwStockInDataTable dataTable = new PointOfSaleDataSet.vwStockInDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(PointOfSaleDataSet.vwStockInDataTable dataTable, string referenceNo) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((referenceNo == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(referenceNo));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy1(PointOfSaleDataSet.vwStockInDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
     }
     

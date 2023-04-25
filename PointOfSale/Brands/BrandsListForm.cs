@@ -26,7 +26,11 @@ namespace PointOfSale.Brands
 
         private void BrandsListForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'pointOfSaleDataSet.Brand' table. You can move, or remove it, as needed.
+            DataGridRefresh();
+        }
+
+        public void DataGridRefresh()
+        {
             this.brandTableAdapter.Fill(this.pointOfSaleDataSet.Brand);
         }
 
@@ -37,7 +41,7 @@ namespace PointOfSale.Brands
 
         private void addBrandsButton_Click(object sender, EventArgs e)
         {
-            BrandsEditForm brandsEditForm = new BrandsEditForm();
+            BrandsEditForm brandsEditForm = new BrandsEditForm(this);
             brandsEditForm.Show();
 
             brandsEditForm.Text = "Add Brand";
@@ -59,7 +63,7 @@ namespace PointOfSale.Brands
                     DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
                     if (cell != null && cell.Value != null)
                     {
-                        BrandsEditForm brandsEditForm = new BrandsEditForm();
+                        BrandsEditForm brandsEditForm = new BrandsEditForm(this);
                         brandsEditForm.Show();
 
                         brandsEditForm.Text = "Edit Brand";
@@ -80,18 +84,31 @@ namespace PointOfSale.Brands
 
             else if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
+                if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
                 {
-                    int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
-                    if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
+                    DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
+                    if (cell != null && cell.Value != null)
                     {
-                        DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
-                        if (cell != null && cell.Value != null)
+                        if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             sqlConnection.Open();
                             sqlCommand = new SqlCommand("DELETE FROM Brand WHERE id = '" + dataGridViewBrands.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
                             sqlCommand.ExecuteNonQuery();
                             sqlConnection.Close();
+
+                            DataGridRefresh();
+
+                            // Select the previous row
+                            if (dataGridViewBrands.Rows.Count > 1)
+                            {
+                                int selectRowIndex = rowIndex - 1;
+                                if (selectRowIndex >= 0 && selectRowIndex < dataGridViewBrands.Rows.Count)
+                                {
+                                    dataGridViewBrands.CurrentCell = dataGridViewBrands.Rows[selectRowIndex].Cells[0];
+                                    dataGridViewBrands.Rows[selectRowIndex].Selected = true;
+                                }
+                            }
                         }
                     }
                 }

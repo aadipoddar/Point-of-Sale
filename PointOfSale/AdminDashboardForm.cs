@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using PointOfSale.Brands;
 using PointOfSale.Categories;
 using PointOfSale.Products;
+using PointOfSale.Purchase;
 
 namespace PointOfSale
 {
@@ -37,6 +38,18 @@ namespace PointOfSale
         {
             BrandsListForm brandsListForm = new BrandsListForm();
             brandsListForm.Show();
+        }
+
+        private void purchaseButton_Click(object sender, EventArgs e)
+        {
+            PurchaseForm purchaseForm = new PurchaseForm();
+            purchaseForm.Show();
+        }
+
+        private void purchaseHistoryButton_Click(object sender, EventArgs e)
+        {
+            PurchaseHistoryForm purchaseHistoryForm = new PurchaseHistoryForm();
+            purchaseHistoryForm.Show();
         }
     }
 }
