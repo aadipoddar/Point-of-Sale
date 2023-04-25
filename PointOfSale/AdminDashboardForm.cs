@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PointOfSale.Categories;
 using PointOfSale.Products;
 
 namespace PointOfSale
@@ -19,10 +20,16 @@ namespace PointOfSale
             InitializeComponent();
         }
 
-        public void manageProductsButton_Click(object sender, EventArgs e)
+        private void manageProductsButton_Click(object sender, EventArgs e)
         {
             ProductsListForm productsListForm = new ProductsListForm();
             productsListForm.Show();
+        }
+
+        private void manageCategoriesButton_Click(object sender, EventArgs e)
+        {
+            CategoriesListForm categoriesListForm = new CategoriesListForm();
+            categoriesListForm.Show();
         }
     }
 }

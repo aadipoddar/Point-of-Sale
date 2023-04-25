@@ -35,6 +35,19 @@ namespace PointOfSale.Products
             (dataGridViewProducts.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewProducts.Columns[1].DataPropertyName, searchTextBox.Text);
         }
 
+        private void addProductsButton_Click(object sender, EventArgs e)
+        {
+            ProductsEditForm productsEditForm = new ProductsEditForm();
+            productsEditForm.Show();
+            productsEditForm.Text = "Add Products";
+
+            productsEditForm.saveButton.Visible = true;
+            productsEditForm.saveButton.Enabled = true;
+
+            productsEditForm.updateButton.Visible = false;
+            productsEditForm.updateButton.Enabled = false;
+        }
+
         private void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -88,19 +101,6 @@ namespace PointOfSale.Products
                     }
                 }
             }
-        }
-
-        private void addProductsButton_Click(object sender, EventArgs e)
-        {
-            ProductsEditForm productsEditForm = new ProductsEditForm();
-            productsEditForm.Show();
-            productsEditForm.Text = "Add Products";
-
-            productsEditForm.saveButton.Visible = true;
-            productsEditForm.saveButton.Enabled = true;
-
-            productsEditForm.updateButton.Visible = false;
-            productsEditForm.updateButton.Enabled = false;
         }
     }
 }

@@ -53,6 +53,18 @@
     <Compile Include="AdminDashboardForm.Designer.cs">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Categories\CategoriesEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories\CategoriesEditForm.Designer.cs">
+      <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Categories\CategoriesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories\CategoriesListForm.Designer.cs">
+      <DependentUpon>CategoriesListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="PointOfSaleDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,6 +87,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Categories\CategoriesEditForm.resx">
+      <DependentUpon>CategoriesEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Categories\CategoriesListForm.resx">
+      <DependentUpon>CategoriesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\ProductsEditForm.resx">
       <DependentUpon>ProductsEditForm.cs</DependentUpon>
@@ -115,5 +133,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

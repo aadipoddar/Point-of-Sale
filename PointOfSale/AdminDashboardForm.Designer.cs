@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.manageProductsButton = new System.Windows.Forms.Button();
+            this.manageCategoriesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // manageProductsButton
@@ -36,17 +37,29 @@
             this.manageProductsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manageProductsButton.Location = new System.Drawing.Point(12, 12);
             this.manageProductsButton.Name = "manageProductsButton";
-            this.manageProductsButton.Size = new System.Drawing.Size(199, 50);
+            this.manageProductsButton.Size = new System.Drawing.Size(208, 50);
             this.manageProductsButton.TabIndex = 0;
             this.manageProductsButton.Text = "Manage Products";
             this.manageProductsButton.UseVisualStyleBackColor = true;
             this.manageProductsButton.Click += new System.EventHandler(this.manageProductsButton_Click);
+            // 
+            // manageCategoriesButton
+            // 
+            this.manageCategoriesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageCategoriesButton.Location = new System.Drawing.Point(12, 81);
+            this.manageCategoriesButton.Name = "manageCategoriesButton";
+            this.manageCategoriesButton.Size = new System.Drawing.Size(208, 50);
+            this.manageCategoriesButton.TabIndex = 1;
+            this.manageCategoriesButton.Text = "Manage Categories";
+            this.manageCategoriesButton.UseVisualStyleBackColor = true;
+            this.manageCategoriesButton.Click += new System.EventHandler(this.manageCategoriesButton_Click);
             // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.manageCategoriesButton);
             this.Controls.Add(this.manageProductsButton);
             this.Name = "AdminDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -58,5 +71,6 @@
         #endregion
 
         private System.Windows.Forms.Button manageProductsButton;
+        private System.Windows.Forms.Button manageCategoriesButton;
     }
 }
