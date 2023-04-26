@@ -20,6 +20,8 @@ namespace PointOfSale.Products
 
         ProductsListForm productsListForm;
 
+        public int productId;
+
         public ProductsEditForm(ProductsListForm productsListForm)
         {
             InitializeComponent();
@@ -27,8 +29,6 @@ namespace PointOfSale.Products
             sqlConnection = new SqlConnection(dbConnection.MyConnection());
             
             this.productsListForm = productsListForm;
-
-            GetPcode();
         }
 
         private void ProductsEditForm_Load(object sender, EventArgs e)
@@ -39,27 +39,6 @@ namespace PointOfSale.Products
             this.brandTableAdapter.Fill(this.pointOfSaleDataSet.Brand);
         }
 
-
-        #region Miscellaneous
-
-        private void GetPcode()
-        {
-            int maxPcode = 0;
-
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SELECT MAX(pcode) FROM Product", sqlConnection);
-            sqlDataReader = sqlCommand.ExecuteReader();
-
-            if (sqlDataReader.Read())
-            {
-                maxPcode = sqlDataReader.GetInt32(0);
-            }
-
-            sqlConnection.Close();
-
-            pcodeNumericUpDown.Value = maxPcode + 1;
-        }
-
         private void TextBoxClear()
         {
             saveButton.Enabled = true;
@@ -68,18 +47,13 @@ namespace PointOfSale.Products
             updateButton.Enabled = false;
             updateButton.Visible = false;
 
-            pcodeNumericUpDown.Value = 0;
             descriptionTextBox.Clear();
             priceNumericUpDown.Value = 0;
             brandComboBox.SelectedIndex = 0;
             categoryComboBox.SelectedIndex = 0;
 
-            GetPcode();
             descriptionTextBox.Focus();
         }
-
-        #endregion
-
 
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -118,9 +92,9 @@ namespace PointOfSale.Products
                 if (MessageBox.Show("Are you sure you want to update this Product", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sqlConnection.Open();
-                    sqlCommand = new SqlCommand("UPDATE Product SET description = @description, brandId = @brandId, categoryId = @categoryId, price = @price where pcode like @pcode", sqlConnection);
+                    sqlCommand = new SqlCommand("UPDATE Product SET description = @description, brandId = @brandId, categoryId = @categoryId, price = @price where id like @id", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@pcode", pcodeNumericUpDown.Text);
+                    sqlCommand.Parameters.AddWithValue("@id", productId);
                     sqlCommand.Parameters.AddWithValue("@description", descriptionTextBox.Text);
                     sqlCommand.Parameters.AddWithValue("@brandId", brandComboBox.SelectedValue.ToString());
                     sqlCommand.Parameters.AddWithValue("@categoryId", categoryComboBox.SelectedValue.ToString());

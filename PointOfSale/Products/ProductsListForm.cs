@@ -73,13 +73,12 @@ namespace PointOfSale.Products
                         productsEditForm.updateButton.Visible = true;
                         productsEditForm.updateButton.Enabled = true;
 
-                        productsEditForm.pcodeNumericUpDown.Value = Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value);
+                        productsEditForm.productId= Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value);
                         productsEditForm.descriptionTextBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
                         productsEditForm.brandComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[2].Value.ToString();
                         productsEditForm.categoryComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[3].Value.ToString();
                         productsEditForm.priceNumericUpDown.Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[4].Value);
 
-                        productsEditForm.pcodeNumericUpDown.ReadOnly = true;
                         productsEditForm.descriptionTextBox.Select();
                     }
                 }
@@ -96,7 +95,7 @@ namespace PointOfSale.Products
                         if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             sqlConnection.Open();
-                            sqlCommand = new SqlCommand("DELETE FROM Product WHERE pcode = '" + dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
+                            sqlCommand = new SqlCommand("DELETE FROM Product WHERE id = '" + dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
                             sqlCommand.ExecuteNonQuery();
                             sqlConnection.Close();
 
@@ -118,19 +117,6 @@ namespace PointOfSale.Products
                     }
                 }
             }
-        }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.vwShowProductsTableAdapter.FillBy(this.pointOfSaleDataSet.vwShowProducts);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
         }
     }
 }

@@ -19,15 +19,11 @@ namespace PointOfSale.Purchase
 
         public int purchaseId;
 
-        PurchaseForm purchaseForm;
-
-        public PurchaseEditForm(PurchaseForm purchaseForm)
+        public PurchaseEditForm()
         {
             InitializeComponent();
 
             sqlConnection = new SqlConnection(dbcon.MyConnection());
-
-            this.purchaseForm = purchaseForm;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -55,7 +51,6 @@ namespace PointOfSale.Purchase
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
-            purchaseForm.DataGridRefresh();
         }
     }
 }

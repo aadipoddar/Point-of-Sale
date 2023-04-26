@@ -13,21 +13,11 @@ namespace PointOfSale.Purchase
 {
     public partial class SearchProductsForm : Form
     {
-        SqlConnection sqlConnection = new SqlConnection();
-        SqlCommand sqlCommand = new SqlCommand();
-        DBConnection dbcon = new DBConnection();
-
-        public string referenceNo;
-        public string stockInBy;
-        public DateTime stockInDate;
-
         PurchaseForm purchaseForm;
 
         public SearchProductsForm(PurchaseForm purchaseForm)
         {
             InitializeComponent();
-
-            sqlConnection = new SqlConnection(dbcon.MyConnection());
 
             this.purchaseForm = purchaseForm;
         }
@@ -52,23 +42,11 @@ namespace PointOfSale.Purchase
                     DataGridViewCell cell = dataGridViewProducts.Rows[rowIndex].Cells[1];
                     if (cell != null && cell.Value != null)
                     {
-                        if (MessageBox.Show("Add this Item?", "Add", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            sqlConnection.Open();
-
-                            sqlCommand = new SqlCommand("INSERT INTO StockIn(referenceNo, pcode, quantity, stockInDate, stockInBy) VALUES (@referenceNo, @pcode, @quantity, @stockInDate, @stockInBy)", sqlConnection);
-                            sqlCommand.Parameters.AddWithValue("@referenceNo", referenceNo);
-                            sqlCommand.Parameters.AddWithValue("@pcode", dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString());
-                            sqlCommand.Parameters.AddWithValue("@quantity", quantityNumericUpDown.Value);
-                            sqlCommand.Parameters.AddWithValue("@stockInDate", stockInDate);
-                            sqlCommand.Parameters.AddWithValue("@stockInBy", stockInBy);
-
-                            sqlCommand.ExecuteNonQuery();
-
-                            sqlConnection.Close();
-
-                            purchaseForm.DataGridRefresh();
-                        }
+                        purchaseForm.dataGridViewPurchase.Rows.Add();
+                        int purchaseRowIndex = purchaseForm.dataGridViewPurchase.Rows.Count - 1;
+                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
+                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
+                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
                     }
                 }
             }

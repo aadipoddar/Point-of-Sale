@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.quantityLabel = new System.Windows.Forms.Label();
-            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
-            this.pcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalquantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
+            this.quantityLabel = new System.Windows.Forms.Label();
+            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // searchTextBox
@@ -64,7 +64,7 @@
             this.dataGridViewProducts.AutoGenerateColumns = false;
             this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.pcodeDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.brandDataGridViewTextBoxColumn,
             this.categoryDataGridViewTextBoxColumn,
@@ -78,49 +78,12 @@
             this.dataGridViewProducts.TabIndex = 2;
             this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
             // 
-            // quantityLabel
+            // idDataGridViewTextBoxColumn
             // 
-            this.quantityLabel.AutoSize = true;
-            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityLabel.Location = new System.Drawing.Point(679, 9);
-            this.quantityLabel.Name = "quantityLabel";
-            this.quantityLabel.Size = new System.Drawing.Size(116, 31);
-            this.quantityLabel.TabIndex = 3;
-            this.quantityLabel.Text = "Quantity";
-            // 
-            // quantityNumericUpDown
-            // 
-            this.quantityNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityNumericUpDown.Location = new System.Drawing.Point(811, 7);
-            this.quantityNumericUpDown.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.quantityNumericUpDown.Name = "quantityNumericUpDown";
-            this.quantityNumericUpDown.Size = new System.Drawing.Size(61, 38);
-            this.quantityNumericUpDown.TabIndex = 1;
-            // 
-            // pointOfSaleDataSet
-            // 
-            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vwShowProductsBindingSource
-            // 
-            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
-            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
-            // 
-            // vwShowProductsTableAdapter
-            // 
-            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
-            // 
-            // pcodeDataGridViewTextBoxColumn
-            // 
-            this.pcodeDataGridViewTextBoxColumn.DataPropertyName = "pcode";
-            this.pcodeDataGridViewTextBoxColumn.HeaderText = "PCode";
-            this.pcodeDataGridViewTextBoxColumn.Name = "pcodeDataGridViewTextBoxColumn";
-            this.pcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Product Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -158,6 +121,53 @@
             this.totalquantityDataGridViewTextBoxColumn.Name = "totalquantityDataGridViewTextBoxColumn";
             this.totalquantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // vwShowProductsBindingSource
+            // 
+            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
+            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
+            // 
+            // pointOfSaleDataSet
+            // 
+            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
+            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quantityLabel
+            // 
+            this.quantityLabel.AutoSize = true;
+            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityLabel.Location = new System.Drawing.Point(679, 9);
+            this.quantityLabel.Name = "quantityLabel";
+            this.quantityLabel.Size = new System.Drawing.Size(116, 31);
+            this.quantityLabel.TabIndex = 3;
+            this.quantityLabel.Text = "Quantity";
+            // 
+            // quantityNumericUpDown
+            // 
+            this.quantityNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityNumericUpDown.Location = new System.Drawing.Point(811, 7);
+            this.quantityNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.quantityNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantityNumericUpDown.Name = "quantityNumericUpDown";
+            this.quantityNumericUpDown.Size = new System.Drawing.Size(61, 38);
+            this.quantityNumericUpDown.TabIndex = 1;
+            this.quantityNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // vwShowProductsTableAdapter
+            // 
+            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
+            // 
             // SearchProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,9 +182,9 @@
             this.Text = "Search Products";
             this.Load += new System.EventHandler(this.SearchProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,6 +200,7 @@
         private System.Windows.Forms.BindingSource vwShowProductsBindingSource;
         private PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter vwShowProductsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn pcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
