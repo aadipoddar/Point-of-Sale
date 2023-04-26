@@ -5,21 +5,37 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using PointOfSale.Cashier;
 
 namespace PointOfSale.Purchase
 {
     public partial class SearchProductsForm : Form
     {
         PurchaseForm purchaseForm;
+        SaleForm saleForm;
+        bool isSaleForm = false;
 
         public SearchProductsForm(PurchaseForm purchaseForm)
         {
             InitializeComponent();
 
             this.purchaseForm = purchaseForm;
+
+            isSaleForm = false;
+        }
+
+        public SearchProductsForm(SaleForm saleForm)
+        {
+            InitializeComponent();
+
+            this.saleForm = saleForm;
+
+            isSaleForm = true;
         }
 
         private void SearchProductsForm_Load(object sender, EventArgs e)
@@ -42,11 +58,24 @@ namespace PointOfSale.Purchase
                     DataGridViewCell cell = dataGridViewProducts.Rows[rowIndex].Cells[1];
                     if (cell != null && cell.Value != null)
                     {
-                        purchaseForm.dataGridViewPurchase.Rows.Add();
-                        int purchaseRowIndex = purchaseForm.dataGridViewPurchase.Rows.Count - 1;
-                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
-                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
-                        purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
+                        if (isSaleForm)
+                        {
+                            saleForm.dataGridViewCart.Rows.Add();
+                            int saleRowIndex = saleForm.dataGridViewCart.Rows.Count - 1;
+                            saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
+                            saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
+                            saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
+                            saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[3].Value = 0;
+                        }
+
+                        else
+                        {
+                            purchaseForm.dataGridViewPurchase.Rows.Add();
+                            int purchaseRowIndex = purchaseForm.dataGridViewPurchase.Rows.Count - 1;
+                            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
+                            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
+                            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
+                        }
                     }
                 }
             }

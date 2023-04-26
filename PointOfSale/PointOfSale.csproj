@@ -71,6 +71,12 @@
     <Compile Include="Cashier\CashierDashboardForm.Designer.cs">
       <DependentUpon>CashierDashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier\SaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier\SaleForm.Designer.cs">
+      <DependentUpon>SaleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Categories\CategoriesEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier\CashierDashboardForm.resx">
       <DependentUpon>CashierDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier\SaleForm.resx">
+      <DependentUpon>SaleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Categories\CategoriesEditForm.resx">
       <DependentUpon>CategoriesEditForm.cs</DependentUpon>

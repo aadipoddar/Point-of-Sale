@@ -16,7 +16,6 @@ namespace PointOfSale.Products
         SqlConnection sqlConnection = new SqlConnection();
         SqlCommand sqlCommand = new SqlCommand();
         DBConnection dbConnection = new DBConnection();
-        SqlDataReader sqlDataReader;
 
         ProductsListForm productsListForm;
 
