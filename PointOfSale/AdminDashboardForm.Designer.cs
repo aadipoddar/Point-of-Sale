@@ -33,6 +33,7 @@
             this.manageBrandButton = new System.Windows.Forms.Button();
             this.purchaseButton = new System.Windows.Forms.Button();
             this.purchaseHistoryButton = new System.Windows.Forms.Button();
+            this.cashierDashboardButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // manageProductsButton
@@ -71,7 +72,7 @@
             // purchaseButton
             // 
             this.purchaseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purchaseButton.Location = new System.Drawing.Point(339, 12);
+            this.purchaseButton.Location = new System.Drawing.Point(656, 12);
             this.purchaseButton.Name = "purchaseButton";
             this.purchaseButton.Size = new System.Drawing.Size(208, 50);
             this.purchaseButton.TabIndex = 3;
@@ -82,7 +83,7 @@
             // purchaseHistoryButton
             // 
             this.purchaseHistoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purchaseHistoryButton.Location = new System.Drawing.Point(339, 80);
+            this.purchaseHistoryButton.Location = new System.Drawing.Point(657, 80);
             this.purchaseHistoryButton.Name = "purchaseHistoryButton";
             this.purchaseHistoryButton.Size = new System.Drawing.Size(208, 50);
             this.purchaseHistoryButton.TabIndex = 4;
@@ -90,11 +91,23 @@
             this.purchaseHistoryButton.UseVisualStyleBackColor = true;
             this.purchaseHistoryButton.Click += new System.EventHandler(this.purchaseHistoryButton_Click);
             // 
+            // cashierDashboardButton
+            // 
+            this.cashierDashboardButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashierDashboardButton.Location = new System.Drawing.Point(334, 12);
+            this.cashierDashboardButton.Name = "cashierDashboardButton";
+            this.cashierDashboardButton.Size = new System.Drawing.Size(208, 50);
+            this.cashierDashboardButton.TabIndex = 9;
+            this.cashierDashboardButton.Text = "Cashier Dashboard";
+            this.cashierDashboardButton.UseVisualStyleBackColor = true;
+            this.cashierDashboardButton.Click += new System.EventHandler(this.cashierDashboardButton_Click);
+            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.cashierDashboardButton);
             this.Controls.Add(this.purchaseHistoryButton);
             this.Controls.Add(this.purchaseButton);
             this.Controls.Add(this.manageBrandButton);
@@ -114,5 +127,6 @@
         private System.Windows.Forms.Button manageBrandButton;
         private System.Windows.Forms.Button purchaseButton;
         private System.Windows.Forms.Button purchaseHistoryButton;
+        private System.Windows.Forms.Button cashierDashboardButton;
     }
 }

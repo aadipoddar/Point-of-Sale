@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using PointOfSale.Brands;
+using PointOfSale.Cashier;
 using PointOfSale.Categories;
 using PointOfSale.Products;
 using PointOfSale.Purchase;
@@ -50,6 +51,12 @@ namespace PointOfSale
         {
             PurchaseHistoryForm purchaseHistoryForm = new PurchaseHistoryForm();
             purchaseHistoryForm.Show();
+        }
+
+        private void cashierDashboardButton_Click(object sender, EventArgs e)
+        {
+            CashierDashboardForm cashierDashboardForm = new CashierDashboardForm();
+            cashierDashboardForm.Show();
         }
     }
 }
