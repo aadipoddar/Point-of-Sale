@@ -199,7 +199,6 @@
         private PointOfSaleDataSet pointOfSaleDataSet;
         private System.Windows.Forms.BindingSource vwShowProductsBindingSource;
         private PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter vwShowProductsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
