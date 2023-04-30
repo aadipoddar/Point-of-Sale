@@ -437,7 +437,7 @@
             // paymentButton
             // 
             this.paymentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymentButton.Location = new System.Drawing.Point(882, 563);
+            this.paymentButton.Location = new System.Drawing.Point(1032, 590);
             this.paymentButton.Name = "paymentButton";
             this.paymentButton.Size = new System.Drawing.Size(156, 59);
             this.paymentButton.TabIndex = 18;
@@ -486,7 +486,6 @@
         public System.Windows.Forms.Button searchProductsButton;
         public System.Windows.Forms.TextBox transactionNoTextBox;
         private System.Windows.Forms.Label transactionNoLabel;
-        private System.Windows.Forms.DateTimePicker saleDateTimePicker;
         private System.Windows.Forms.Label saleDateLabel;
         private System.Windows.Forms.Label discountLabel;
         private System.Windows.Forms.Label subTotalLabel;
@@ -519,5 +518,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pricePerItem;
         public System.Windows.Forms.Button deleteProduct;
         public System.Windows.Forms.Button paymentButton;
+        public System.Windows.Forms.DateTimePicker saleDateTimePicker;
     }
 }

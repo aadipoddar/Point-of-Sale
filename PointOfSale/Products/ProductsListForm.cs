@@ -78,6 +78,7 @@ namespace PointOfSale.Products
                         productsEditForm.brandComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[2].Value.ToString();
                         productsEditForm.categoryComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[3].Value.ToString();
                         productsEditForm.priceNumericUpDown.Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[4].Value);
+                        productsEditForm.taxNumericUpDown.Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[6].Value);
 
                         productsEditForm.descriptionTextBox.Select();
                     }

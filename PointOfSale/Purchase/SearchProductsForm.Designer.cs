@@ -31,17 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
+            this.quantityLabel = new System.Windows.Forms.Label();
+            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalquantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.quantityLabel = new System.Windows.Forms.Label();
-            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
+            this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
@@ -69,7 +70,8 @@
             this.brandDataGridViewTextBoxColumn,
             this.categoryDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.totalquantityDataGridViewTextBoxColumn});
+            this.totalquantityDataGridViewTextBoxColumn,
+            this.tax});
             this.dataGridViewProducts.DataSource = this.vwShowProductsBindingSource;
             this.dataGridViewProducts.Location = new System.Drawing.Point(3, 61);
             this.dataGridViewProducts.Name = "dataGridViewProducts";
@@ -77,49 +79,6 @@
             this.dataGridViewProducts.Size = new System.Drawing.Size(880, 404);
             this.dataGridViewProducts.TabIndex = 2;
             this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Product Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Product Name";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // brandDataGridViewTextBoxColumn
-            // 
-            this.brandDataGridViewTextBoxColumn.DataPropertyName = "brand";
-            this.brandDataGridViewTextBoxColumn.HeaderText = "Brand Name";
-            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
-            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalquantityDataGridViewTextBoxColumn
-            // 
-            this.totalquantityDataGridViewTextBoxColumn.DataPropertyName = "total_quantity";
-            this.totalquantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.totalquantityDataGridViewTextBoxColumn.Name = "totalquantityDataGridViewTextBoxColumn";
-            this.totalquantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // vwShowProductsBindingSource
             // 
@@ -168,6 +127,56 @@
             // 
             this.vwShowProductsTableAdapter.ClearBeforeFill = true;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Product Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Product Name";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // brandDataGridViewTextBoxColumn
+            // 
+            this.brandDataGridViewTextBoxColumn.DataPropertyName = "brand";
+            this.brandDataGridViewTextBoxColumn.HeaderText = "Brand Name";
+            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
+            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalquantityDataGridViewTextBoxColumn
+            // 
+            this.totalquantityDataGridViewTextBoxColumn.DataPropertyName = "total_quantity";
+            this.totalquantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.totalquantityDataGridViewTextBoxColumn.Name = "totalquantityDataGridViewTextBoxColumn";
+            this.totalquantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tax
+            // 
+            this.tax.DataPropertyName = "tax";
+            this.tax.HeaderText = "Tax %";
+            this.tax.Name = "tax";
+            this.tax.ReadOnly = true;
+            // 
             // SearchProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,5 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalquantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
     }
 }

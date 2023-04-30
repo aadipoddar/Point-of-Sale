@@ -47,9 +47,10 @@ namespace PointOfSale.Products
             updateButton.Visible = false;
 
             descriptionTextBox.Clear();
-            priceNumericUpDown.Value = 0;
             brandComboBox.SelectedIndex = 0;
             categoryComboBox.SelectedIndex = 0;
+            priceNumericUpDown.Value = 0;
+            taxNumericUpDown.Value = 0;
 
             descriptionTextBox.Focus();
         }
@@ -62,12 +63,14 @@ namespace PointOfSale.Products
                 {
                     sqlConnection.Open();
 
-                    sqlCommand = new SqlCommand("INSERT INTO Product([description], brandId, categoryId, price) VALUES (@pdescription, @brandId, @categoryId, @price)", sqlConnection);
+                    sqlCommand = new SqlCommand("INSERT INTO Product([description], brandId, categoryId, price, tax) VALUES" +
+                        " (@pdescription, @brandId, @categoryId, @price, @tax)", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@pdescription", descriptionTextBox.Text);
                     sqlCommand.Parameters.AddWithValue("@brandId", brandComboBox.SelectedValue.ToString());
                     sqlCommand.Parameters.AddWithValue("@categoryId", categoryComboBox.SelectedValue.ToString());
                     sqlCommand.Parameters.AddWithValue("@price", priceNumericUpDown.Text);
+                    sqlCommand.Parameters.AddWithValue("@tax", taxNumericUpDown.Text);
 
                     sqlCommand.ExecuteNonQuery();
 
@@ -91,13 +94,15 @@ namespace PointOfSale.Products
                 if (MessageBox.Show("Are you sure you want to update this Product", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     sqlConnection.Open();
-                    sqlCommand = new SqlCommand("UPDATE Product SET description = @description, brandId = @brandId, categoryId = @categoryId, price = @price where id like @id", sqlConnection);
+                    sqlCommand = new SqlCommand("UPDATE Product SET description = @description, brandId = @brandId, categoryId = @categoryId, price = @price, tax = @tax" +
+                        " where id like @id", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@id", productId);
                     sqlCommand.Parameters.AddWithValue("@description", descriptionTextBox.Text);
                     sqlCommand.Parameters.AddWithValue("@brandId", brandComboBox.SelectedValue.ToString());
                     sqlCommand.Parameters.AddWithValue("@categoryId", categoryComboBox.SelectedValue.ToString());
                     sqlCommand.Parameters.AddWithValue("@price", priceNumericUpDown.Text);
+                    sqlCommand.Parameters.AddWithValue("@tax", taxNumericUpDown.Text);
 
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();

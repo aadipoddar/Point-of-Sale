@@ -307,8 +307,21 @@ namespace PointOfSale.Cashier
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
-            SettlePaymentForm settlePaymentForm = new SettlePaymentForm();
-            settlePaymentForm.ShowDialog();
+            if (dataGridViewCart.Rows.Count == 0)
+            {
+                MessageBox.Show("Please add some items to the cart.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                SettlePaymentForm settlePaymentForm = new SettlePaymentForm(this);
+
+                settlePaymentForm.totalTextBox.Text = totalTextBox.Text;
+                settlePaymentForm.cashNumericUpDown.Minimum = Convert.ToDecimal(settlePaymentForm.totalTextBox.Text);
+                settlePaymentForm.cashNumericUpDown.Maximum = Convert.ToDecimal(settlePaymentForm.totalTextBox.Text) + 1000;
+
+                settlePaymentForm.ShowDialog();
+            }
         }
     }
 }

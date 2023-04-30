@@ -75,11 +75,11 @@ namespace PointOfSale.Purchase
 
                             AddNewProductToSale(rowIndex);
                         }
-                    }
 
-                    else // For Purchase Form
-                    {
-                        AddNewProductToPurchase(rowIndex);
+                        else // For Purchase Form
+                        {
+                            AddNewProductToPurchase(rowIndex);
+                        }
                     }
                 }
             }
@@ -131,11 +131,18 @@ namespace PointOfSale.Purchase
 
         private void AddNewProductToPurchase(int rowIndex)
         {
-            purchaseForm.dataGridViewPurchase.Rows.Add();
-            int purchaseRowIndex = purchaseForm.dataGridViewPurchase.RowCount - 1;
-            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
-            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
-            purchaseForm.dataGridViewPurchase.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
+            purchaseForm.dataGridViewCart.Rows.Add();
+            int purchaseRowIndex = purchaseForm.dataGridViewCart.RowCount - 1;
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[0].Value = dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString();
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[3].Value = dataGridViewProducts.Rows[rowIndex].Cells[4].Value.ToString();
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[4].Value = dataGridViewProducts.Rows[rowIndex].Cells[6].Value.ToString();
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[5].Value = 0;
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[6].Value = 0;
+            purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[7].Value = 0;
+
+            purchaseForm.UpdateTotal();
         }
     }
 }

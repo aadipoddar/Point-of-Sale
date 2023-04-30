@@ -28,19 +28,123 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.cashLabel = new System.Windows.Forms.Label();
+            this.changeTextBox = new System.Windows.Forms.TextBox();
+            this.changeLabel = new System.Windows.Forms.Label();
+            this.payButton = new System.Windows.Forms.Button();
+            this.cashNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.cashNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // SettlePayment
+            // totalTextBox
+            // 
+            this.totalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTextBox.Location = new System.Drawing.Point(218, 11);
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.ReadOnly = true;
+            this.totalTextBox.Size = new System.Drawing.Size(254, 47);
+            this.totalTextBox.TabIndex = 3;
+            this.totalTextBox.Text = "0.00";
+            this.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLabel.Location = new System.Drawing.Point(8, 14);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(94, 39);
+            this.totalLabel.TabIndex = 2;
+            this.totalLabel.Text = "Total";
+            // 
+            // cashLabel
+            // 
+            this.cashLabel.AutoSize = true;
+            this.cashLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashLabel.Location = new System.Drawing.Point(12, 93);
+            this.cashLabel.Name = "cashLabel";
+            this.cashLabel.Size = new System.Drawing.Size(98, 39);
+            this.cashLabel.TabIndex = 6;
+            this.cashLabel.Text = "Cash";
+            // 
+            // changeTextBox
+            // 
+            this.changeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeTextBox.Location = new System.Drawing.Point(218, 170);
+            this.changeTextBox.Name = "changeTextBox";
+            this.changeTextBox.ReadOnly = true;
+            this.changeTextBox.Size = new System.Drawing.Size(254, 47);
+            this.changeTextBox.TabIndex = 4;
+            this.changeTextBox.Text = "0.00";
+            this.changeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // changeLabel
+            // 
+            this.changeLabel.AutoSize = true;
+            this.changeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeLabel.Location = new System.Drawing.Point(12, 172);
+            this.changeLabel.Name = "changeLabel";
+            this.changeLabel.Size = new System.Drawing.Size(137, 39);
+            this.changeLabel.TabIndex = 5;
+            this.changeLabel.Text = "Change";
+            // 
+            // payButton
+            // 
+            this.payButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payButton.Location = new System.Drawing.Point(142, 243);
+            this.payButton.Name = "payButton";
+            this.payButton.Size = new System.Drawing.Size(156, 59);
+            this.payButton.TabIndex = 1;
+            this.payButton.Text = "PAY";
+            this.payButton.UseVisualStyleBackColor = true;
+            this.payButton.Click += new System.EventHandler(this.payButton_Click);
+            // 
+            // cashNumericUpDown
+            // 
+            this.cashNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashNumericUpDown.Location = new System.Drawing.Point(218, 94);
+            this.cashNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.cashNumericUpDown.Name = "cashNumericUpDown";
+            this.cashNumericUpDown.Size = new System.Drawing.Size(254, 40);
+            this.cashNumericUpDown.TabIndex = 0;
+            this.cashNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cashNumericUpDown.ValueChanged += new System.EventHandler(this.cashNumericUpDown_ValueChanged);
+            // 
+            // SettlePaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 409);
-            this.Name = "SettlePayment";
+            this.ClientSize = new System.Drawing.Size(484, 325);
+            this.Controls.Add(this.cashNumericUpDown);
+            this.Controls.Add(this.payButton);
+            this.Controls.Add(this.changeTextBox);
+            this.Controls.Add(this.changeLabel);
+            this.Controls.Add(this.cashLabel);
+            this.Controls.Add(this.totalTextBox);
+            this.Controls.Add(this.totalLabel);
+            this.Name = "SettlePaymentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
+            ((System.ComponentModel.ISupportInitialize)(this.cashNumericUpDown)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        public System.Windows.Forms.TextBox totalTextBox;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label cashLabel;
+        public System.Windows.Forms.TextBox changeTextBox;
+        private System.Windows.Forms.Label changeLabel;
+        public System.Windows.Forms.Button payButton;
+        public System.Windows.Forms.NumericUpDown cashNumericUpDown;
     }
 }

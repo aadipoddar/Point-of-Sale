@@ -41,6 +41,7 @@
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalquantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
@@ -58,7 +59,8 @@
             this.brandDataGridViewTextBoxColumn,
             this.categoryDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.totalquantityDataGridViewTextBoxColumn});
+            this.totalquantityDataGridViewTextBoxColumn,
+            this.tax});
             this.dataGridViewProducts.DataSource = this.vwShowProductsBindingSource;
             this.dataGridViewProducts.Location = new System.Drawing.Point(-1, 55);
             this.dataGridViewProducts.Name = "dataGridViewProducts";
@@ -144,6 +146,13 @@
             this.totalquantityDataGridViewTextBoxColumn.Name = "totalquantityDataGridViewTextBoxColumn";
             this.totalquantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // tax
+            // 
+            this.tax.DataPropertyName = "tax";
+            this.tax.HeaderText = "Tax %";
+            this.tax.Name = "tax";
+            this.tax.ReadOnly = true;
+            // 
             // ProductsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,5 +186,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalquantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
     }
 }
