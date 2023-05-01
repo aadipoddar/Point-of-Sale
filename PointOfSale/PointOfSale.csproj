@@ -66,22 +66,16 @@
     <Compile Include="Brands\BrandsListForm.Designer.cs">
       <DependentUpon>BrandsListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier\CashierDashboardForm.cs">
+    <Compile Include="Sale\SaleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier\CashierDashboardForm.Designer.cs">
-      <DependentUpon>CashierDashboardForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cashier\SaleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier\SaleForm.Designer.cs">
+    <Compile Include="Sale\SaleForm.Designer.cs">
       <DependentUpon>SaleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier\SettlePaymentForm.cs">
+    <Compile Include="Sale\SettlePaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier\SettlePaymentForm.Designer.cs">
+    <Compile Include="Sale\SettlePaymentForm.Designer.cs">
       <DependentUpon>SettlePaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Categories\CategoriesEditForm.cs">
@@ -143,13 +137,10 @@
     <EmbeddedResource Include="Brands\BrandsListForm.resx">
       <DependentUpon>BrandsListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier\CashierDashboardForm.resx">
-      <DependentUpon>CashierDashboardForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cashier\SaleForm.resx">
+    <EmbeddedResource Include="Sale\SaleForm.resx">
       <DependentUpon>SaleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier\SettlePaymentForm.resx">
+    <EmbeddedResource Include="Sale\SettlePaymentForm.resx">
       <DependentUpon>SettlePaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Categories\CategoriesEditForm.resx">

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using PointOfSale.Brands;
-using PointOfSale.Cashier;
 using PointOfSale.Categories;
 using PointOfSale.Products;
 using PointOfSale.Purchase;
+using PointOfSale.Sale;
 
 namespace PointOfSale
 {
@@ -55,8 +55,8 @@ namespace PointOfSale
 
         private void cashierDashboardButton_Click(object sender, EventArgs e)
         {
-            CashierDashboardForm cashierDashboardForm = new CashierDashboardForm();
-            cashierDashboardForm.Show();
+            SaleForm saleForm = new SaleForm();
+            saleForm.Show();
         }
     }
 }

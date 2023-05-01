@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.quantityLabel = new System.Windows.Forms.Label();
-            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +38,11 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalquantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwShowProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
+            this.quantityLabel = new System.Windows.Forms.Label();
+            this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.vwShowProductsTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwShowProductsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwShowProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
@@ -73,59 +73,12 @@
             this.totalquantityDataGridViewTextBoxColumn,
             this.tax});
             this.dataGridViewProducts.DataSource = this.vwShowProductsBindingSource;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(3, 61);
+            this.dataGridViewProducts.Location = new System.Drawing.Point(-8, 61);
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
             this.dataGridViewProducts.Size = new System.Drawing.Size(880, 404);
             this.dataGridViewProducts.TabIndex = 2;
             this.dataGridViewProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProducts_KeyDown);
-            // 
-            // vwShowProductsBindingSource
-            // 
-            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
-            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
-            // 
-            // pointOfSaleDataSet
-            // 
-            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quantityLabel
-            // 
-            this.quantityLabel.AutoSize = true;
-            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityLabel.Location = new System.Drawing.Point(679, 9);
-            this.quantityLabel.Name = "quantityLabel";
-            this.quantityLabel.Size = new System.Drawing.Size(116, 31);
-            this.quantityLabel.TabIndex = 3;
-            this.quantityLabel.Text = "Quantity";
-            // 
-            // quantityNumericUpDown
-            // 
-            this.quantityNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityNumericUpDown.Location = new System.Drawing.Point(811, 7);
-            this.quantityNumericUpDown.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.quantityNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantityNumericUpDown.Name = "quantityNumericUpDown";
-            this.quantityNumericUpDown.Size = new System.Drawing.Size(61, 38);
-            this.quantityNumericUpDown.TabIndex = 1;
-            this.quantityNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // vwShowProductsTableAdapter
-            // 
-            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -176,6 +129,53 @@
             this.tax.HeaderText = "Tax %";
             this.tax.Name = "tax";
             this.tax.ReadOnly = true;
+            // 
+            // vwShowProductsBindingSource
+            // 
+            this.vwShowProductsBindingSource.DataMember = "vwShowProducts";
+            this.vwShowProductsBindingSource.DataSource = this.pointOfSaleDataSet;
+            // 
+            // pointOfSaleDataSet
+            // 
+            this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
+            this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quantityLabel
+            // 
+            this.quantityLabel.AutoSize = true;
+            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityLabel.Location = new System.Drawing.Point(679, 9);
+            this.quantityLabel.Name = "quantityLabel";
+            this.quantityLabel.Size = new System.Drawing.Size(116, 31);
+            this.quantityLabel.TabIndex = 3;
+            this.quantityLabel.Text = "Quantity";
+            // 
+            // quantityNumericUpDown
+            // 
+            this.quantityNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityNumericUpDown.Location = new System.Drawing.Point(811, 7);
+            this.quantityNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.quantityNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantityNumericUpDown.Name = "quantityNumericUpDown";
+            this.quantityNumericUpDown.Size = new System.Drawing.Size(61, 38);
+            this.quantityNumericUpDown.TabIndex = 1;
+            this.quantityNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // vwShowProductsTableAdapter
+            // 
+            this.vwShowProductsTableAdapter.ClearBeforeFill = true;
             // 
             // SearchProductsForm
             // 

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using PointOfSale.Cashier;
+using PointOfSale.Sale;
 
 namespace PointOfSale.Purchase
 {
@@ -88,7 +88,9 @@ namespace PointOfSale.Purchase
         private void UpdateQuantityOfExistingProductInSale(int rowIndex, int i)
         {
             // Check if the quantity is available
-            if ((Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value) + Convert.ToInt32(quantityNumericUpDown.Value)) <= Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[5].Value))
+            if ((Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value)
+                + Convert.ToInt32(quantityNumericUpDown.Value))
+                <= Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[5].Value))
             {
                 saleForm.dataGridViewCart.Rows[i].Cells[2].Value = Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value) + Convert.ToInt32(quantityNumericUpDown.Value);
                 saleForm.UpdateTotal();
@@ -115,10 +117,11 @@ namespace PointOfSale.Purchase
                 saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[3].Value = 0;
                 saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[4].Value = 0;
                 saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[5].Value = 0;
-                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[6].Value = 0;
+                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[6].Value = dataGridViewProducts.Rows[rowIndex].Cells[6].Value;
                 saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[7].Value = 0;
-                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[8].Value = dataGridViewProducts.Rows[rowIndex].Cells[5].Value;
-                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[9].Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[4].Value);
+                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[8].Value = 0;
+                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[9].Value = dataGridViewProducts.Rows[rowIndex].Cells[5].Value;
+                saleForm.dataGridViewCart.Rows[saleRowIndex].Cells[10].Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[4].Value);
 
                 saleForm.UpdateTotal();
             }
