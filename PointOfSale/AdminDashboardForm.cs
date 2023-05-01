@@ -58,5 +58,11 @@ namespace PointOfSale
             SaleForm saleForm = new SaleForm();
             saleForm.Show();
         }
+
+        private void saleHistoryButton_Click(object sender, EventArgs e)
+        {
+            SaleHistory saleHistory = new SaleHistory();
+            saleHistory.Show();
+        }
     }
 }

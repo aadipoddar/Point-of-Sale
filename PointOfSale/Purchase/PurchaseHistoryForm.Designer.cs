@@ -35,19 +35,19 @@
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.loadRecordsButton = new System.Windows.Forms.Button();
             this.dataGridViewPurchase = new System.Windows.Forms.DataGridView();
-            this.vwPurchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-            this.vwPurchaseTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.vwPurchaseTableAdapter();
+            this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purchaseTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.PurchaseTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purchaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwPurchaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // startDateTimePicker
@@ -93,7 +93,7 @@
             this.loadRecordsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadRecordsButton.Location = new System.Drawing.Point(590, 4);
             this.loadRecordsButton.Name = "loadRecordsButton";
-            this.loadRecordsButton.Size = new System.Drawing.Size(205, 40);
+            this.loadRecordsButton.Size = new System.Drawing.Size(182, 40);
             this.loadRecordsButton.TabIndex = 14;
             this.loadRecordsButton.Text = "Load Records";
             this.loadRecordsButton.UseVisualStyleBackColor = true;
@@ -107,33 +107,33 @@
             this.dataGridViewPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.productIdDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.purchaseDateDataGridViewTextBoxColumn,
+            this.transactionNoDataGridViewTextBoxColumn,
             this.purchaseByDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
-            this.dataGridViewPurchase.DataSource = this.vwPurchaseBindingSource;
-            this.dataGridViewPurchase.Location = new System.Drawing.Point(1, 50);
+            this.purchaseDateDataGridViewTextBoxColumn,
+            this.subTotalDataGridViewTextBoxColumn,
+            this.taxDataGridViewTextBoxColumn,
+            this.totalDataGridViewTextBoxColumn});
+            this.dataGridViewPurchase.DataSource = this.purchaseBindingSource;
+            this.dataGridViewPurchase.Location = new System.Drawing.Point(12, 50);
             this.dataGridViewPurchase.Name = "dataGridViewPurchase";
             this.dataGridViewPurchase.ReadOnly = true;
-            this.dataGridViewPurchase.Size = new System.Drawing.Size(972, 502);
+            this.dataGridViewPurchase.Size = new System.Drawing.Size(760, 399);
             this.dataGridViewPurchase.TabIndex = 15;
             this.dataGridViewPurchase.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPurchase_KeyDown);
-            // 
-            // vwPurchaseBindingSource
-            // 
-            this.vwPurchaseBindingSource.DataMember = "vwPurchase";
-            this.vwPurchaseBindingSource.DataSource = this.pointOfSaleDataSet;
             // 
             // pointOfSaleDataSet
             // 
             this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
             this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // vwPurchaseTableAdapter
+            // purchaseBindingSource
             // 
-            this.vwPurchaseTableAdapter.ClearBeforeFill = true;
+            this.purchaseBindingSource.DataMember = "Purchase";
+            this.purchaseBindingSource.DataSource = this.pointOfSaleDataSet;
+            // 
+            // purchaseTableAdapter
+            // 
+            this.purchaseTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -142,34 +142,14 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // productIdDataGridViewTextBoxColumn
+            // transactionNoDataGridViewTextBoxColumn
             // 
-            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "productId";
-            this.productIdDataGridViewTextBoxColumn.HeaderText = "Product ID";
-            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
-            this.productIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Product Name";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // purchaseDateDataGridViewTextBoxColumn
-            // 
-            this.purchaseDateDataGridViewTextBoxColumn.DataPropertyName = "purchaseDate";
-            this.purchaseDateDataGridViewTextBoxColumn.HeaderText = "Purchase Date";
-            this.purchaseDateDataGridViewTextBoxColumn.Name = "purchaseDateDataGridViewTextBoxColumn";
-            this.purchaseDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.transactionNoDataGridViewTextBoxColumn.DataPropertyName = "transactionNo";
+            this.transactionNoDataGridViewTextBoxColumn.HeaderText = "Bill No";
+            this.transactionNoDataGridViewTextBoxColumn.Name = "transactionNoDataGridViewTextBoxColumn";
+            this.transactionNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionNoDataGridViewTextBoxColumn.Width = 98;
             // 
             // purchaseByDataGridViewTextBoxColumn
             // 
@@ -178,18 +158,40 @@
             this.purchaseByDataGridViewTextBoxColumn.Name = "purchaseByDataGridViewTextBoxColumn";
             this.purchaseByDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // statusDataGridViewTextBoxColumn
+            // purchaseDateDataGridViewTextBoxColumn
             // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.purchaseDateDataGridViewTextBoxColumn.DataPropertyName = "purchaseDate";
+            this.purchaseDateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.purchaseDateDataGridViewTextBoxColumn.Name = "purchaseDateDataGridViewTextBoxColumn";
+            this.purchaseDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subTotalDataGridViewTextBoxColumn
+            // 
+            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "subTotal";
+            this.subTotalDataGridViewTextBoxColumn.HeaderText = "Sub Total";
+            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
+            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxDataGridViewTextBoxColumn
+            // 
+            this.taxDataGridViewTextBoxColumn.DataPropertyName = "tax";
+            this.taxDataGridViewTextBoxColumn.HeaderText = "Tax";
+            this.taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
+            this.taxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // PurchaseHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 552);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.dataGridViewPurchase);
             this.Controls.Add(this.loadRecordsButton);
             this.Controls.Add(this.endDateTimePicker);
@@ -201,8 +203,8 @@
             this.Text = "Purchase History";
             this.Load += new System.EventHandler(this.PurchaseHistoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwPurchaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,15 +218,16 @@
         private System.Windows.Forms.DateTimePicker endDateTimePicker;
         public System.Windows.Forms.Button loadRecordsButton;
         private System.Windows.Forms.DataGridView dataGridViewPurchase;
-        private PointOfSaleDataSet pointOfSaleDataSet;
-        private System.Windows.Forms.BindingSource vwPurchaseBindingSource;
-        private PointOfSaleDataSetTableAdapters.vwPurchaseTableAdapter vwPurchaseTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseByDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private PointOfSaleDataSet pointOfSaleDataSet;
+        private System.Windows.Forms.BindingSource purchaseBindingSource;
+        private PointOfSaleDataSetTableAdapters.PurchaseTableAdapter purchaseTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseByDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
     }
 }

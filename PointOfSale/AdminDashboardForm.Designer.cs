@@ -34,6 +34,7 @@
             this.purchaseButton = new System.Windows.Forms.Button();
             this.purchaseHistoryButton = new System.Windows.Forms.Button();
             this.newSaleButton = new System.Windows.Forms.Button();
+            this.saleHistoryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // manageProductsButton
@@ -102,11 +103,23 @@
             this.newSaleButton.UseVisualStyleBackColor = true;
             this.newSaleButton.Click += new System.EventHandler(this.cashierDashboardButton_Click);
             // 
+            // saleHistoryButton
+            // 
+            this.saleHistoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saleHistoryButton.Location = new System.Drawing.Point(334, 80);
+            this.saleHistoryButton.Name = "saleHistoryButton";
+            this.saleHistoryButton.Size = new System.Drawing.Size(208, 50);
+            this.saleHistoryButton.TabIndex = 10;
+            this.saleHistoryButton.Text = "Sale History";
+            this.saleHistoryButton.UseVisualStyleBackColor = true;
+            this.saleHistoryButton.Click += new System.EventHandler(this.saleHistoryButton_Click);
+            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.saleHistoryButton);
             this.Controls.Add(this.newSaleButton);
             this.Controls.Add(this.purchaseHistoryButton);
             this.Controls.Add(this.purchaseButton);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Button purchaseButton;
         private System.Windows.Forms.Button purchaseHistoryButton;
         private System.Windows.Forms.Button newSaleButton;
+        private System.Windows.Forms.Button saleHistoryButton;
     }
 }

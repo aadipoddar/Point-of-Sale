@@ -72,6 +72,12 @@
     <Compile Include="Sale\SaleForm.Designer.cs">
       <DependentUpon>SaleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sale\SaleHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sale\SaleHistory.Designer.cs">
+      <DependentUpon>SaleHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sale\SettlePaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sale\SaleForm.resx">
       <DependentUpon>SaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sale\SaleHistory.resx">
+      <DependentUpon>SaleHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sale\SettlePaymentForm.resx">
       <DependentUpon>SettlePaymentForm.cs</DependentUpon>
