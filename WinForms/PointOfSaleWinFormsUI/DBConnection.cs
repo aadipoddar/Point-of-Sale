@@ -1,12 +1,11 @@
 ﻿using System.Configuration;
 
-namespace WinForms.PointOfSale
+namespace WinForms.PointOfSale;
+
+public class DBConnection
 {
-    public class DBConnection
+    public string MyConnection()
     {
-        public string MyConnection()
-        {
-            return ConfigurationManager.ConnectionStrings["PointOfSale.Properties.Settings.PointOfSaleConnectionString"].ConnectionString;
-        }
+        return ConfigurationManager.ConnectionStrings["PointOfSale.Properties.Settings.PointOfSaleConnectionString"].ConnectionString;
     }
 }

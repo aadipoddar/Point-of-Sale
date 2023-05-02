@@ -1,19 +1,16 @@
-﻿using System;
-using System.Windows.Forms;
+﻿namespace WinForms.PointOfSale;
 
-namespace WinForms.PointOfSale
+internal static class Program
 {
-    internal static class Program
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main()
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminDashboardForm());
-        }
+        Application.EnableVisualStyles();
+        Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new AdminDashboardForm());
     }
 }

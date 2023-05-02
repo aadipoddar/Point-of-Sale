@@ -1,88 +1,66 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using WinForms.PointOfSaleLibrary.Data;
+using WinForms.PointOfSaleLibrary.Models;
 
-namespace WinForms.PointOfSale.Brands
+namespace WinForms.PointOfSale.Brands;
+
+public partial class BrandsEditForm : Form
 {
-    public partial class BrandsEditForm : Form
+    BrandData brandData = new();
+    BrandModel brandModel = new();
+
+    BrandsListForm brandsListForm;
+
+    public int brandId;
+
+    public BrandsEditForm(BrandsListForm brandsListForm)
     {
-        SqlConnection sqlConnection = new SqlConnection();
-        SqlCommand sqlCommand = new SqlCommand();
-        DBConnection dBConnection = new DBConnection();
+        InitializeComponent();
 
-        public int brandId;
+        this.brandsListForm = brandsListForm;
+    }
 
-        BrandsListForm brandsListForm;
+    private void TextBoxClear()
+    {
+        saveButton.Enabled = true;
+        saveButton.Visible = true;
 
-        public BrandsEditForm(BrandsListForm  brandsListForm)
+        updateButton.Enabled = false;
+        updateButton.Visible = false;
+
+        brandTextBox.Clear();
+        brandTextBox.Focus();
+    }
+
+    private void saveButton_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Are you sure you want to save this Brand", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            InitializeComponent();
+            brandModel.Brand = brandTextBox.Text;
 
-            sqlConnection = new SqlConnection(dBConnection.MyConnection());
+            brandData.InsertBrand(brandModel);
 
-            this.brandsListForm = brandsListForm;
+            TextBoxClear();
+
+            _ = brandsListForm.DataGridRefresh();
         }
+    }
 
-        private void TextBoxClear()
+    private void updateButton_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Are you sure you want to update this Brand Name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            saveButton.Enabled = true;
-            saveButton.Visible = true;
+            brandModel.Id = brandId;
+            brandModel.Brand = brandTextBox.Text;
 
-            updateButton.Enabled = false;
-            updateButton.Visible = false;
+            brandData.UpdateBrand(brandModel);
 
-            brandTextBox.Clear();
-            brandTextBox.Focus();
+            cancelButton_Click(sender, e);
         }
+    }
 
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (MessageBox.Show("Are you sure you want to save this Brand", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    sqlConnection.Open();
-                    sqlCommand = new SqlCommand("INSERT INTO Brand(brand) VALUES (@brand)", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@brand", brandTextBox.Text);
-                    sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-
-                    TextBoxClear();
-
-                    brandsListForm.DataGridRefresh();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (MessageBox.Show("Are you sure you want to update this Brand Name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    sqlConnection.Open();
-                    sqlCommand = new SqlCommand("UPDATE Brand SET brand = @brand WHERE id = '" + brandId + "'", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@brand", brandTextBox.Text);
-                    sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-
-                    cancelButton_Click(sender, e);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            Close();
-            brandsListForm.DataGridRefresh();
-        }
+    private void cancelButton_Click(object sender, EventArgs e)
+    {
+        Close();
+        _ = brandsListForm.DataGridRefresh();
     }
 }

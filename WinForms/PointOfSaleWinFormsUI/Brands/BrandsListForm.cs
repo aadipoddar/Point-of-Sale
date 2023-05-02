@@ -1,106 +1,102 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using WinForms.PointOfSaleLibrary.Data;
+using WinForms.PointOfSaleLibrary.Models;
 
-namespace WinForms.PointOfSale.Brands
+namespace WinForms.PointOfSale.Brands;
+
+public partial class BrandsListForm : Form
 {
-    public partial class BrandsListForm : Form
+    BrandData brandData = new();
+    List<BrandModel> brands = new();
+
+    public BrandsListForm()
     {
-        SqlConnection sqlConnection = new SqlConnection();
-        SqlCommand sqlCommand = new SqlCommand();
-        DBConnection dbConnection = new DBConnection();
+        InitializeComponent();
+    }
 
-        public BrandsListForm()
+    private void BrandsListForm_Load(object sender, EventArgs e)
+    {
+        _ = DataGridRefresh();
+    }
+
+    public async Task DataGridRefresh()
+    {
+        brands = (await brandData.GetBrands()).ToList();
+        dataGridViewBrands.DataSource = new BindingSource(brands, null);
+
+        dataGridViewBrands.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        dataGridViewBrands.Columns[1].HeaderText = "Brand Name";
+    }
+
+    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    {
+        (dataGridViewBrands.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewBrands.Columns[1].DataPropertyName, searchTextBox.Text);
+    }
+
+    private void addBrandsButton_Click(object sender, EventArgs e)
+    {
+        BrandsEditForm brandsEditForm = new BrandsEditForm(this);
+        brandsEditForm.Show();
+
+        brandsEditForm.Text = "Add Brand";
+
+        brandsEditForm.updateButton.Enabled = false;
+        brandsEditForm.updateButton.Visible = false;
+
+        brandsEditForm.saveButton.Enabled = true;
+        brandsEditForm.saveButton.Visible = true;
+    }
+
+    private void dataGridViewBrands_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
         {
-            InitializeComponent();
-
-            sqlConnection = new SqlConnection(dbConnection.MyConnection());
-        }
-
-        private void BrandsListForm_Load(object sender, EventArgs e)
-        {
-            DataGridRefresh();
-        }
-
-        public void DataGridRefresh()
-        {
-            this.brandTableAdapter.Fill(this.pointOfSaleDataSet.Brand);
-        }
-
-        private void searchTextBox_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridViewBrands.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewBrands.Columns[1].DataPropertyName, searchTextBox.Text);
-        }
-
-        private void addBrandsButton_Click(object sender, EventArgs e)
-        {
-            BrandsEditForm brandsEditForm = new BrandsEditForm(this);
-            brandsEditForm.Show();
-
-            brandsEditForm.Text = "Add Brand";
-
-            brandsEditForm.updateButton.Enabled = false;
-            brandsEditForm.updateButton.Visible = false;
-
-            brandsEditForm.saveButton.Enabled = true;
-            brandsEditForm.saveButton.Visible = true;
-        }
-
-        private void dataGridViewBrands_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
+            if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
             {
-                int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
-                if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
+                DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
+                if (cell != null && cell.Value != null)
                 {
-                    DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
-                    if (cell != null && cell.Value != null)
-                    {
-                        BrandsEditForm brandsEditForm = new BrandsEditForm(this);
-                        brandsEditForm.Show();
+                    BrandsEditForm brandsEditForm = new BrandsEditForm(this);
+                    brandsEditForm.Show();
 
-                        brandsEditForm.Text = "Edit Brand";
+                    brandsEditForm.Text = "Edit Brand";
 
-                        brandsEditForm.saveButton.Visible = false;
-                        brandsEditForm.saveButton.Enabled = false;
+                    brandsEditForm.saveButton.Visible = false;
+                    brandsEditForm.saveButton.Enabled = false;
 
-                        brandsEditForm.updateButton.Visible = true;
-                        brandsEditForm.updateButton.Enabled = true;
+                    brandsEditForm.updateButton.Visible = true;
+                    brandsEditForm.updateButton.Enabled = true;
 
-                        brandsEditForm.brandId = Convert.ToInt32(dataGridViewBrands.Rows[rowIndex].Cells[0].Value);
-                        brandsEditForm.brandTextBox.Text = dataGridViewBrands.Rows[rowIndex].Cells[1].Value.ToString();
+                    brandsEditForm.brandId = Convert.ToInt32(dataGridViewBrands.Rows[rowIndex].Cells[0].Value);
+                    brandsEditForm.brandTextBox.Text = dataGridViewBrands.Rows[rowIndex].Cells[1].Value.ToString();
 
-                        brandsEditForm.brandTextBox.Select();
-                    }
+                    brandsEditForm.brandTextBox.Select();
                 }
             }
+        }
 
-            else if (e.KeyCode == Keys.Delete)
+        else if (e.KeyCode == Keys.Delete)
+        {
+            int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
+            if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
             {
-                int rowIndex = dataGridViewBrands.CurrentCell.RowIndex;
-                if (rowIndex >= 0 && rowIndex < dataGridViewBrands.Rows.Count)
+                DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
+                if (cell != null && cell.Value != null)
                 {
-                    DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
-                    if (cell != null && cell.Value != null)
+                    if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        brandData.DeleteBrand(Convert.ToInt32(dataGridViewBrands.Rows[rowIndex].Cells[0].Value));
+
+                        _ = DataGridRefresh();
+
+                        // Select the previous row
+                        if (dataGridViewBrands.Rows.Count > 1)
                         {
-                            sqlConnection.Open();
-                            sqlCommand = new SqlCommand("DELETE FROM Brand WHERE id = '" + dataGridViewBrands.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
-                            sqlCommand.ExecuteNonQuery();
-                            sqlConnection.Close();
-
-                            DataGridRefresh();
-
-                            // Select the previous row
-                            if (dataGridViewBrands.Rows.Count > 1)
+                            int selectRowIndex = rowIndex - 1;
+                            if (selectRowIndex >= 0 && selectRowIndex < dataGridViewBrands.Rows.Count)
                             {
-                                int selectRowIndex = rowIndex - 1;
-                                if (selectRowIndex >= 0 && selectRowIndex < dataGridViewBrands.Rows.Count)
-                                {
-                                    dataGridViewBrands.CurrentCell = dataGridViewBrands.Rows[selectRowIndex].Cells[0];
-                                    dataGridViewBrands.Rows[selectRowIndex].Selected = true;
-                                }
+                                dataGridViewBrands.CurrentCell = dataGridViewBrands.Rows[selectRowIndex].Cells[0];
+                                dataGridViewBrands.Rows[selectRowIndex].Selected = true;
                             }
                         }
                     }
