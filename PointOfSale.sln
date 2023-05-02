@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale", "PointOfSale\PointOfSale.csproj", "{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinForms", "WinForms", "{13FF7420-4145-4CA8-B141-35969A189992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleWinFormsLibrary", "WinForms\PointOfSaleWinFormsLibrary\PointOfSaleWinFormsLibrary.csproj", "{AFF949A2-C535-4B38-B2FD-9FE180474D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleWinFormsUI", "WinForms\PointOfSaleWinFormsUI\PointOfSaleWinFormsUI.csproj", "{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFF949A2-C535-4B38-B2FD-9FE180474D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF949A2-C535-4B38-B2FD-9FE180474D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF949A2-C535-4B38-B2FD-9FE180474D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF949A2-C535-4B38-B2FD-9FE180474D13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -18,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFF949A2-C535-4B38-B2FD-9FE180474D13} = {13FF7420-4145-4CA8-B141-35969A189992}
+		{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE} = {13FF7420-4145-4CA8-B141-35969A189992}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2EC4F4E-F26B-4A52-85F7-EBEDC11FEC0D}
