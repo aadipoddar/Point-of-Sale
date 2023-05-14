@@ -35,7 +35,7 @@ public partial class CategoriesEditForm : Form
     {
         if (MessageBox.Show("Are you sure you want to save this Category", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            categoryModel.Category = categoryTextBox.Text;
+            categoryModel.CategoryName = categoryTextBox.Text;
 
             categoryData.InsertCategory(categoryModel);
 
@@ -49,8 +49,8 @@ public partial class CategoriesEditForm : Form
     {
         if (MessageBox.Show("Are you sure you want to update this Category name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            categoryModel.Id = categoryId;
-            categoryModel.Category = categoryTextBox.Text;
+            categoryModel.CategoryId = categoryId;
+            categoryModel.CategoryName = categoryTextBox.Text;
 
             categoryData.UpdateCategory(categoryModel);
 

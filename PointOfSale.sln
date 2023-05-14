@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinForms", "WinForms", "{13
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSaleWinFormsUI", "WinForms\PointOfSaleWinFormsUI\PointOfSaleWinFormsUI.csproj", "{F2E37D72-97FD-4621-ACB6-DC32DF82EAEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleWinFormsLibrary", "WinForms\PointOfSaleWinFormsLibrary\PointOfSaleWinFormsLibrary.csproj", "{D5297A4F-AC77-4208-A809-6288EF84FB31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSaleWinFormsLibrary", "WinForms\PointOfSaleWinFormsLibrary\PointOfSaleWinFormsLibrary.csproj", "{D5297A4F-AC77-4208-A809-6288EF84FB31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -35,7 +35,7 @@ public partial class BrandsEditForm : Form
     {
         if (MessageBox.Show("Are you sure you want to save this Brand", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            brandModel.Brand = brandTextBox.Text;
+            brandModel.BrandName = brandTextBox.Text;
 
             brandData.InsertBrand(brandModel);
 
@@ -49,8 +49,8 @@ public partial class BrandsEditForm : Form
     {
         if (MessageBox.Show("Are you sure you want to update this Brand Name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            brandModel.Id = brandId;
-            brandModel.Brand = brandTextBox.Text;
+            brandModel.BrandId = brandId;
+            brandModel.BrandName = brandTextBox.Text;
 
             brandData.UpdateBrand(brandModel);
 

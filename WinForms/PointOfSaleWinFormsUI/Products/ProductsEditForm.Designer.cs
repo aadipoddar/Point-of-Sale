@@ -28,234 +28,201 @@ partial class ProductsEditForm
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.descriptionTextBox = new System.Windows.Forms.TextBox();
-        this.decriptionLabel = new System.Windows.Forms.Label();
-        this.brandLabel = new System.Windows.Forms.Label();
-        this.categoryLabel = new System.Windows.Forms.Label();
-        this.priceLabel = new System.Windows.Forms.Label();
-        this.brandComboBox = new System.Windows.Forms.ComboBox();
-        this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
-        this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-        this.categoryComboBox = new System.Windows.Forms.ComboBox();
-        this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-        this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-        this.saveButton = new System.Windows.Forms.Button();
-        this.updateButton = new System.Windows.Forms.Button();
-        this.cancelButton = new System.Windows.Forms.Button();
-        this.brandTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.BrandTableAdapter();
-        this.categoryTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.CategoryTableAdapter();
-        this.taxNumericUpDown = new System.Windows.Forms.NumericUpDown();
-        this.taxLabel = new System.Windows.Forms.Label();
-        ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.taxNumericUpDown)).BeginInit();
-        this.SuspendLayout();
+        descriptionTextBox = new TextBox();
+        decriptionLabel = new Label();
+        brandLabel = new Label();
+        categoryLabel = new Label();
+        priceLabel = new Label();
+        brandComboBox = new ComboBox();
+        categoryComboBox = new ComboBox();
+        priceNumericUpDown = new NumericUpDown();
+        saveButton = new Button();
+        updateButton = new Button();
+        cancelButton = new Button();
+        taxNumericUpDown = new NumericUpDown();
+        taxLabel = new Label();
+        ((System.ComponentModel.ISupportInitialize)priceNumericUpDown).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)taxNumericUpDown).BeginInit();
+        SuspendLayout();
         // 
         // descriptionTextBox
         // 
-        this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.descriptionTextBox.Location = new System.Drawing.Point(243, 16);
-        this.descriptionTextBox.Name = "descriptionTextBox";
-        this.descriptionTextBox.Size = new System.Drawing.Size(366, 38);
-        this.descriptionTextBox.TabIndex = 1;
+        descriptionTextBox.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        descriptionTextBox.Location = new Point(284, 18);
+        descriptionTextBox.Margin = new Padding(4, 3, 4, 3);
+        descriptionTextBox.Name = "descriptionTextBox";
+        descriptionTextBox.Size = new Size(426, 38);
+        descriptionTextBox.TabIndex = 1;
         // 
         // decriptionLabel
         // 
-        this.decriptionLabel.AutoSize = true;
-        this.decriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.decriptionLabel.Location = new System.Drawing.Point(12, 21);
-        this.decriptionLabel.Name = "decriptionLabel";
-        this.decriptionLabel.Size = new System.Drawing.Size(151, 31);
-        this.decriptionLabel.TabIndex = 0;
-        this.decriptionLabel.Text = "Description";
+        decriptionLabel.AutoSize = true;
+        decriptionLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        decriptionLabel.Location = new Point(14, 24);
+        decriptionLabel.Margin = new Padding(4, 0, 4, 0);
+        decriptionLabel.Name = "decriptionLabel";
+        decriptionLabel.Size = new Size(151, 31);
+        decriptionLabel.TabIndex = 0;
+        decriptionLabel.Text = "Description";
         // 
         // brandLabel
         // 
-        this.brandLabel.AutoSize = true;
-        this.brandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.brandLabel.Location = new System.Drawing.Point(12, 84);
-        this.brandLabel.Name = "brandLabel";
-        this.brandLabel.Size = new System.Drawing.Size(86, 31);
-        this.brandLabel.TabIndex = 2;
-        this.brandLabel.Text = "Brand";
+        brandLabel.AutoSize = true;
+        brandLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        brandLabel.Location = new Point(14, 97);
+        brandLabel.Margin = new Padding(4, 0, 4, 0);
+        brandLabel.Name = "brandLabel";
+        brandLabel.Size = new Size(86, 31);
+        brandLabel.TabIndex = 2;
+        brandLabel.Text = "Brand";
         // 
         // categoryLabel
         // 
-        this.categoryLabel.AutoSize = true;
-        this.categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.categoryLabel.Location = new System.Drawing.Point(12, 147);
-        this.categoryLabel.Name = "categoryLabel";
-        this.categoryLabel.Size = new System.Drawing.Size(125, 31);
-        this.categoryLabel.TabIndex = 4;
-        this.categoryLabel.Text = "Category";
+        categoryLabel.AutoSize = true;
+        categoryLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        categoryLabel.Location = new Point(14, 170);
+        categoryLabel.Margin = new Padding(4, 0, 4, 0);
+        categoryLabel.Name = "categoryLabel";
+        categoryLabel.Size = new Size(125, 31);
+        categoryLabel.TabIndex = 4;
+        categoryLabel.Text = "Category";
         // 
         // priceLabel
         // 
-        this.priceLabel.AutoSize = true;
-        this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.priceLabel.Location = new System.Drawing.Point(12, 210);
-        this.priceLabel.Name = "priceLabel";
-        this.priceLabel.Size = new System.Drawing.Size(76, 31);
-        this.priceLabel.TabIndex = 6;
-        this.priceLabel.Text = "Price";
+        priceLabel.AutoSize = true;
+        priceLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        priceLabel.Location = new Point(14, 242);
+        priceLabel.Margin = new Padding(4, 0, 4, 0);
+        priceLabel.Name = "priceLabel";
+        priceLabel.Size = new Size(76, 31);
+        priceLabel.TabIndex = 6;
+        priceLabel.Text = "Price";
         // 
         // brandComboBox
         // 
-        this.brandComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-        this.brandComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-        this.brandComboBox.DataSource = this.brandBindingSource;
-        this.brandComboBox.DisplayMember = "brand";
-        this.brandComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.brandComboBox.FormattingEnabled = true;
-        this.brandComboBox.Location = new System.Drawing.Point(243, 80);
-        this.brandComboBox.Name = "brandComboBox";
-        this.brandComboBox.Size = new System.Drawing.Size(366, 39);
-        this.brandComboBox.TabIndex = 3;
-        this.brandComboBox.ValueMember = "id";
-        // 
-        // brandBindingSource
-        // 
-        this.brandBindingSource.DataMember = "Brand";
-        this.brandBindingSource.DataSource = this.pointOfSaleDataSet;
-        // 
-        // pointOfSaleDataSet
-        // 
-        this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-        this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+        brandComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        brandComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+        brandComboBox.DisplayMember = "id";
+        brandComboBox.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        brandComboBox.FormattingEnabled = true;
+        brandComboBox.Location = new Point(284, 92);
+        brandComboBox.Margin = new Padding(4, 3, 4, 3);
+        brandComboBox.Name = "brandComboBox";
+        brandComboBox.Size = new Size(426, 39);
+        brandComboBox.TabIndex = 3;
+        brandComboBox.ValueMember = "id";
         // 
         // categoryComboBox
         // 
-        this.categoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-        this.categoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-        this.categoryComboBox.DataSource = this.categoryBindingSource;
-        this.categoryComboBox.DisplayMember = "category";
-        this.categoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.categoryComboBox.FormattingEnabled = true;
-        this.categoryComboBox.Location = new System.Drawing.Point(243, 145);
-        this.categoryComboBox.Name = "categoryComboBox";
-        this.categoryComboBox.Size = new System.Drawing.Size(366, 39);
-        this.categoryComboBox.TabIndex = 5;
-        this.categoryComboBox.ValueMember = "id";
-        // 
-        // categoryBindingSource
-        // 
-        this.categoryBindingSource.DataMember = "Category";
-        this.categoryBindingSource.DataSource = this.pointOfSaleDataSet;
+        categoryComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        categoryComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+        categoryComboBox.DisplayMember = "id";
+        categoryComboBox.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        categoryComboBox.FormattingEnabled = true;
+        categoryComboBox.Location = new Point(284, 167);
+        categoryComboBox.Margin = new Padding(4, 3, 4, 3);
+        categoryComboBox.Name = "categoryComboBox";
+        categoryComboBox.Size = new Size(426, 39);
+        categoryComboBox.TabIndex = 5;
+        categoryComboBox.ValueMember = "id";
         // 
         // priceNumericUpDown
         // 
-        this.priceNumericUpDown.DecimalPlaces = 2;
-        this.priceNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.priceNumericUpDown.Location = new System.Drawing.Point(243, 210);
-        this.priceNumericUpDown.Maximum = new decimal(new int[] {
-        1000000,
-        0,
-        0,
-        0});
-        this.priceNumericUpDown.Name = "priceNumericUpDown";
-        this.priceNumericUpDown.Size = new System.Drawing.Size(366, 38);
-        this.priceNumericUpDown.TabIndex = 7;
-        this.priceNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        priceNumericUpDown.DecimalPlaces = 2;
+        priceNumericUpDown.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        priceNumericUpDown.Location = new Point(284, 242);
+        priceNumericUpDown.Margin = new Padding(4, 3, 4, 3);
+        priceNumericUpDown.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+        priceNumericUpDown.Name = "priceNumericUpDown";
+        priceNumericUpDown.Size = new Size(427, 38);
+        priceNumericUpDown.TabIndex = 7;
+        priceNumericUpDown.TextAlign = HorizontalAlignment.Right;
         // 
         // saveButton
         // 
-        this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.saveButton.Location = new System.Drawing.Point(39, 344);
-        this.saveButton.Name = "saveButton";
-        this.saveButton.Size = new System.Drawing.Size(165, 50);
-        this.saveButton.TabIndex = 10;
-        this.saveButton.Text = "Save";
-        this.saveButton.UseVisualStyleBackColor = true;
-        this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+        saveButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        saveButton.Location = new Point(46, 397);
+        saveButton.Margin = new Padding(4, 3, 4, 3);
+        saveButton.Name = "saveButton";
+        saveButton.Size = new Size(192, 58);
+        saveButton.TabIndex = 10;
+        saveButton.Text = "Save";
+        saveButton.UseVisualStyleBackColor = true;
+        saveButton.Click += saveButton_Click;
         // 
         // updateButton
         // 
-        this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.updateButton.Location = new System.Drawing.Point(232, 344);
-        this.updateButton.Name = "updateButton";
-        this.updateButton.Size = new System.Drawing.Size(165, 50);
-        this.updateButton.TabIndex = 11;
-        this.updateButton.Text = "Update";
-        this.updateButton.UseVisualStyleBackColor = true;
-        this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+        updateButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        updateButton.Location = new Point(271, 397);
+        updateButton.Margin = new Padding(4, 3, 4, 3);
+        updateButton.Name = "updateButton";
+        updateButton.Size = new Size(192, 58);
+        updateButton.TabIndex = 11;
+        updateButton.Text = "Update";
+        updateButton.UseVisualStyleBackColor = true;
+        updateButton.Click += updateButton_Click;
         // 
         // cancelButton
         // 
-        this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.cancelButton.Location = new System.Drawing.Point(429, 344);
-        this.cancelButton.Name = "cancelButton";
-        this.cancelButton.Size = new System.Drawing.Size(165, 50);
-        this.cancelButton.TabIndex = 12;
-        this.cancelButton.Text = "Cancel";
-        this.cancelButton.UseVisualStyleBackColor = true;
-        this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-        // 
-        // brandTableAdapter
-        // 
-        this.brandTableAdapter.ClearBeforeFill = true;
-        // 
-        // categoryTableAdapter
-        // 
-        this.categoryTableAdapter.ClearBeforeFill = true;
+        cancelButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        cancelButton.Location = new Point(500, 397);
+        cancelButton.Margin = new Padding(4, 3, 4, 3);
+        cancelButton.Name = "cancelButton";
+        cancelButton.Size = new Size(192, 58);
+        cancelButton.TabIndex = 12;
+        cancelButton.Text = "Cancel";
+        cancelButton.UseVisualStyleBackColor = true;
+        cancelButton.Click += cancelButton_Click;
         // 
         // taxNumericUpDown
         // 
-        this.taxNumericUpDown.DecimalPlaces = 2;
-        this.taxNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.taxNumericUpDown.Location = new System.Drawing.Point(243, 274);
-        this.taxNumericUpDown.Maximum = new decimal(new int[] {
-        1000000,
-        0,
-        0,
-        0});
-        this.taxNumericUpDown.Name = "taxNumericUpDown";
-        this.taxNumericUpDown.Size = new System.Drawing.Size(366, 38);
-        this.taxNumericUpDown.TabIndex = 9;
-        this.taxNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        taxNumericUpDown.DecimalPlaces = 2;
+        taxNumericUpDown.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        taxNumericUpDown.Location = new Point(284, 316);
+        taxNumericUpDown.Margin = new Padding(4, 3, 4, 3);
+        taxNumericUpDown.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+        taxNumericUpDown.Name = "taxNumericUpDown";
+        taxNumericUpDown.Size = new Size(427, 38);
+        taxNumericUpDown.TabIndex = 9;
+        taxNumericUpDown.TextAlign = HorizontalAlignment.Right;
         // 
         // taxLabel
         // 
-        this.taxLabel.AutoSize = true;
-        this.taxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.taxLabel.Location = new System.Drawing.Point(12, 273);
-        this.taxLabel.Name = "taxLabel";
-        this.taxLabel.Size = new System.Drawing.Size(90, 31);
-        this.taxLabel.TabIndex = 8;
-        this.taxLabel.Text = "Tax %";
+        taxLabel.AutoSize = true;
+        taxLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        taxLabel.Location = new Point(14, 315);
+        taxLabel.Margin = new Padding(4, 0, 4, 0);
+        taxLabel.Name = "taxLabel";
+        taxLabel.Size = new Size(90, 31);
+        taxLabel.TabIndex = 8;
+        taxLabel.Text = "Tax %";
         // 
         // ProductsEditForm
         // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(634, 418);
-        this.Controls.Add(this.taxNumericUpDown);
-        this.Controls.Add(this.taxLabel);
-        this.Controls.Add(this.cancelButton);
-        this.Controls.Add(this.updateButton);
-        this.Controls.Add(this.saveButton);
-        this.Controls.Add(this.priceNumericUpDown);
-        this.Controls.Add(this.categoryComboBox);
-        this.Controls.Add(this.brandComboBox);
-        this.Controls.Add(this.priceLabel);
-        this.Controls.Add(this.categoryLabel);
-        this.Controls.Add(this.brandLabel);
-        this.Controls.Add(this.descriptionTextBox);
-        this.Controls.Add(this.decriptionLabel);
-        this.Name = "ProductsEditForm";
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "Products Edit";
-        this.Load += new System.EventHandler(this.ProductsEditForm_Load);
-        ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.taxNumericUpDown)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(740, 482);
+        Controls.Add(taxNumericUpDown);
+        Controls.Add(taxLabel);
+        Controls.Add(cancelButton);
+        Controls.Add(updateButton);
+        Controls.Add(saveButton);
+        Controls.Add(priceNumericUpDown);
+        Controls.Add(categoryComboBox);
+        Controls.Add(brandComboBox);
+        Controls.Add(priceLabel);
+        Controls.Add(categoryLabel);
+        Controls.Add(brandLabel);
+        Controls.Add(descriptionTextBox);
+        Controls.Add(decriptionLabel);
+        Margin = new Padding(4, 3, 4, 3);
+        Name = "ProductsEditForm";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Products Edit";
+        ((System.ComponentModel.ISupportInitialize)priceNumericUpDown).EndInit();
+        ((System.ComponentModel.ISupportInitialize)taxNumericUpDown).EndInit();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -265,11 +232,6 @@ partial class ProductsEditForm
     private System.Windows.Forms.Label priceLabel;
     public System.Windows.Forms.NumericUpDown priceNumericUpDown;
     private System.Windows.Forms.Button cancelButton;
-    private PointOfSaleDataSet pointOfSaleDataSet;
-    private System.Windows.Forms.BindingSource brandBindingSource;
-    private PointOfSaleDataSetTableAdapters.BrandTableAdapter brandTableAdapter;
-    private System.Windows.Forms.BindingSource categoryBindingSource;
-    private PointOfSaleDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
     public System.Windows.Forms.Button saveButton;
     public System.Windows.Forms.Button updateButton;
     public System.Windows.Forms.TextBox descriptionTextBox;

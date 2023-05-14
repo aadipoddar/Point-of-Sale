@@ -1,32 +1,51 @@
-﻿using System.Data.SqlClient;
+﻿using WinForms.PointOfSaleLibrary.Data;
+using WinForms.PointOfSaleLibrary.Models;
 
 namespace WinForms.PointOfSale.Products;
 
 public partial class ProductsEditForm : Form
 {
-    SqlConnection sqlConnection = new SqlConnection();
-    SqlCommand sqlCommand = new SqlCommand();
-    DBConnection dbConnection = new DBConnection();
+    CategoryData categoryData = new();
+    List<CategoryModel> categories = new();
+
+    BrandData brandData = new();
+    List<BrandModel> brands = new();
+
+    ProductData productData = new();
+    ProductModel productModel = new();
 
     ProductsListForm productsListForm;
 
     public int productId;
+    public string brnadName = "";
+    public string categoryName = "";
 
     public ProductsEditForm(ProductsListForm productsListForm)
     {
         InitializeComponent();
 
-        sqlConnection = new SqlConnection(dbConnection.MyConnection());
-
         this.productsListForm = productsListForm;
+
+        _ = LoadComboBox();
     }
 
-    private void ProductsEditForm_Load(object sender, EventArgs e)
+    public async Task LoadComboBox()
     {
-        // TODO: This line of code loads data into the 'pointOfSaleDataSet.Category' table. You can move, or remove it, as needed.
-        this.categoryTableAdapter.Fill(this.pointOfSaleDataSet.Category);
-        // TODO: This line of code loads data into the 'pointOfSaleDataSet.Brand' table. You can move, or remove it, as needed.
-        this.brandTableAdapter.Fill(this.pointOfSaleDataSet.Brand);
+        brands = (await brandData.GetBrands()).ToList();
+        brandComboBox.DataSource = brands;
+        brandComboBox.DisplayMember = "BrandName";
+        brandComboBox.ValueMember = "BrandId";
+
+        categories = (await categoryData.GetCategories()).ToList();
+        categoryComboBox.DataSource = categories;
+        categoryComboBox.DisplayMember = "CategoryName";
+        categoryComboBox.ValueMember = "CategoryId";
+
+        if (brnadName != "" && categoryName != "")
+        {
+            brandComboBox.Text = brnadName;
+            categoryComboBox.Text = categoryName;
+        }
     }
 
     private void TextBoxClear()
@@ -48,62 +67,46 @@ public partial class ProductsEditForm : Form
 
     private void saveButton_Click(object sender, EventArgs e)
     {
-        try
+        if (MessageBox.Show("Are you sure you want to save this Product", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            if (MessageBox.Show("Are you sure you want to save this Product", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                sqlConnection.Open();
+            productModel.ProductName = descriptionTextBox.Text;
 
-                sqlCommand = new SqlCommand("INSERT INTO Product([description], brandId, categoryId, price, tax) VALUES" +
-                    " (@pdescription, @brandId, @categoryId, @price, @tax)", sqlConnection);
+            productModel.Brand = new();
+            productModel.Brand.BrandId = Convert.ToInt32(brandComboBox.SelectedValue);
 
-                sqlCommand.Parameters.AddWithValue("@pdescription", descriptionTextBox.Text);
-                sqlCommand.Parameters.AddWithValue("@brandId", brandComboBox.SelectedValue.ToString());
-                sqlCommand.Parameters.AddWithValue("@categoryId", categoryComboBox.SelectedValue.ToString());
-                sqlCommand.Parameters.AddWithValue("@price", priceNumericUpDown.Text);
-                sqlCommand.Parameters.AddWithValue("@tax", taxNumericUpDown.Text);
+            productModel.Category = new();
+            productModel.Category.CategoryId = Convert.ToInt32(categoryComboBox.SelectedValue);
 
-                sqlCommand.ExecuteNonQuery();
+            productModel.Prize = Convert.ToDecimal(priceNumericUpDown.Text);
+            productModel.Tax = Convert.ToDecimal(taxNumericUpDown.Text);
 
-                sqlConnection.Close();
+            productData.InsertProduct(productModel);
 
-                TextBoxClear();
+            TextBoxClear();
 
-                productsListForm.DataGridRefresh();
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
+            _ = productsListForm.DataGridRefresh();
         }
     }
 
     private void updateButton_Click(object sender, EventArgs e)
     {
-        try
+        if (MessageBox.Show("Are you sure you want to update this Product", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            if (MessageBox.Show("Are you sure you want to update this Product", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand("UPDATE Product SET description = @description, brandId = @brandId, categoryId = @categoryId, price = @price, tax = @tax" +
-                    " where id like @id", sqlConnection);
+            productModel.ProductId = productId;
+            productModel.ProductName = descriptionTextBox.Text;
 
-                sqlCommand.Parameters.AddWithValue("@id", productId);
-                sqlCommand.Parameters.AddWithValue("@description", descriptionTextBox.Text);
-                sqlCommand.Parameters.AddWithValue("@brandId", brandComboBox.SelectedValue.ToString());
-                sqlCommand.Parameters.AddWithValue("@categoryId", categoryComboBox.SelectedValue.ToString());
-                sqlCommand.Parameters.AddWithValue("@price", priceNumericUpDown.Text);
-                sqlCommand.Parameters.AddWithValue("@tax", taxNumericUpDown.Text);
+            productModel.Brand = new();
+            productModel.Brand.BrandId = Convert.ToInt32(brandComboBox.SelectedValue);
 
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
+            productModel.Category = new();
+            productModel.Category.CategoryId = Convert.ToInt32(categoryComboBox.SelectedValue);
 
-                cancelButton_Click(sender, e);
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
+            productModel.Prize = Convert.ToDecimal(priceNumericUpDown.Text);
+            productModel.Tax = Convert.ToDecimal(taxNumericUpDown.Text);
+
+            productData.UpdateProduct(productModel);
+
+            cancelButton_Click(sender, e);
         }
     }
 
@@ -111,6 +114,6 @@ public partial class ProductsEditForm : Form
     {
         Close();
 
-        productsListForm.DataGridRefresh();
+        _ = productsListForm.DataGridRefresh();
     }
 }

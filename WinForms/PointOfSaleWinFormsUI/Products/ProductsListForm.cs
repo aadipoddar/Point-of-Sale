@@ -1,28 +1,29 @@
-﻿using System.Data.SqlClient;
+﻿using WinForms.PointOfSaleLibrary.Data;
+using WinForms.PointOfSaleLibrary.Models;
 
 namespace WinForms.PointOfSale.Products;
 
 public partial class ProductsListForm : Form
 {
-    SqlConnection sqlConnection = new SqlConnection();
-    SqlCommand sqlCommand = new SqlCommand();
-    DBConnection dbConnection = new DBConnection();
+    ProductData productData = new();
+    List<ShowProductModel> products = new();
 
     public ProductsListForm()
     {
         InitializeComponent();
-
-        sqlConnection = new SqlConnection(dbConnection.MyConnection());
     }
 
     private void ProductsListForm_Load(object sender, EventArgs e)
     {
-        DataGridRefresh();
+        _ = DataGridRefresh();
     }
 
-    public void DataGridRefresh()
+    public async Task DataGridRefresh()
     {
-        this.vwShowProductsTableAdapter.Fill(this.pointOfSaleDataSet.vwShowProducts);
+        products = (await productData.GetProducts()).ToList();
+        dataGridViewProducts.DataSource = new BindingSource(products, null);
+
+        dataGridViewProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
@@ -41,6 +42,9 @@ public partial class ProductsListForm : Form
 
         productsEditForm.updateButton.Visible = false;
         productsEditForm.updateButton.Enabled = false;
+
+        productsEditForm.brnadName = "";
+        productsEditForm.categoryName = "";
     }
 
     private void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)
@@ -55,6 +59,7 @@ public partial class ProductsListForm : Form
                 {
                     ProductsEditForm productsEditForm = new ProductsEditForm(this);
                     productsEditForm.Show();
+                    
 
                     productsEditForm.Text = "Edit Product";
 
@@ -66,12 +71,16 @@ public partial class ProductsListForm : Form
 
                     productsEditForm.productId = Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value);
                     productsEditForm.descriptionTextBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
-                    productsEditForm.brandComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[2].Value.ToString();
-                    productsEditForm.categoryComboBox.Text = dataGridViewProducts.Rows[rowIndex].Cells[3].Value.ToString();
+
+                    productsEditForm.brnadName = dataGridViewProducts.Rows[rowIndex].Cells[2].Value.ToString();
+                    productsEditForm.categoryName = dataGridViewProducts.Rows[rowIndex].Cells[3].Value.ToString();
+
                     productsEditForm.priceNumericUpDown.Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[4].Value);
                     productsEditForm.taxNumericUpDown.Value = Convert.ToDecimal(dataGridViewProducts.Rows[rowIndex].Cells[6].Value);
 
                     productsEditForm.descriptionTextBox.Select();
+
+                    _ = productsEditForm.LoadComboBox();
                 }
             }
         }
@@ -86,14 +95,9 @@ public partial class ProductsListForm : Form
                 {
                     if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        sqlConnection.Open();
-                        sqlCommand = new SqlCommand("DELETE FROM Product WHERE id = '" + dataGridViewProducts.Rows[rowIndex].Cells[0].Value.ToString() + "'", sqlConnection);
-                        sqlCommand.ExecuteNonQuery();
-                        sqlConnection.Close();
+                        productData.DeleteProduct(Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value));
 
-                        MessageBox.Show("Record has been successfully deleted");
-
-                        DataGridRefresh();
+                        _ = DataGridRefresh();
 
                         // Select the previous row
                         if (dataGridViewProducts.Rows.Count > 1)
