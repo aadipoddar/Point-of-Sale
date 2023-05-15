@@ -7,7 +7,10 @@ public class CategoryData
     public async Task<IEnumerable<CategoryModel>> GetCategories() =>
         await sqlDataAccess.LoadData<CategoryModel, dynamic>("dbo.spCategory_GetAll", new { });
 
-    public async Task<CategoryModel> GetCategory(int CategoryId) =>
+    public async Task<IEnumerable<CategoryModel>> GetCategoriesBySearch(string CategoryName) =>
+        await sqlDataAccess.LoadData<CategoryModel, dynamic>("dbo.spCategory_GetBySearch", new { CategoryName });
+
+    public async Task<CategoryModel> GetCategoryById(int CategoryId) =>
         (await sqlDataAccess.LoadData<CategoryModel, dynamic>("dbo.spCategory_GetById", new { CategoryId })).FirstOrDefault();
 
     public Task InsertCategory(CategoryModel category) =>

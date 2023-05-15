@@ -7,7 +7,10 @@ public class ProductData
     public async Task<IEnumerable<ShowProductModel>> GetProducts() =>
         await sqlDataAccess.LoadData<ShowProductModel, dynamic>("dbo.spProduct_GetAll", new { });
 
-    public async Task<ProductModel> GetProduct(int ProductId) =>
+    public async Task<IEnumerable<ShowProductModel>> GetProductsBySearch(string ProductName) =>
+        await sqlDataAccess.LoadData<ShowProductModel, dynamic>("dbo.spProduct_GetBySearch", new { ProductName });
+
+    public async Task<ProductModel> GetProductById(int ProductId) =>
         (await sqlDataAccess.LoadData<ProductModel, dynamic>("dbo.spProduct_GetById", new { ProductId })).FirstOrDefault();
 
     public Task InsertProduct(ProductModel product) =>

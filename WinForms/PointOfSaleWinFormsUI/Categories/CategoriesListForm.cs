@@ -1,4 +1,6 @@
-﻿using WinForms.PointOfSaleLibrary.Data;
+﻿using System.Data;
+
+using WinForms.PointOfSaleLibrary.Data;
 using WinForms.PointOfSaleLibrary.Models;
 
 namespace WinForms.PointOfSale.Categories;
@@ -7,6 +9,8 @@ public partial class CategoriesListForm : Form
 {
     CategoryData categoryData = new();
     List<CategoryModel> categories = new();
+
+    DataTable dt;
 
     public CategoriesListForm()
     {
@@ -18,9 +22,9 @@ public partial class CategoriesListForm : Form
         _ = DataGridRefresh();
     }
 
-    public async Task DataGridRefresh()
+    public async Task DataGridRefresh(string searchText = "")
     {
-        categories = (await categoryData.GetCategories()).ToList();
+        categories = (await categoryData.GetCategoriesBySearch(searchText)).ToList();
         dataGridViewCategories.DataSource = new BindingSource(categories, null);
 
         dataGridViewCategories.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -29,7 +33,7 @@ public partial class CategoriesListForm : Form
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        (dataGridViewCategories.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewCategories.Columns[1].DataPropertyName, searchTextBox.Text);
+        _ = DataGridRefresh(searchTextBox.Text);
     }
 
     private void addCategoriesButton_Click(object sender, EventArgs e)

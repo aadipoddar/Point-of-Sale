@@ -28,60 +28,63 @@ partial class CategoriesListForm
     /// </summary>
     private void InitializeComponent()
     {
-        this.searchTextBox = new System.Windows.Forms.TextBox();
-        this.addCategoriesButton = new System.Windows.Forms.Button();
-        this.dataGridViewCategories = new System.Windows.Forms.DataGridView();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).BeginInit();
-        this.SuspendLayout();
+        searchTextBox = new TextBox();
+        addCategoriesButton = new Button();
+        dataGridViewCategories = new DataGridView();
+        ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).BeginInit();
+        SuspendLayout();
         // 
         // searchTextBox
         // 
-        this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.searchTextBox.Location = new System.Drawing.Point(10, 11);
-        this.searchTextBox.Name = "searchTextBox";
-        this.searchTextBox.Size = new System.Drawing.Size(573, 31);
-        this.searchTextBox.TabIndex = 0;
-        this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+        searchTextBox.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        searchTextBox.Location = new Point(12, 13);
+        searchTextBox.Margin = new Padding(4, 3, 4, 3);
+        searchTextBox.Name = "searchTextBox";
+        searchTextBox.Size = new Size(668, 31);
+        searchTextBox.TabIndex = 0;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
         // 
         // addCategoriesButton
         // 
-        this.addCategoriesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.addCategoriesButton.Location = new System.Drawing.Point(697, 8);
-        this.addCategoriesButton.Name = "addCategoriesButton";
-        this.addCategoriesButton.Size = new System.Drawing.Size(175, 40);
-        this.addCategoriesButton.TabIndex = 2;
-        this.addCategoriesButton.Text = "Add Categories";
-        this.addCategoriesButton.UseVisualStyleBackColor = true;
-        this.addCategoriesButton.Click += new System.EventHandler(this.addCategoriesButton_Click);
+        addCategoriesButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        addCategoriesButton.Location = new Point(813, 9);
+        addCategoriesButton.Margin = new Padding(4, 3, 4, 3);
+        addCategoriesButton.Name = "addCategoriesButton";
+        addCategoriesButton.Size = new Size(204, 46);
+        addCategoriesButton.TabIndex = 2;
+        addCategoriesButton.Text = "Add Categories";
+        addCategoriesButton.UseVisualStyleBackColor = true;
+        addCategoriesButton.Click += addCategoriesButton_Click;
         // 
         // dataGridViewCategories
         // 
-        this.dataGridViewCategories.AllowUserToAddRows = false;
-        this.dataGridViewCategories.AllowUserToDeleteRows = false;
-        this.dataGridViewCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridViewCategories.Location = new System.Drawing.Point(2, 61);
-        this.dataGridViewCategories.Name = "dataGridViewCategories";
-        this.dataGridViewCategories.ReadOnly = true;
-        this.dataGridViewCategories.Size = new System.Drawing.Size(879, 399);
-        this.dataGridViewCategories.TabIndex = 1;
-        this.dataGridViewCategories.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCategories_KeyDown);
+        dataGridViewCategories.AllowUserToAddRows = false;
+        dataGridViewCategories.AllowUserToDeleteRows = false;
+        dataGridViewCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridViewCategories.Location = new Point(2, 70);
+        dataGridViewCategories.Margin = new Padding(4, 3, 4, 3);
+        dataGridViewCategories.Name = "dataGridViewCategories";
+        dataGridViewCategories.ReadOnly = true;
+        dataGridViewCategories.Size = new Size(1026, 460);
+        dataGridViewCategories.TabIndex = 1;
+        dataGridViewCategories.KeyDown += dataGridViewCategories_KeyDown;
         // 
         // CategoriesListForm
         // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(884, 461);
-        this.Controls.Add(this.dataGridViewCategories);
-        this.Controls.Add(this.searchTextBox);
-        this.Controls.Add(this.addCategoriesButton);
-        this.Name = "CategoriesListForm";
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "Categories";
-        this.Load += new System.EventHandler(this.CategoriesListForm_Load);
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategories)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1031, 532);
+        Controls.Add(dataGridViewCategories);
+        Controls.Add(searchTextBox);
+        Controls.Add(addCategoriesButton);
+        Margin = new Padding(4, 3, 4, 3);
+        Name = "CategoriesListForm";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Categories";
+        Load += CategoriesListForm_Load;
+        ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).EndInit();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion

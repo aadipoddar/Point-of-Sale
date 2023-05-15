@@ -18,9 +18,9 @@ public partial class BrandsListForm : Form
         _ = DataGridRefresh();
     }
 
-    public async Task DataGridRefresh()
+    public async Task DataGridRefresh(string searchText = "")
     {
-        brands = (await brandData.GetBrands()).ToList();
+        brands = (await brandData.GetBrandsBySearch(searchText)).ToList();
         dataGridViewBrands.DataSource = new BindingSource(brands, null);
 
         dataGridViewBrands.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -29,7 +29,7 @@ public partial class BrandsListForm : Form
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        (dataGridViewBrands.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewBrands.Columns[1].DataPropertyName, searchTextBox.Text);
+        _ = DataGridRefresh(searchTextBox.Text);
     }
 
     private void addBrandsButton_Click(object sender, EventArgs e)

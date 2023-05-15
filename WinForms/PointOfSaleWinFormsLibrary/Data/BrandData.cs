@@ -7,7 +7,10 @@ public class BrandData
     public async Task<IEnumerable<BrandModel>> GetBrands() =>
         await sqlDataAccess.LoadData<BrandModel, dynamic>("dbo.spBrand_GetAll", new { });
 
-    public async Task<BrandModel> GetBrand(int BrandId) =>
+    public async Task<IEnumerable<BrandModel>> GetBrandsBySearch(string BrandName) =>
+        await sqlDataAccess.LoadData<BrandModel, dynamic>("dbo.spBrand_GetBySearch", new { BrandName });
+
+    public async Task<BrandModel> GetBrandById(int BrandId) =>
         (await sqlDataAccess.LoadData<BrandModel, dynamic>("dbo.spBrand_GetById", new { BrandId })).FirstOrDefault();
 
     public Task InsertBrand(BrandModel brand) =>
