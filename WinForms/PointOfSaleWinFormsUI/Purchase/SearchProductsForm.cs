@@ -4,6 +4,9 @@ namespace WinForms.PointOfSale.Purchase;
 
 public partial class SearchProductsForm : Form
 {
+    ProductData productData = new();
+    List<ShowProductModel> products = new();
+
     PurchaseForm purchaseForm;
     SaleForm saleForm;
     bool isSaleForm = false;
@@ -15,6 +18,8 @@ public partial class SearchProductsForm : Form
         this.purchaseForm = purchaseForm;
 
         isSaleForm = false;
+
+        _ = DataGridRefresh();
     }
 
     public SearchProductsForm(SaleForm saleForm)
@@ -26,14 +31,17 @@ public partial class SearchProductsForm : Form
         isSaleForm = true;
     }
 
-    private void SearchProductsForm_Load(object sender, EventArgs e)
+    public async Task DataGridRefresh(string searchText = "")
     {
-        this.vwShowProductsTableAdapter.Fill(this.pointOfSaleDataSet.vwShowProducts);
+        products = (await productData.GetProductsBySearch(searchText)).ToList();
+        dataGridViewProducts.DataSource = new BindingSource(products, null);
+
+        dataGridViewProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
     private void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        (dataGridViewProducts.DataSource as BindingSource).Filter = string.Format("{0} LIKE '%{1}%'", dataGridViewProducts.Columns[1].DataPropertyName, searchTextBox.Text);
+        _ = DataGridRefresh(searchTextBox.Text);
     }
 
     private void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)

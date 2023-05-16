@@ -81,7 +81,6 @@ partial class CategoriesListForm
         Name = "CategoriesListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Categories";
-        Load += CategoriesListForm_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridViewCategories).EndInit();
         ResumeLayout(false);
         PerformLayout();

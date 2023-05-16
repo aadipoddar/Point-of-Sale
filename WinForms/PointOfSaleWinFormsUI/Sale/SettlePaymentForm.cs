@@ -5,9 +5,9 @@ namespace WinForms.PointOfSale.Sale;
 
 public partial class SettlePaymentForm : Form
 {
-    SqlConnection sqlConnection = new SqlConnection();
-    SqlCommand sqlCommand = new SqlCommand();
-    DBConnection dbcon = new DBConnection();
+    SqlConnection sqlConnection = new();
+    SqlCommand sqlCommand = new();
+    DBConnection dbcon = new();
     SqlDataReader sqlDataReader;
 
     SaleForm saleForm;

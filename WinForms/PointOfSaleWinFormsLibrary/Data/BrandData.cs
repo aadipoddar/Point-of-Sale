@@ -2,7 +2,7 @@
 
 public class BrandData
 {
-    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+    SqlDataAccess sqlDataAccess = new();
 
     public async Task<IEnumerable<BrandModel>> GetBrands() =>
         await sqlDataAccess.LoadData<BrandModel, dynamic>("dbo.spBrand_GetAll", new { });

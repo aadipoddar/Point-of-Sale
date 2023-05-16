@@ -1,24 +1,14 @@
-﻿using System.Data;
-
-using WinForms.PointOfSaleLibrary.Data;
-using WinForms.PointOfSaleLibrary.Models;
-
-namespace WinForms.PointOfSale.Categories;
+﻿namespace WinForms.PointOfSale.Categories;
 
 public partial class CategoriesListForm : Form
 {
     CategoryData categoryData = new();
     List<CategoryModel> categories = new();
 
-    DataTable dt;
-
     public CategoriesListForm()
     {
         InitializeComponent();
-    }
 
-    private void CategoriesListForm_Load(object sender, EventArgs e)
-    {
         _ = DataGridRefresh();
     }
 
@@ -38,7 +28,7 @@ public partial class CategoriesListForm : Form
 
     private void addCategoriesButton_Click(object sender, EventArgs e)
     {
-        CategoriesEditForm categoriesEditForm = new CategoriesEditForm(this);
+        CategoriesEditForm categoriesEditForm = new(this);
         categoriesEditForm.Show();
 
         categoriesEditForm.Text = "Add Category";
@@ -60,7 +50,7 @@ public partial class CategoriesListForm : Form
                 DataGridViewCell cell = dataGridViewCategories.Rows[rowIndex].Cells[1];
                 if (cell != null && cell.Value != null)
                 {
-                    CategoriesEditForm categoriesEditForm = new CategoriesEditForm(this);
+                    CategoriesEditForm categoriesEditForm = new(this);
                     categoriesEditForm.Show();
 
                     categoriesEditForm.Text = "Edit Category";

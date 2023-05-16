@@ -28,348 +28,355 @@ partial class SaleForm
     /// </summary>
     private void InitializeComponent()
     {
-        System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-        System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-        System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-        this.dataGridViewCart = new System.Windows.Forms.DataGridView();
-        this.searchProductsButton = new System.Windows.Forms.Button();
-        this.transactionNoTextBox = new System.Windows.Forms.TextBox();
-        this.transactionNoLabel = new System.Windows.Forms.Label();
-        this.saleDateTimePicker = new System.Windows.Forms.DateTimePicker();
-        this.saleDateLabel = new System.Windows.Forms.Label();
-        this.totalLabel = new System.Windows.Forms.Label();
-        this.totalTextBox = new System.Windows.Forms.TextBox();
-        this.paymentButton = new System.Windows.Forms.Button();
-        this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.discountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.discountPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.taxPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.taxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.finalPrize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.quantityInStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.pricePerItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.panel1 = new System.Windows.Forms.Panel();
-        this.subTotalAfterDiscountTextBox = new System.Windows.Forms.TextBox();
-        this.subTotalAfterDiscountLabel = new System.Windows.Forms.Label();
-        this.finalDiscountTextBox = new System.Windows.Forms.TextBox();
-        this.totalTaxTextBox = new System.Windows.Forms.TextBox();
-        this.subTotalBeforeDiscountTextBox = new System.Windows.Forms.TextBox();
-        this.totalTaxLabel = new System.Windows.Forms.Label();
-        this.discountLabel = new System.Windows.Forms.Label();
-        this.subTotalLabel = new System.Windows.Forms.Label();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).BeginInit();
-        this.panel1.SuspendLayout();
-        this.SuspendLayout();
+        DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+        dataGridViewCart = new DataGridView();
+        Id = new DataGridViewTextBoxColumn();
+        productName = new DataGridViewTextBoxColumn();
+        quantity = new DataGridViewTextBoxColumn();
+        price = new DataGridViewTextBoxColumn();
+        discountAmount = new DataGridViewTextBoxColumn();
+        discountPercentage = new DataGridViewTextBoxColumn();
+        taxPercent = new DataGridViewTextBoxColumn();
+        taxAmount = new DataGridViewTextBoxColumn();
+        finalPrize = new DataGridViewTextBoxColumn();
+        quantityInStock = new DataGridViewTextBoxColumn();
+        pricePerItem = new DataGridViewTextBoxColumn();
+        searchProductsButton = new Button();
+        transactionNoTextBox = new TextBox();
+        transactionNoLabel = new Label();
+        saleDateTimePicker = new DateTimePicker();
+        saleDateLabel = new Label();
+        totalLabel = new Label();
+        totalTextBox = new TextBox();
+        paymentButton = new Button();
+        panel1 = new Panel();
+        subTotalAfterDiscountTextBox = new TextBox();
+        subTotalAfterDiscountLabel = new Label();
+        finalDiscountTextBox = new TextBox();
+        totalTaxTextBox = new TextBox();
+        subTotalBeforeDiscountTextBox = new TextBox();
+        totalTaxLabel = new Label();
+        discountLabel = new Label();
+        subTotalLabel = new Label();
+        ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
+        panel1.SuspendLayout();
+        SuspendLayout();
         // 
         // dataGridViewCart
         // 
-        this.dataGridViewCart.AllowUserToAddRows = false;
-        this.dataGridViewCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridViewCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-        this.Id,
-        this.productName,
-        this.quantity,
-        this.price,
-        this.discountAmount,
-        this.discountPercentage,
-        this.taxPercent,
-        this.taxAmount,
-        this.finalPrize,
-        this.quantityInStock,
-        this.pricePerItem});
-        this.dataGridViewCart.Location = new System.Drawing.Point(12, 57);
-        this.dataGridViewCart.Name = "dataGridViewCart";
-        this.dataGridViewCart.Size = new System.Drawing.Size(1310, 463);
-        this.dataGridViewCart.TabIndex = 1;
-        this.dataGridViewCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellEndEdit);
-        // 
-        // searchProductsButton
-        // 
-        this.searchProductsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.searchProductsButton.Location = new System.Drawing.Point(135, 9);
-        this.searchProductsButton.Name = "searchProductsButton";
-        this.searchProductsButton.Size = new System.Drawing.Size(250, 42);
-        this.searchProductsButton.TabIndex = 0;
-        this.searchProductsButton.Text = "Search Products";
-        this.searchProductsButton.UseVisualStyleBackColor = true;
-        this.searchProductsButton.Click += new System.EventHandler(this.searchProductsButton_Click);
-        // 
-        // transactionNoTextBox
-        // 
-        this.transactionNoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.transactionNoTextBox.Location = new System.Drawing.Point(760, 17);
-        this.transactionNoTextBox.Name = "transactionNoTextBox";
-        this.transactionNoTextBox.ReadOnly = true;
-        this.transactionNoTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-        this.transactionNoTextBox.Size = new System.Drawing.Size(211, 26);
-        this.transactionNoTextBox.TabIndex = 14;
-        // 
-        // transactionNoLabel
-        // 
-        this.transactionNoLabel.AutoSize = true;
-        this.transactionNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.transactionNoLabel.Location = new System.Drawing.Point(621, 20);
-        this.transactionNoLabel.Name = "transactionNoLabel";
-        this.transactionNoLabel.Size = new System.Drawing.Size(116, 20);
-        this.transactionNoLabel.TabIndex = 13;
-        this.transactionNoLabel.Text = "Transaction No";
-        // 
-        // saleDateTimePicker
-        // 
-        this.saleDateTimePicker.CustomFormat = "";
-        this.saleDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.saleDateTimePicker.Location = new System.Drawing.Point(1111, 15);
-        this.saleDateTimePicker.Name = "saleDateTimePicker";
-        this.saleDateTimePicker.Size = new System.Drawing.Size(211, 26);
-        this.saleDateTimePicker.TabIndex = 16;
-        this.saleDateTimePicker.Value = new System.DateTime(2023, 4, 25, 18, 29, 32, 0);
-        // 
-        // saleDateLabel
-        // 
-        this.saleDateLabel.AutoSize = true;
-        this.saleDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.saleDateLabel.Location = new System.Drawing.Point(1004, 20);
-        this.saleDateLabel.Name = "saleDateLabel";
-        this.saleDateLabel.Size = new System.Drawing.Size(80, 20);
-        this.saleDateLabel.TabIndex = 15;
-        this.saleDateLabel.Text = "Sale Date";
-        // 
-        // totalLabel
-        // 
-        this.totalLabel.AutoSize = true;
-        this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.totalLabel.Location = new System.Drawing.Point(929, 23);
-        this.totalLabel.Name = "totalLabel";
-        this.totalLabel.Size = new System.Drawing.Size(75, 31);
-        this.totalLabel.TabIndex = 11;
-        this.totalLabel.Text = "Total";
-        // 
-        // totalTextBox
-        // 
-        this.totalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.totalTextBox.Location = new System.Drawing.Point(1099, 20);
-        this.totalTextBox.Name = "totalTextBox";
-        this.totalTextBox.ReadOnly = true;
-        this.totalTextBox.Size = new System.Drawing.Size(203, 38);
-        this.totalTextBox.TabIndex = 12;
-        this.totalTextBox.Text = "0.00";
-        this.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-        // 
-        // paymentButton
-        // 
-        this.paymentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.paymentButton.Location = new System.Drawing.Point(1151, 61);
-        this.paymentButton.Name = "paymentButton";
-        this.paymentButton.Size = new System.Drawing.Size(156, 59);
-        this.paymentButton.TabIndex = 18;
-        this.paymentButton.Text = "Payment";
-        this.paymentButton.UseVisualStyleBackColor = true;
-        this.paymentButton.Click += new System.EventHandler(this.paymentButton_Click);
+        dataGridViewCart.AllowUserToAddRows = false;
+        dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { Id, productName, quantity, price, discountAmount, discountPercentage, taxPercent, taxAmount, finalPrize, quantityInStock, pricePerItem });
+        dataGridViewCart.Location = new Point(13, 67);
+        dataGridViewCart.Margin = new Padding(4, 3, 4, 3);
+        dataGridViewCart.Name = "dataGridViewCart";
+        dataGridViewCart.Size = new Size(1344, 534);
+        dataGridViewCart.TabIndex = 1;
+        dataGridViewCart.CellEndEdit += dataGridViewCart_CellEndEdit;
         // 
         // Id
         // 
-        this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-        this.Id.HeaderText = "ID";
-        this.Id.Name = "Id";
-        this.Id.ReadOnly = true;
-        this.Id.Width = 43;
+        Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        Id.HeaderText = "ID";
+        Id.Name = "Id";
+        Id.ReadOnly = true;
+        Id.Width = 43;
         // 
         // productName
         // 
-        this.productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-        this.productName.HeaderText = "Product Name";
-        this.productName.Name = "productName";
-        this.productName.ReadOnly = true;
+        productName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        productName.HeaderText = "Product Name";
+        productName.Name = "productName";
+        productName.ReadOnly = true;
         // 
         // quantity
         // 
-        dataGridViewCellStyle13.Format = "N0";
-        dataGridViewCellStyle13.NullValue = "1";
-        this.quantity.DefaultCellStyle = dataGridViewCellStyle13;
-        this.quantity.HeaderText = "Quantity";
-        this.quantity.Name = "quantity";
+        dataGridViewCellStyle4.Format = "N0";
+        dataGridViewCellStyle4.NullValue = "1";
+        quantity.DefaultCellStyle = dataGridViewCellStyle4;
+        quantity.HeaderText = "Quantity";
+        quantity.Name = "quantity";
         // 
         // price
         // 
-        this.price.HeaderText = "Price";
-        this.price.Name = "price";
-        this.price.ReadOnly = true;
+        price.HeaderText = "Price";
+        price.Name = "price";
+        price.ReadOnly = true;
         // 
         // discountAmount
         // 
-        dataGridViewCellStyle14.Format = "N0";
-        dataGridViewCellStyle14.NullValue = "0";
-        this.discountAmount.DefaultCellStyle = dataGridViewCellStyle14;
-        this.discountAmount.HeaderText = "Discount Amount";
-        this.discountAmount.Name = "discountAmount";
-        this.discountAmount.Width = 104;
+        dataGridViewCellStyle5.Format = "N0";
+        dataGridViewCellStyle5.NullValue = "0";
+        discountAmount.DefaultCellStyle = dataGridViewCellStyle5;
+        discountAmount.HeaderText = "Discount Amount";
+        discountAmount.Name = "discountAmount";
+        discountAmount.Width = 104;
         // 
         // discountPercentage
         // 
-        dataGridViewCellStyle15.Format = "N2";
-        dataGridViewCellStyle15.NullValue = "0";
-        this.discountPercentage.DefaultCellStyle = dataGridViewCellStyle15;
-        this.discountPercentage.HeaderText = "Discount %";
-        this.discountPercentage.Name = "discountPercentage";
+        dataGridViewCellStyle6.Format = "N2";
+        dataGridViewCellStyle6.NullValue = "0";
+        discountPercentage.DefaultCellStyle = dataGridViewCellStyle6;
+        discountPercentage.HeaderText = "Discount %";
+        discountPercentage.Name = "discountPercentage";
         // 
         // taxPercent
         // 
-        this.taxPercent.HeaderText = "Tax %";
-        this.taxPercent.Name = "taxPercent";
-        this.taxPercent.ReadOnly = true;
+        taxPercent.HeaderText = "Tax %";
+        taxPercent.Name = "taxPercent";
+        taxPercent.ReadOnly = true;
         // 
         // taxAmount
         // 
-        this.taxAmount.HeaderText = "Tax Amount";
-        this.taxAmount.Name = "taxAmount";
-        this.taxAmount.ReadOnly = true;
+        taxAmount.HeaderText = "Tax Amount";
+        taxAmount.Name = "taxAmount";
+        taxAmount.ReadOnly = true;
         // 
         // finalPrize
         // 
-        this.finalPrize.HeaderText = "Final Prize";
-        this.finalPrize.Name = "finalPrize";
-        this.finalPrize.ReadOnly = true;
+        finalPrize.HeaderText = "Final Prize";
+        finalPrize.Name = "finalPrize";
+        finalPrize.ReadOnly = true;
         // 
         // quantityInStock
         // 
-        this.quantityInStock.HeaderText = "Quantity In Stock";
-        this.quantityInStock.Name = "quantityInStock";
-        this.quantityInStock.ReadOnly = true;
-        this.quantityInStock.Visible = false;
+        quantityInStock.HeaderText = "Quantity In Stock";
+        quantityInStock.Name = "quantityInStock";
+        quantityInStock.ReadOnly = true;
+        quantityInStock.Visible = false;
         // 
         // pricePerItem
         // 
-        this.pricePerItem.HeaderText = "Price / Item";
-        this.pricePerItem.Name = "pricePerItem";
-        this.pricePerItem.ReadOnly = true;
+        pricePerItem.HeaderText = "Price / Item";
+        pricePerItem.Name = "pricePerItem";
+        pricePerItem.ReadOnly = true;
+        // 
+        // searchProductsButton
+        // 
+        searchProductsButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        searchProductsButton.Location = new Point(14, 7);
+        searchProductsButton.Margin = new Padding(4, 3, 4, 3);
+        searchProductsButton.Name = "searchProductsButton";
+        searchProductsButton.Size = new Size(292, 48);
+        searchProductsButton.TabIndex = 0;
+        searchProductsButton.Text = "Search Products";
+        searchProductsButton.UseVisualStyleBackColor = true;
+        searchProductsButton.Click += searchProductsButton_Click;
+        // 
+        // transactionNoTextBox
+        // 
+        transactionNoTextBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        transactionNoTextBox.Location = new Point(538, 15);
+        transactionNoTextBox.Margin = new Padding(4, 3, 4, 3);
+        transactionNoTextBox.Name = "transactionNoTextBox";
+        transactionNoTextBox.ReadOnly = true;
+        transactionNoTextBox.RightToLeft = RightToLeft.Yes;
+        transactionNoTextBox.Size = new Size(245, 26);
+        transactionNoTextBox.TabIndex = 14;
+        // 
+        // transactionNoLabel
+        // 
+        transactionNoLabel.AutoSize = true;
+        transactionNoLabel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        transactionNoLabel.Location = new Point(414, 18);
+        transactionNoLabel.Margin = new Padding(4, 0, 4, 0);
+        transactionNoLabel.Name = "transactionNoLabel";
+        transactionNoLabel.Size = new Size(116, 20);
+        transactionNoLabel.TabIndex = 13;
+        transactionNoLabel.Text = "Transaction No";
+        // 
+        // saleDateTimePicker
+        // 
+        saleDateTimePicker.CustomFormat = "";
+        saleDateTimePicker.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        saleDateTimePicker.Location = new Point(1081, 18);
+        saleDateTimePicker.Margin = new Padding(4, 3, 4, 3);
+        saleDateTimePicker.Name = "saleDateTimePicker";
+        saleDateTimePicker.Size = new Size(276, 26);
+        saleDateTimePicker.TabIndex = 16;
+        saleDateTimePicker.Value = new DateTime(2023, 4, 25, 18, 29, 32, 0);
+        // 
+        // saleDateLabel
+        // 
+        saleDateLabel.AutoSize = true;
+        saleDateLabel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        saleDateLabel.Location = new Point(993, 21);
+        saleDateLabel.Margin = new Padding(4, 0, 4, 0);
+        saleDateLabel.Name = "saleDateLabel";
+        saleDateLabel.Size = new Size(80, 20);
+        saleDateLabel.TabIndex = 15;
+        saleDateLabel.Text = "Sale Date";
+        // 
+        // totalLabel
+        // 
+        totalLabel.AutoSize = true;
+        totalLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        totalLabel.Location = new Point(1002, 29);
+        totalLabel.Margin = new Padding(4, 0, 4, 0);
+        totalLabel.Name = "totalLabel";
+        totalLabel.Size = new Size(75, 31);
+        totalLabel.TabIndex = 11;
+        totalLabel.Text = "Total";
+        // 
+        // totalTextBox
+        // 
+        totalTextBox.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        totalTextBox.Location = new Point(1097, 24);
+        totalTextBox.Margin = new Padding(4, 3, 4, 3);
+        totalTextBox.Name = "totalTextBox";
+        totalTextBox.ReadOnly = true;
+        totalTextBox.Size = new Size(236, 38);
+        totalTextBox.TabIndex = 12;
+        totalTextBox.Text = "0.00";
+        totalTextBox.TextAlign = HorizontalAlignment.Right;
+        // 
+        // paymentButton
+        // 
+        paymentButton.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        paymentButton.Location = new Point(1158, 71);
+        paymentButton.Margin = new Padding(4, 3, 4, 3);
+        paymentButton.Name = "paymentButton";
+        paymentButton.Size = new Size(182, 68);
+        paymentButton.TabIndex = 18;
+        paymentButton.Text = "Payment";
+        paymentButton.UseVisualStyleBackColor = true;
+        paymentButton.Click += paymentButton_Click;
         // 
         // panel1
         // 
-        this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-        this.panel1.Controls.Add(this.subTotalAfterDiscountTextBox);
-        this.panel1.Controls.Add(this.totalTextBox);
-        this.panel1.Controls.Add(this.totalLabel);
-        this.panel1.Controls.Add(this.paymentButton);
-        this.panel1.Controls.Add(this.subTotalAfterDiscountLabel);
-        this.panel1.Controls.Add(this.finalDiscountTextBox);
-        this.panel1.Controls.Add(this.totalTaxTextBox);
-        this.panel1.Controls.Add(this.subTotalBeforeDiscountTextBox);
-        this.panel1.Controls.Add(this.totalTaxLabel);
-        this.panel1.Controls.Add(this.discountLabel);
-        this.panel1.Controls.Add(this.subTotalLabel);
-        this.panel1.Location = new System.Drawing.Point(12, 526);
-        this.panel1.Name = "panel1";
-        this.panel1.Size = new System.Drawing.Size(1310, 123);
-        this.panel1.TabIndex = 19;
+        panel1.BackColor = Color.FromArgb(255, 255, 128);
+        panel1.Controls.Add(subTotalAfterDiscountTextBox);
+        panel1.Controls.Add(totalTextBox);
+        panel1.Controls.Add(totalLabel);
+        panel1.Controls.Add(paymentButton);
+        panel1.Controls.Add(subTotalAfterDiscountLabel);
+        panel1.Controls.Add(finalDiscountTextBox);
+        panel1.Controls.Add(totalTaxTextBox);
+        panel1.Controls.Add(subTotalBeforeDiscountTextBox);
+        panel1.Controls.Add(totalTaxLabel);
+        panel1.Controls.Add(discountLabel);
+        panel1.Controls.Add(subTotalLabel);
+        panel1.Location = new Point(13, 607);
+        panel1.Margin = new Padding(4, 3, 4, 3);
+        panel1.Name = "panel1";
+        panel1.Size = new Size(1344, 142);
+        panel1.TabIndex = 19;
         // 
         // subTotalAfterDiscountTextBox
         // 
-        this.subTotalAfterDiscountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.subTotalAfterDiscountTextBox.Location = new System.Drawing.Point(210, 72);
-        this.subTotalAfterDiscountTextBox.Name = "subTotalAfterDiscountTextBox";
-        this.subTotalAfterDiscountTextBox.ReadOnly = true;
-        this.subTotalAfterDiscountTextBox.Size = new System.Drawing.Size(160, 22);
-        this.subTotalAfterDiscountTextBox.TabIndex = 24;
-        this.subTotalAfterDiscountTextBox.Text = "0.00";
-        this.subTotalAfterDiscountTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        subTotalAfterDiscountTextBox.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        subTotalAfterDiscountTextBox.Location = new Point(245, 83);
+        subTotalAfterDiscountTextBox.Margin = new Padding(4, 3, 4, 3);
+        subTotalAfterDiscountTextBox.Name = "subTotalAfterDiscountTextBox";
+        subTotalAfterDiscountTextBox.ReadOnly = true;
+        subTotalAfterDiscountTextBox.Size = new Size(186, 22);
+        subTotalAfterDiscountTextBox.TabIndex = 24;
+        subTotalAfterDiscountTextBox.Text = "0.00";
+        subTotalAfterDiscountTextBox.TextAlign = HorizontalAlignment.Right;
         // 
         // subTotalAfterDiscountLabel
         // 
-        this.subTotalAfterDiscountLabel.AutoSize = true;
-        this.subTotalAfterDiscountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.subTotalAfterDiscountLabel.Location = new System.Drawing.Point(37, 75);
-        this.subTotalAfterDiscountLabel.Name = "subTotalAfterDiscountLabel";
-        this.subTotalAfterDiscountLabel.Size = new System.Drawing.Size(150, 16);
-        this.subTotalAfterDiscountLabel.TabIndex = 23;
-        this.subTotalAfterDiscountLabel.Text = "Sub Total After Discount";
+        subTotalAfterDiscountLabel.AutoSize = true;
+        subTotalAfterDiscountLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        subTotalAfterDiscountLabel.Location = new Point(43, 87);
+        subTotalAfterDiscountLabel.Margin = new Padding(4, 0, 4, 0);
+        subTotalAfterDiscountLabel.Name = "subTotalAfterDiscountLabel";
+        subTotalAfterDiscountLabel.Size = new Size(150, 16);
+        subTotalAfterDiscountLabel.TabIndex = 23;
+        subTotalAfterDiscountLabel.Text = "Sub Total After Discount";
         // 
         // finalDiscountTextBox
         // 
-        this.finalDiscountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.finalDiscountTextBox.Location = new System.Drawing.Point(486, 33);
-        this.finalDiscountTextBox.Name = "finalDiscountTextBox";
-        this.finalDiscountTextBox.ReadOnly = true;
-        this.finalDiscountTextBox.Size = new System.Drawing.Size(174, 22);
-        this.finalDiscountTextBox.TabIndex = 22;
-        this.finalDiscountTextBox.Text = "0.00";
-        this.finalDiscountTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        finalDiscountTextBox.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        finalDiscountTextBox.Location = new Point(567, 38);
+        finalDiscountTextBox.Margin = new Padding(4, 3, 4, 3);
+        finalDiscountTextBox.Name = "finalDiscountTextBox";
+        finalDiscountTextBox.ReadOnly = true;
+        finalDiscountTextBox.Size = new Size(202, 22);
+        finalDiscountTextBox.TabIndex = 22;
+        finalDiscountTextBox.Text = "0.00";
+        finalDiscountTextBox.TextAlign = HorizontalAlignment.Right;
         // 
         // totalTaxTextBox
         // 
-        this.totalTaxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.totalTaxTextBox.Location = new System.Drawing.Point(486, 72);
-        this.totalTaxTextBox.Name = "totalTaxTextBox";
-        this.totalTaxTextBox.ReadOnly = true;
-        this.totalTaxTextBox.Size = new System.Drawing.Size(174, 22);
-        this.totalTaxTextBox.TabIndex = 26;
-        this.totalTaxTextBox.Text = "0.00";
-        this.totalTaxTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        totalTaxTextBox.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        totalTaxTextBox.Location = new Point(567, 83);
+        totalTaxTextBox.Margin = new Padding(4, 3, 4, 3);
+        totalTaxTextBox.Name = "totalTaxTextBox";
+        totalTaxTextBox.ReadOnly = true;
+        totalTaxTextBox.Size = new Size(202, 22);
+        totalTaxTextBox.TabIndex = 26;
+        totalTaxTextBox.Text = "0.00";
+        totalTaxTextBox.TextAlign = HorizontalAlignment.Right;
         // 
         // subTotalBeforeDiscountTextBox
         // 
-        this.subTotalBeforeDiscountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.subTotalBeforeDiscountTextBox.Location = new System.Drawing.Point(210, 29);
-        this.subTotalBeforeDiscountTextBox.Name = "subTotalBeforeDiscountTextBox";
-        this.subTotalBeforeDiscountTextBox.ReadOnly = true;
-        this.subTotalBeforeDiscountTextBox.Size = new System.Drawing.Size(162, 22);
-        this.subTotalBeforeDiscountTextBox.TabIndex = 20;
-        this.subTotalBeforeDiscountTextBox.Text = "0.00";
-        this.subTotalBeforeDiscountTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        subTotalBeforeDiscountTextBox.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        subTotalBeforeDiscountTextBox.Location = new Point(245, 33);
+        subTotalBeforeDiscountTextBox.Margin = new Padding(4, 3, 4, 3);
+        subTotalBeforeDiscountTextBox.Name = "subTotalBeforeDiscountTextBox";
+        subTotalBeforeDiscountTextBox.ReadOnly = true;
+        subTotalBeforeDiscountTextBox.Size = new Size(188, 22);
+        subTotalBeforeDiscountTextBox.TabIndex = 20;
+        subTotalBeforeDiscountTextBox.Text = "0.00";
+        subTotalBeforeDiscountTextBox.TextAlign = HorizontalAlignment.Right;
         // 
         // totalTaxLabel
         // 
-        this.totalTaxLabel.AutoSize = true;
-        this.totalTaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.totalTaxLabel.Location = new System.Drawing.Point(405, 75);
-        this.totalTaxLabel.Name = "totalTaxLabel";
-        this.totalTaxLabel.Size = new System.Drawing.Size(64, 16);
-        this.totalTaxLabel.TabIndex = 25;
-        this.totalTaxLabel.Text = "Total Tax";
+        totalTaxLabel.AutoSize = true;
+        totalTaxLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        totalTaxLabel.Location = new Point(472, 87);
+        totalTaxLabel.Margin = new Padding(4, 0, 4, 0);
+        totalTaxLabel.Name = "totalTaxLabel";
+        totalTaxLabel.Size = new Size(64, 16);
+        totalTaxLabel.TabIndex = 25;
+        totalTaxLabel.Text = "Total Tax";
         // 
         // discountLabel
         // 
-        this.discountLabel.AutoSize = true;
-        this.discountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.discountLabel.Location = new System.Drawing.Point(405, 33);
-        this.discountLabel.Name = "discountLabel";
-        this.discountLabel.Size = new System.Drawing.Size(59, 16);
-        this.discountLabel.TabIndex = 21;
-        this.discountLabel.Text = "Discount";
+        discountLabel.AutoSize = true;
+        discountLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        discountLabel.Location = new Point(472, 38);
+        discountLabel.Margin = new Padding(4, 0, 4, 0);
+        discountLabel.Name = "discountLabel";
+        discountLabel.Size = new Size(59, 16);
+        discountLabel.TabIndex = 21;
+        discountLabel.Text = "Discount";
         // 
         // subTotalLabel
         // 
-        this.subTotalLabel.AutoSize = true;
-        this.subTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.subTotalLabel.Location = new System.Drawing.Point(37, 33);
-        this.subTotalLabel.Name = "subTotalLabel";
-        this.subTotalLabel.Size = new System.Drawing.Size(163, 16);
-        this.subTotalLabel.TabIndex = 19;
-        this.subTotalLabel.Text = "Sub Total Before Discount";
+        subTotalLabel.AutoSize = true;
+        subTotalLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+        subTotalLabel.Location = new Point(43, 38);
+        subTotalLabel.Margin = new Padding(4, 0, 4, 0);
+        subTotalLabel.Name = "subTotalLabel";
+        subTotalLabel.Size = new Size(163, 16);
+        subTotalLabel.TabIndex = 19;
+        subTotalLabel.Text = "Sub Total Before Discount";
         // 
         // SaleForm
         // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(1334, 661);
-        this.Controls.Add(this.panel1);
-        this.Controls.Add(this.saleDateTimePicker);
-        this.Controls.Add(this.saleDateLabel);
-        this.Controls.Add(this.transactionNoTextBox);
-        this.Controls.Add(this.transactionNoLabel);
-        this.Controls.Add(this.searchProductsButton);
-        this.Controls.Add(this.dataGridViewCart);
-        this.Name = "SaleForm";
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "Sale";
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).EndInit();
-        this.panel1.ResumeLayout(false);
-        this.panel1.PerformLayout();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1370, 749);
+        Controls.Add(panel1);
+        Controls.Add(saleDateTimePicker);
+        Controls.Add(saleDateLabel);
+        Controls.Add(transactionNoTextBox);
+        Controls.Add(transactionNoLabel);
+        Controls.Add(searchProductsButton);
+        Controls.Add(dataGridViewCart);
+        Margin = new Padding(4, 3, 4, 3);
+        Name = "SaleForm";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Sale";
+        ((System.ComponentModel.ISupportInitialize)dataGridViewCart).EndInit();
+        panel1.ResumeLayout(false);
+        panel1.PerformLayout();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion

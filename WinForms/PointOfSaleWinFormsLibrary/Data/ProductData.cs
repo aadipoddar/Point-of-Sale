@@ -2,7 +2,7 @@
 
 public class ProductData
 {
-    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+    SqlDataAccess sqlDataAccess = new();
 
     public async Task<IEnumerable<ShowProductModel>> GetProducts() =>
         await sqlDataAccess.LoadData<ShowProductModel, dynamic>("dbo.spProduct_GetAll", new { });

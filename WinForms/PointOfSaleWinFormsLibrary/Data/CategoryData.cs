@@ -2,7 +2,7 @@
 
 public class CategoryData
 {
-    SqlDataAccess sqlDataAccess = new SqlDataAccess();
+    SqlDataAccess sqlDataAccess = new();
 
     public async Task<IEnumerable<CategoryModel>> GetCategories() =>
         await sqlDataAccess.LoadData<CategoryModel, dynamic>("dbo.spCategory_GetAll", new { });

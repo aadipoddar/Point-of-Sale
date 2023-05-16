@@ -6,11 +6,11 @@ namespace WinForms.PointOfSale.Sale;
 
 public partial class SaleForm : Form
 {
-    SqlConnection sqlConnection = new SqlConnection();
-    SqlCommand sqlCommand = new SqlCommand();
+    SqlConnection sqlConnection = new();
+    SqlCommand sqlCommand = new();
     SqlDataReader sqlDataReader;
 
-    DBConnection dbConnection = new DBConnection();
+    DBConnection dbConnection = new();
 
     public SaleForm()
     {
@@ -61,7 +61,7 @@ public partial class SaleForm : Form
 
     private void searchProductsButton_Click(object sender, EventArgs e)
     {
-        SearchProductsForm searchProductsForm = new SearchProductsForm(this);
+        SearchProductsForm searchProductsForm = new(this);
         searchProductsForm.Show();
     }
 
@@ -221,7 +221,7 @@ public partial class SaleForm : Form
 
         else
         {
-            SettlePaymentForm settlePaymentForm = new SettlePaymentForm(this);
+            SettlePaymentForm settlePaymentForm = new(this);
 
             settlePaymentForm.totalTextBox.Text = totalTextBox.Text;
             settlePaymentForm.cashNumericUpDown.Minimum = Convert.ToDecimal(settlePaymentForm.totalTextBox.Text);

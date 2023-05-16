@@ -1,7 +1,4 @@
-﻿using WinForms.PointOfSaleLibrary.Data;
-using WinForms.PointOfSaleLibrary.Models;
-
-namespace WinForms.PointOfSale.Categories;
+﻿namespace WinForms.PointOfSale.Categories;
 
 public partial class CategoriesEditForm : Form
 {

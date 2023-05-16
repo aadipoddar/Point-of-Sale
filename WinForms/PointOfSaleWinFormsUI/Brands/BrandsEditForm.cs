@@ -1,7 +1,4 @@
-﻿using WinForms.PointOfSaleLibrary.Data;
-using WinForms.PointOfSaleLibrary.Models;
-
-namespace WinForms.PointOfSale.Brands;
+﻿namespace WinForms.PointOfSale.Brands;
 
 public partial class BrandsEditForm : Form
 {

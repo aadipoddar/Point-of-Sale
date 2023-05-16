@@ -15,43 +15,43 @@ public partial class AdminDashboardForm : Form
 
     private void manageProductsButton_Click(object sender, EventArgs e)
     {
-        ProductsListForm productsListForm = new ProductsListForm();
+        ProductsListForm productsListForm = new();
         productsListForm.Show();
     }
 
     private void manageCategoriesButton_Click(object sender, EventArgs e)
     {
-        CategoriesListForm categoriesListForm = new CategoriesListForm();
+        CategoriesListForm categoriesListForm = new();
         categoriesListForm.Show();
     }
 
     private void manageBrandButton_Click(object sender, EventArgs e)
     {
-        BrandsListForm brandsListForm = new BrandsListForm();
+        BrandsListForm brandsListForm = new();
         brandsListForm.Show();
     }
 
     private void purchaseButton_Click(object sender, EventArgs e)
     {
-        PurchaseForm purchaseForm = new PurchaseForm();
+        PurchaseForm purchaseForm = new();
         purchaseForm.Show();
     }
 
     private void purchaseHistoryButton_Click(object sender, EventArgs e)
     {
-        PurchaseHistoryForm purchaseHistoryForm = new PurchaseHistoryForm();
+        PurchaseHistoryForm purchaseHistoryForm = new();
         purchaseHistoryForm.Show();
     }
 
     private void cashierDashboardButton_Click(object sender, EventArgs e)
     {
-        SaleForm saleForm = new SaleForm();
+        SaleForm saleForm = new();
         saleForm.Show();
     }
 
     private void saleHistoryButton_Click(object sender, EventArgs e)
     {
-        SaleHistory saleHistory = new SaleHistory();
+        SaleHistory saleHistory = new();
         saleHistory.Show();
     }
 }

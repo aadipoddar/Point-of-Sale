@@ -1,7 +1,4 @@
-﻿using WinForms.PointOfSaleLibrary.Data;
-using WinForms.PointOfSaleLibrary.Models;
-
-namespace WinForms.PointOfSale.Brands;
+﻿namespace WinForms.PointOfSale.Brands;
 
 public partial class BrandsListForm : Form
 {
@@ -11,10 +8,7 @@ public partial class BrandsListForm : Form
     public BrandsListForm()
     {
         InitializeComponent();
-    }
 
-    private void BrandsListForm_Load(object sender, EventArgs e)
-    {
         _ = DataGridRefresh();
     }
 
@@ -34,7 +28,7 @@ public partial class BrandsListForm : Form
 
     private void addBrandsButton_Click(object sender, EventArgs e)
     {
-        BrandsEditForm brandsEditForm = new BrandsEditForm(this);
+        BrandsEditForm brandsEditForm = new(this);
         brandsEditForm.Show();
 
         brandsEditForm.Text = "Add Brand";
@@ -56,7 +50,7 @@ public partial class BrandsListForm : Form
                 DataGridViewCell cell = dataGridViewBrands.Rows[rowIndex].Cells[1];
                 if (cell != null && cell.Value != null)
                 {
-                    BrandsEditForm brandsEditForm = new BrandsEditForm(this);
+                    BrandsEditForm brandsEditForm = new(this);
                     brandsEditForm.Show();
 
                     brandsEditForm.Text = "Edit Brand";

@@ -4,9 +4,13 @@ namespace WinForms.PointOfSale.Purchase;
 
 public partial class PurchaseForm : Form
 {
-    SqlConnection sqlConnection = new SqlConnection();
-    SqlCommand sqlCommand = new SqlCommand();
-    DBConnection dbcon = new DBConnection();
+    PurchaseData purchaseData = new();
+    TransactionNoModel transactionNoModel = new();
+
+
+    SqlConnection sqlConnection = new();
+    SqlCommand sqlCommand = new();
+    DBConnection dbcon = new();
     SqlDataReader sqlDataReader;
 
     public PurchaseForm()
@@ -16,56 +20,37 @@ public partial class PurchaseForm : Form
         sqlConnection = new SqlConnection(dbcon.MyConnection());
 
         purchaseDateTimePicker.Value = DateTime.Now;
-        GetTransactionNo();
     }
 
 
-    private void purchaseDateTimePicker_ValueChanged(object sender, EventArgs e)
+    private async void purchaseDateTimePicker_ValueChanged(object sender, EventArgs e)
     {
-        GetTransactionNo();
+        transactionNoTextBox.Text = "";
+
+        await GetTransactionNoAsync(purchaseDateTimePicker.Value.ToString("yyyyMMdd"));
     }
 
-    private void GetTransactionNo()
+    private async Task GetTransactionNoAsync(string saleDate)
     {
-        try
+        transactionNoModel = await purchaseData.GetTransactionNo(purchaseDateTimePicker.Value.ToString("yyyyMMdd"));
+
+        if (transactionNoModel is not null)
         {
-            string saleDate = purchaseDateTimePicker.Value.ToString("yyyyMMdd");
-            string transactionNo = "";
-            int count;
-
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SELECT TOP 1 transactionNo FROM Purchase WHERE transactionNo LIKE 'P" + saleDate + "%' ORDER BY id DESC", sqlConnection);
-            sqlDataReader = sqlCommand.ExecuteReader();
-            sqlDataReader.Read();
-
-            if (sqlDataReader.HasRows)
+            if (transactionNoModel.transactionNo is not null)
             {
-                transactionNo = sqlDataReader[0].ToString();
-                string i = transactionNo.Substring(9);
-                count = int.Parse(i);
-                transactionNoTextBox.Text = transactionNo.Substring(0, 9) + (count + 1);
+                string i = transactionNoModel.transactionNo.Substring(9);
+                int count = int.Parse(i);
+                transactionNoTextBox.Text = transactionNoModel.transactionNo.Substring(0, 9) + (count + 1);
             }
-
-            else
-            {
-                transactionNo = "P" + saleDate + "1001";
-                transactionNoTextBox.Text = transactionNo;
-            }
-
-            sqlDataReader.Close();
-            sqlConnection.Close();
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-            throw;
-        }
+
+        else
+            transactionNoTextBox.Text = "P" + saleDate + "1001";
     }
-
 
     private void searchProductsButton_Click(object sender, EventArgs e)
     {
-        SearchProductsForm searchProductsForm = new SearchProductsForm(this);
+        SearchProductsForm searchProductsForm = new(this);
         searchProductsForm.Show();
     }
 
@@ -79,46 +64,46 @@ public partial class PurchaseForm : Form
 
     private void dataGridViewCart_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (dataGridViewCart.Rows.Count > 0)
-        {
-            int rowIndex = dataGridViewCart.CurrentCell.RowIndex;
-            if (rowIndex >= 0 && rowIndex < dataGridViewCart.Rows.Count)
-            {
-                DataGridViewCell cell = dataGridViewCart.Rows[rowIndex].Cells[1];
-                if (cell != null && cell.Value != null)
-                {
-                    updateProductPanel.Visible = true;
+        //if (dataGridViewCart.Rows.Count > 0)
+        //{
+        //    int rowIndex = dataGridViewCart.CurrentCell.RowIndex;
+        //    if (rowIndex >= 0 && rowIndex < dataGridViewCart.Rows.Count)
+        //    {
+        //        DataGridViewCell cell = dataGridViewCart.Rows[rowIndex].Cells[1];
+        //        if (cell != null && cell.Value != null)
+        //        {
+        //            updateProductPanel.Visible = true;
 
-                    quantityNumericUpDown.Value = Convert.ToInt16(dataGridViewCart.Rows[rowIndex].Cells[2].Value);
-                    pricePerQuantityNumericUpDown.Value = Convert.ToDecimal(dataGridViewCart.Rows[rowIndex].Cells[3].Value);
-                    totalPriceProductNumericUpDown.Value = Convert.ToDecimal(dataGridViewCart.Rows[rowIndex].Cells[5].Value);
+        //            quantityNumericUpDown.Value = Convert.ToInt16(dataGridViewCart.Rows[rowIndex].Cells[2].Value);
+        //            pricePerQuantityNumericUpDown.Value = Convert.ToDecimal(dataGridViewCart.Rows[rowIndex].Cells[3].Value);
+        //            totalPriceProductNumericUpDown.Value = Convert.ToDecimal(dataGridViewCart.Rows[rowIndex].Cells[5].Value);
 
-                    quantityNumericUpDown.Focus();
-                }
-            }
-        }
+        //            quantityNumericUpDown.Focus();
+        //        }
+        //    }
+        //}
     }
 
 
     private void quantityNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        totalPriceProductNumericUpDown.Value = quantityNumericUpDown.Value * pricePerQuantityNumericUpDown.Value;
-        dataGridViewCart.CurrentRow.Cells[2].Value = quantityNumericUpDown.Value;
-        UpdateTotal();
+        //totalPriceProductNumericUpDown.Value = quantityNumericUpDown.Value * pricePerQuantityNumericUpDown.Value;
+        //dataGridViewCart.CurrentRow.Cells[2].Value = quantityNumericUpDown.Value;
+        //UpdateTotal();
     }
 
     private void pricePerQuantityNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        totalPriceProductNumericUpDown.Value = quantityNumericUpDown.Value * pricePerQuantityNumericUpDown.Value;
-        dataGridViewCart.CurrentRow.Cells[3].Value = pricePerQuantityNumericUpDown.Value;
-        UpdateTotal();
+        //totalPriceProductNumericUpDown.Value = quantityNumericUpDown.Value * pricePerQuantityNumericUpDown.Value;
+        //dataGridViewCart.CurrentRow.Cells[3].Value = pricePerQuantityNumericUpDown.Value;
+        //UpdateTotal();
     }
 
     private void totalPriceProductNumericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        pricePerQuantityNumericUpDown.Value = totalPriceProductNumericUpDown.Value / quantityNumericUpDown.Value;
-        dataGridViewCart.CurrentRow.Cells[5].Value = totalPriceProductNumericUpDown.Value;
-        UpdateTotal();
+        //pricePerQuantityNumericUpDown.Value = totalPriceProductNumericUpDown.Value / quantityNumericUpDown.Value;
+        //dataGridViewCart.CurrentRow.Cells[5].Value = totalPriceProductNumericUpDown.Value;
+        //UpdateTotal();
     }
 
     private void deleteProduct_Click(object sender, EventArgs e)
@@ -292,16 +277,16 @@ public partial class PurchaseForm : Form
 
     private void TextBoxClear()
     {
-        dataGridViewCart.Rows.Clear();
-        transactionNoTextBox.Clear();
-        purchaseDateTimePicker.Value = DateTime.Now;
-        purchaseByTextBox.Clear();
-        subTotalTextBox.Clear();
-        totalTaxTextBox.Clear();
-        totalTextBox.Clear();
+        //dataGridViewCart.Rows.Clear();
+        //transactionNoTextBox.Clear();
+        //purchaseDateTimePicker.Value = DateTime.Now;
+        //purchaseByTextBox.Clear();
+        //subTotalTextBox.Clear();
+        //totalTaxTextBox.Clear();
+        //totalTextBox.Clear();
 
-        updateProductPanel.Visible = false;
+        //updateProductPanel.Visible = false;
 
-        GetTransactionNo();
+        //GetTransactionNo();
     }
 }

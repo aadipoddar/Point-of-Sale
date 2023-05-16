@@ -81,7 +81,6 @@ partial class BrandsListForm
         Name = "BrandsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Brands";
-        Load += BrandsListForm_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridViewBrands).EndInit();
         ResumeLayout(false);
         PerformLayout();

@@ -81,7 +81,6 @@ partial class ProductsListForm
         Name = "ProductsListForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Products";
-        Load += ProductsListForm_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
         ResumeLayout(false);
         PerformLayout();
