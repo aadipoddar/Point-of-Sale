@@ -9,7 +9,7 @@ public partial class CategoriesListForm : Form
     {
         InitializeComponent();
 
-        _ = DataGridRefresh();
+        Task task = DataGridRefresh();
     }
 
     public async Task DataGridRefresh(string searchText = "")
@@ -21,9 +21,9 @@ public partial class CategoriesListForm : Form
         dataGridViewCategories.Columns[1].HeaderText = "Category Name";
     }
 
-    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    private async void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        _ = DataGridRefresh(searchTextBox.Text);
+        await DataGridRefresh(searchTextBox.Text);
     }
 
     private void addCategoriesButton_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ public partial class CategoriesListForm : Form
         categoriesEditForm.updateButton.Visible = false;
     }
 
-    private void dataGridViewCategories_KeyDown(object sender, KeyEventArgs e)
+    private async void dataGridViewCategories_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter)
         {
@@ -79,9 +79,9 @@ public partial class CategoriesListForm : Form
                 {
                     if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        categoryData.DeleteCategory(Convert.ToInt32(dataGridViewCategories.Rows[rowIndex].Cells[0].Value));
+                        await categoryData.DeleteCategory(Convert.ToInt32(dataGridViewCategories.Rows[rowIndex].Cells[0].Value));
 
-                        _ = DataGridRefresh();
+                        await DataGridRefresh();
 
                         // Select the previous row
                         if (dataGridViewCategories.Rows.Count > 1)

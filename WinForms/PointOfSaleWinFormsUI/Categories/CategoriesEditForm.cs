@@ -28,36 +28,36 @@ public partial class CategoriesEditForm : Form
         categoryTextBox.Focus();
     }
 
-    private void saveButton_Click(object sender, EventArgs e)
+    private async void saveButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to save this Category", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
             categoryModel.CategoryName = categoryTextBox.Text;
 
-            categoryData.InsertCategory(categoryModel);
+            await categoryData.InsertCategory(categoryModel);
 
             TextBoxClear();
 
-            _ = categoriesListForm.DataGridRefresh();
+            await categoriesListForm.DataGridRefresh();
         }
     }
 
-    private void updateButton_Click(object sender, EventArgs e)
+    private async void updateButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to update this Category name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
             categoryModel.CategoryId = categoryId;
             categoryModel.CategoryName = categoryTextBox.Text;
 
-            categoryData.UpdateCategory(categoryModel);
+            await categoryData.UpdateCategory(categoryModel);
 
             cancelButton_Click(sender, e);
         }
     }
 
-    private void cancelButton_Click(object sender, EventArgs e)
+    private async void cancelButton_Click(object sender, EventArgs e)
     {
         Close();
-        _ = categoriesListForm.DataGridRefresh();
+        await categoriesListForm.DataGridRefresh();
     }
 }

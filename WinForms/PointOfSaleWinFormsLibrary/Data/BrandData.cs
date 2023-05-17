@@ -13,12 +13,12 @@ public class BrandData
     public async Task<BrandModel> GetBrandById(int BrandId) =>
         (await sqlDataAccess.LoadData<BrandModel, dynamic>("dbo.spBrand_GetById", new { BrandId })).FirstOrDefault();
 
-    public Task InsertBrand(BrandModel brand) =>
-        sqlDataAccess.SaveData("dbo.spBrand_Insert", new { brand.BrandName });
+    public async Task InsertBrand(BrandModel brand) =>
+        await sqlDataAccess.SaveData("dbo.spBrand_Insert", new { brand.BrandName });
 
-    public Task UpdateBrand(BrandModel brand) =>
-        sqlDataAccess.SaveData("dbo.spBrand_Update", brand);
+    public async Task UpdateBrand(BrandModel brand) =>
+        await sqlDataAccess.SaveData("dbo.spBrand_Update", brand);
 
-    public Task DeleteBrand(int BrandId) =>
-        sqlDataAccess.SaveData("dbo.spBrand_Delete", new { BrandId });
+    public async Task DeleteBrand(int BrandId) =>
+        await sqlDataAccess.SaveData("dbo.spBrand_Delete", new { BrandId });
 }

@@ -9,7 +9,7 @@ public partial class ProductsListForm : Form
     {
         InitializeComponent();
 
-        _ = DataGridRefresh();
+        Task task = DataGridRefresh();
     }
 
     public async Task DataGridRefresh(string searchText = "")
@@ -20,9 +20,9 @@ public partial class ProductsListForm : Form
         dataGridViewProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
-    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    private async void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        _ = DataGridRefresh(searchTextBox.Text);
+        await DataGridRefresh(searchTextBox.Text);
     }
 
     private void addProductsButton_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ public partial class ProductsListForm : Form
         productsEditForm.categoryName = "";
     }
 
-    private void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)
+    private async void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter)
         {
@@ -74,7 +74,7 @@ public partial class ProductsListForm : Form
 
                     productsEditForm.descriptionTextBox.Select();
 
-                    _ = productsEditForm.LoadComboBox();
+                    await productsEditForm.LoadComboBox();
                 }
             }
         }
@@ -89,9 +89,9 @@ public partial class ProductsListForm : Form
                 {
                     if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        productData.DeleteProduct(Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value));
+                        await productData.DeleteProduct(Convert.ToInt32(dataGridViewProducts.Rows[rowIndex].Cells[0].Value));
 
-                        _ = DataGridRefresh();
+                        await DataGridRefresh();
 
                         // Select the previous row
                         if (dataGridViewProducts.Rows.Count > 1)

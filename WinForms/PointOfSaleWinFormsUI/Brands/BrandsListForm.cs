@@ -9,7 +9,7 @@ public partial class BrandsListForm : Form
     {
         InitializeComponent();
 
-        _ = DataGridRefresh();
+        Task task = DataGridRefresh();
     }
 
     public async Task DataGridRefresh(string searchText = "")
@@ -21,9 +21,9 @@ public partial class BrandsListForm : Form
         dataGridViewBrands.Columns[1].HeaderText = "Brand Name";
     }
 
-    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    private async void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        _ = DataGridRefresh(searchTextBox.Text);
+        await DataGridRefresh(searchTextBox.Text);
     }
 
     private void addBrandsButton_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ public partial class BrandsListForm : Form
         brandsEditForm.saveButton.Visible = true;
     }
 
-    private void dataGridViewBrands_KeyDown(object sender, KeyEventArgs e)
+    private async void dataGridViewBrands_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter)
         {
@@ -79,9 +79,9 @@ public partial class BrandsListForm : Form
                 {
                     if (MessageBox.Show("Are you sure you want to Delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        brandData.DeleteBrand(Convert.ToInt32(dataGridViewBrands.Rows[rowIndex].Cells[0].Value));
+                        await brandData.DeleteBrand(Convert.ToInt32(dataGridViewBrands.Rows[rowIndex].Cells[0].Value));
 
-                        _ = DataGridRefresh();
+                        await DataGridRefresh();
 
                         // Select the previous row
                         if (dataGridViewBrands.Rows.Count > 1)

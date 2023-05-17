@@ -13,12 +13,12 @@ public class CategoryData
     public async Task<CategoryModel> GetCategoryById(int CategoryId) =>
         (await sqlDataAccess.LoadData<CategoryModel, dynamic>("dbo.spCategory_GetById", new { CategoryId })).FirstOrDefault();
 
-    public Task InsertCategory(CategoryModel category) =>
-        sqlDataAccess.SaveData("dbo.spCategory_Insert", new { category.CategoryName });
+    public async Task InsertCategory(CategoryModel category) =>
+        await sqlDataAccess.SaveData("dbo.spCategory_Insert", new { category.CategoryName });
 
-    public Task UpdateCategory(CategoryModel category) =>
-        sqlDataAccess.SaveData("dbo.spCategory_Update", category);
+    public async Task UpdateCategory(CategoryModel category) =>
+        await sqlDataAccess.SaveData("dbo.spCategory_Update", category);
 
-    public Task DeleteCategory(int CategoryId) =>
-        sqlDataAccess.SaveData("dbo.spCategory_Delete", new { CategoryId });
+    public async Task DeleteCategory(int CategoryId) =>
+        await sqlDataAccess.SaveData("dbo.spCategory_Delete", new { CategoryId });
 }

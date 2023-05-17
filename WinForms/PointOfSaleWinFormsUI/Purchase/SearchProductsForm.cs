@@ -19,7 +19,7 @@ public partial class SearchProductsForm : Form
 
         isSaleForm = false;
 
-        _ = DataGridRefresh();
+        Task task = DataGridRefresh();
     }
 
     public SearchProductsForm(SaleForm saleForm)
@@ -39,9 +39,9 @@ public partial class SearchProductsForm : Form
         dataGridViewProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
-    private void searchTextBox_TextChanged(object sender, EventArgs e)
+    private async void searchTextBox_TextChanged(object sender, EventArgs e)
     {
-        _ = DataGridRefresh(searchTextBox.Text);
+        await DataGridRefresh(searchTextBox.Text);
     }
 
     private void dataGridViewProducts_KeyDown(object sender, KeyEventArgs e)
@@ -136,8 +136,8 @@ public partial class SearchProductsForm : Form
         purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[1].Value = dataGridViewProducts.Rows[rowIndex].Cells[1].Value.ToString();
         purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[2].Value = quantityNumericUpDown.Value;
         purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[3].Value = dataGridViewProducts.Rows[rowIndex].Cells[4].Value.ToString();
-        purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[4].Value = dataGridViewProducts.Rows[rowIndex].Cells[6].Value.ToString();
-        purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[5].Value = 0;
+        purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[4].Value = 0;
+        purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[5].Value = dataGridViewProducts.Rows[rowIndex].Cells[6].Value.ToString();
         purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[6].Value = 0;
         purchaseForm.dataGridViewCart.Rows[purchaseRowIndex].Cells[7].Value = 0;
 

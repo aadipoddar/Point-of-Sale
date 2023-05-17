@@ -13,12 +13,12 @@ public class ProductData
     public async Task<ProductModel> GetProductById(int ProductId) =>
         (await sqlDataAccess.LoadData<ProductModel, dynamic>("dbo.spProduct_GetById", new { ProductId })).FirstOrDefault();
 
-    public Task InsertProduct(ProductModel product) =>
-        sqlDataAccess.SaveData("dbo.spProduct_Insert", new { product.ProductName, product.Brand.BrandId, product.Category.CategoryId, product.Prize, product.Tax });
+    public async Task InsertProduct(ProductModel product) =>
+        await sqlDataAccess.SaveData("dbo.spProduct_Insert", new { product.ProductName, product.Brand.BrandId, product.Category.CategoryId, product.Prize, product.Tax });
 
-    public Task UpdateProduct(ProductModel product) =>
-        sqlDataAccess.SaveData("dbo.spProduct_Update", new { product.ProductId, product.ProductName, product.Brand.BrandId, product.Category.CategoryId, product.Prize, product.Tax });
+    public async Task UpdateProduct(ProductModel product) =>
+        await sqlDataAccess.SaveData("dbo.spProduct_Update", new { product.ProductId, product.ProductName, product.Brand.BrandId, product.Category.CategoryId, product.Prize, product.Tax });
 
-    public Task DeleteProduct(int ProductId) =>
-        sqlDataAccess.SaveData("dbo.spProduct_Delete", new { ProductId });
+    public async Task DeleteProduct(int ProductId) =>
+        await sqlDataAccess.SaveData("dbo.spProduct_Delete", new { ProductId });
 }

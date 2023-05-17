@@ -29,14 +29,6 @@ partial class PurchaseForm
     private void InitializeComponent()
     {
         dataGridViewCart = new DataGridView();
-        productId = new DataGridViewTextBoxColumn();
-        productName = new DataGridViewTextBoxColumn();
-        quantity = new DataGridViewTextBoxColumn();
-        PricePerQuantity = new DataGridViewTextBoxColumn();
-        TaxPercentage = new DataGridViewTextBoxColumn();
-        SubTotal = new DataGridViewTextBoxColumn();
-        TaxAmount = new DataGridViewTextBoxColumn();
-        Total = new DataGridViewTextBoxColumn();
         searchProductsButton = new Button();
         saveButton = new Button();
         totalTextBox = new TextBox();
@@ -52,6 +44,14 @@ partial class PurchaseForm
         purchaseByTextBox = new TextBox();
         purchaseByLabel = new Label();
         panel1 = new Panel();
+        productId = new DataGridViewTextBoxColumn();
+        productName = new DataGridViewTextBoxColumn();
+        quantity = new DataGridViewTextBoxColumn();
+        PricePerQuantity = new DataGridViewTextBoxColumn();
+        SubTotal = new DataGridViewTextBoxColumn();
+        TaxPercentage = new DataGridViewTextBoxColumn();
+        TaxAmount = new DataGridViewTextBoxColumn();
+        Total = new DataGridViewTextBoxColumn();
         ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -60,56 +60,14 @@ partial class PurchaseForm
         // 
         dataGridViewCart.AllowUserToAddRows = false;
         dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { productId, productName, quantity, PricePerQuantity, TaxPercentage, SubTotal, TaxAmount, Total });
+        dataGridViewCart.Columns.AddRange(new DataGridViewColumn[] { productId, productName, quantity, PricePerQuantity, SubTotal, TaxPercentage, TaxAmount, Total });
         dataGridViewCart.Location = new Point(13, 100);
         dataGridViewCart.Margin = new Padding(4, 3, 4, 3);
         dataGridViewCart.Name = "dataGridViewCart";
         dataGridViewCart.Size = new Size(1344, 489);
         dataGridViewCart.TabIndex = 7;
-        dataGridViewCart.CellClick += dataGridViewCart_CellClick;
+        dataGridViewCart.CellEndEdit += dataGridViewCart_CellEndEdit;
         dataGridViewCart.KeyDown += dataGridViewPurchase_KeyDown;
-        // 
-        // productId
-        // 
-        productId.HeaderText = "Product ID";
-        productId.Name = "productId";
-        productId.Visible = false;
-        // 
-        // productName
-        // 
-        productName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        productName.HeaderText = "Product Name";
-        productName.Name = "productName";
-        // 
-        // quantity
-        // 
-        quantity.HeaderText = "Quantity";
-        quantity.Name = "quantity";
-        // 
-        // PricePerQuantity
-        // 
-        PricePerQuantity.HeaderText = "Price/Quantity";
-        PricePerQuantity.Name = "PricePerQuantity";
-        // 
-        // TaxPercentage
-        // 
-        TaxPercentage.HeaderText = "Tax %";
-        TaxPercentage.Name = "TaxPercentage";
-        // 
-        // SubTotal
-        // 
-        SubTotal.HeaderText = "Sub Total";
-        SubTotal.Name = "SubTotal";
-        // 
-        // TaxAmount
-        // 
-        TaxAmount.HeaderText = "Tax";
-        TaxAmount.Name = "TaxAmount";
-        // 
-        // Total
-        // 
-        Total.HeaderText = "Total";
-        Total.Name = "Total";
         // 
         // searchProductsButton
         // 
@@ -286,6 +244,52 @@ partial class PurchaseForm
         panel1.Size = new Size(1344, 142);
         panel1.TabIndex = 34;
         // 
+        // productId
+        // 
+        productId.HeaderText = "Product ID";
+        productId.Name = "productId";
+        productId.ReadOnly = true;
+        productId.Visible = false;
+        // 
+        // productName
+        // 
+        productName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        productName.HeaderText = "Product Name";
+        productName.Name = "productName";
+        productName.ReadOnly = true;
+        // 
+        // quantity
+        // 
+        quantity.HeaderText = "Quantity";
+        quantity.Name = "quantity";
+        // 
+        // PricePerQuantity
+        // 
+        PricePerQuantity.HeaderText = "Price/Quantity";
+        PricePerQuantity.Name = "PricePerQuantity";
+        // 
+        // SubTotal
+        // 
+        SubTotal.HeaderText = "Sub Total";
+        SubTotal.Name = "SubTotal";
+        // 
+        // TaxPercentage
+        // 
+        TaxPercentage.HeaderText = "Tax %";
+        TaxPercentage.Name = "TaxPercentage";
+        // 
+        // TaxAmount
+        // 
+        TaxAmount.HeaderText = "Tax";
+        TaxAmount.Name = "TaxAmount";
+        TaxAmount.ReadOnly = true;
+        // 
+        // Total
+        // 
+        Total.HeaderText = "Total";
+        Total.Name = "Total";
+        Total.ReadOnly = true;
+        // 
         // PurchaseForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -327,13 +331,13 @@ partial class PurchaseForm
     private System.Windows.Forms.Label transactionNoLabel;
     public System.Windows.Forms.TextBox purchaseByTextBox;
     private System.Windows.Forms.Label purchaseByLabel;
-    private System.Windows.Forms.DataGridViewTextBoxColumn productId;
-    private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-    private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-    private System.Windows.Forms.DataGridViewTextBoxColumn PricePerQuantity;
-    private System.Windows.Forms.DataGridViewTextBoxColumn TaxPercentage;
-    private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
-    private System.Windows.Forms.DataGridViewTextBoxColumn TaxAmount;
-    private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     private Panel panel1;
+    private DataGridViewTextBoxColumn productId;
+    private DataGridViewTextBoxColumn productName;
+    private DataGridViewTextBoxColumn quantity;
+    private DataGridViewTextBoxColumn PricePerQuantity;
+    private DataGridViewTextBoxColumn SubTotal;
+    private DataGridViewTextBoxColumn TaxPercentage;
+    private DataGridViewTextBoxColumn TaxAmount;
+    private DataGridViewTextBoxColumn Total;
 }

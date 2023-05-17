@@ -23,7 +23,7 @@ public partial class ProductsEditForm : Form
 
         this.productsListForm = productsListForm;
 
-        _ = LoadComboBox();
+        Task task = LoadComboBox();
     }
 
     public async Task LoadComboBox()
@@ -62,7 +62,7 @@ public partial class ProductsEditForm : Form
         descriptionTextBox.Focus();
     }
 
-    private void saveButton_Click(object sender, EventArgs e)
+    private async void saveButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to save this Product", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
@@ -77,15 +77,15 @@ public partial class ProductsEditForm : Form
             productModel.Prize = Convert.ToDecimal(priceNumericUpDown.Text);
             productModel.Tax = Convert.ToDecimal(taxNumericUpDown.Text);
 
-            productData.InsertProduct(productModel);
+            await productData.InsertProduct(productModel);
 
             TextBoxClear();
 
-            _ = productsListForm.DataGridRefresh();
+            await productsListForm.DataGridRefresh();
         }
     }
 
-    private void updateButton_Click(object sender, EventArgs e)
+    private async void updateButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to update this Product", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
@@ -101,16 +101,16 @@ public partial class ProductsEditForm : Form
             productModel.Prize = Convert.ToDecimal(priceNumericUpDown.Text);
             productModel.Tax = Convert.ToDecimal(taxNumericUpDown.Text);
 
-            productData.UpdateProduct(productModel);
+            await productData.UpdateProduct(productModel);
 
             cancelButton_Click(sender, e);
         }
     }
 
-    private void cancelButton_Click(object sender, EventArgs e)
+    private async void cancelButton_Click(object sender, EventArgs e)
     {
         Close();
 
-        _ = productsListForm.DataGridRefresh();
+        await productsListForm.DataGridRefresh();
     }
 }

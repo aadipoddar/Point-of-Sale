@@ -28,36 +28,36 @@ public partial class BrandsEditForm : Form
         brandTextBox.Focus();
     }
 
-    private void saveButton_Click(object sender, EventArgs e)
+    private async void saveButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to save this Brand", "Save Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
             brandModel.BrandName = brandTextBox.Text;
 
-            brandData.InsertBrand(brandModel);
+            await brandData.InsertBrand(brandModel);
 
             TextBoxClear();
 
-            _ = brandsListForm.DataGridRefresh();
+            await brandsListForm.DataGridRefresh();
         }
     }
 
-    private void updateButton_Click(object sender, EventArgs e)
+    private async void updateButton_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Are you sure you want to update this Brand Name", "Update Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
             brandModel.BrandId = brandId;
             brandModel.BrandName = brandTextBox.Text;
 
-            brandData.UpdateBrand(brandModel);
+            await brandData.UpdateBrand(brandModel);
 
             cancelButton_Click(sender, e);
         }
     }
 
-    private void cancelButton_Click(object sender, EventArgs e)
+    private async void cancelButton_Click(object sender, EventArgs e)
     {
         Close();
-        _ = brandsListForm.DataGridRefresh();
+        await brandsListForm.DataGridRefresh();
     }
 }
