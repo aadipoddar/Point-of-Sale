@@ -4,6 +4,12 @@ public class PurchaseData
 {
     SqlDataAccess sqlDataAccess = new();
 
+    public async Task<IEnumerable<ShowPurchaseModel>> GetPurchase() =>
+        await sqlDataAccess.LoadData<ShowPurchaseModel, dynamic>("dbo.spPurchase_GetAll", new { });
+
+    public async Task<IEnumerable<ShowPurchaseModel>> GetPurchaseByDate(string StartDate, string EndDate) =>
+        await sqlDataAccess.LoadData<ShowPurchaseModel, dynamic>("dbo.spPurchase_GetByDate", new { StartDate, EndDate });
+
     public async Task<string> GetTransactionNo(string PurchaseDate) =>
         (await sqlDataAccess.LoadData<string, dynamic>("dbo.spPurchase_GetTransactionNo", new { PurchaseDate })).FirstOrDefault();
 

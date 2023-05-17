@@ -2,29 +2,31 @@
 
 public partial class PurchaseHistoryForm : Form
 {
+    PurchaseData purchaseData = new();
+    List<ShowPurchaseModel> purchases = new();
+
     public PurchaseHistoryForm()
     {
         InitializeComponent();
+        Task task = LoadPurchase();
     }
 
-    private void PurchaseHistoryForm_Load(object sender, EventArgs e)
+    public async Task LoadPurchase()
     {
-        // TODO: This line of code loads data into the 'pointOfSaleDataSet.Purchase' table. You can move, or remove it, as needed.
-        this.purchaseTableAdapter.Fill(this.pointOfSaleDataSet.Purchase);
+        purchases = (await purchaseData.GetPurchase()).ToList();
+        dataGridViewPurchase.DataSource = new BindingSource(purchases, null);
+
+        dataGridViewPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
-    private void loadRecordsButton_Click(object sender, EventArgs e)
+    private async void loadRecordsButton_Click(object sender, EventArgs e)
     {
-        var startDate = startDateTimePicker.Value.Date;
-        var endDate = endDateTimePicker.Value.Date.AddDays(1);
+        var startDate = startDateTimePicker.Value.Date.ToString("yyyy-MM-dd");
+        var endDate = endDateTimePicker.Value.Date.AddDays(1).ToString("yyyy-MM-dd");
 
-        string filterExpression = string.Format("{0} >= #{1}# AND {0} <= #{2}#", dataGridViewPurchase.Columns[3].DataPropertyName, startDate.ToString("MM/dd/yyyy"), endDate.ToString("MM/dd/yyyy"));
+        purchases = (await purchaseData.GetPurchaseByDate(startDate, endDate)).ToList();
+        dataGridViewPurchase.DataSource = new BindingSource(purchases, null);
 
-        (dataGridViewPurchase.DataSource as BindingSource).Filter = filterExpression;
-    }
-
-    private void dataGridViewPurchase_KeyDown(object sender, KeyEventArgs e)
-    {
-
+        dataGridViewPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 }
