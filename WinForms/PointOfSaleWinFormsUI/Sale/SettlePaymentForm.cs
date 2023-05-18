@@ -1,14 +1,12 @@
-﻿using System.Data.SqlClient;
-
-
-namespace WinForms.PointOfSale.Sale;
+﻿namespace WinForms.PointOfSale.Sale;
 
 public partial class SettlePaymentForm : Form
 {
-    SqlConnection sqlConnection = new();
-    SqlCommand sqlCommand = new();
-    DBConnection dbcon = new();
-    SqlDataReader sqlDataReader;
+    SaleData saleData = new();
+
+    SaleModel saleModel = new();
+    SaleDetailModel saleDetailModel = new();
+    InventoryModel inventoryModel = new();
 
     SaleForm saleForm;
 
@@ -16,46 +14,27 @@ public partial class SettlePaymentForm : Form
     {
         InitializeComponent();
 
-        sqlConnection = new SqlConnection(dbcon.MyConnection());
         this.saleForm = saleForm;
 
-        GetTransactionNo();
+        Task task = GetTransactionNoAsync(saleForm.saleDateTimePicker.Value.ToString("yyyyMMdd"));
     }
 
-    private void GetTransactionNo()
+    private async Task GetTransactionNoAsync(string saleDate)
     {
-        try
-        {
-            string saleDate = saleForm.saleDateTimePicker.Value.ToString("yyyyMMdd");
-            string transactionNo = "";
-            int count;
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SELECT TOP 1 transactionNo FROM Sale WHERE transactionNo LIKE '" + saleDate + "%' ORDER BY id DESC", sqlConnection);
-            sqlDataReader = sqlCommand.ExecuteReader();
-            sqlDataReader.Read();
+        string transactionNo = await saleData.GetTransactionNo(saleDate);
 
-            if (sqlDataReader.HasRows)
+        if (transactionNo is not null)
+        {
+            if (transactionNo is not null)
             {
-                transactionNo = sqlDataReader[0].ToString();
                 string i = transactionNo.Substring(8, 4);
-                count = int.Parse(i);
-                transactionNoTextBox.Text = saleDate + (count + 1);
+                transactionNoTextBox.Text = saleDate + (int.Parse(i) + 1);
             }
-
-            else
-            {
-                transactionNo = saleDate + "1001";
-                transactionNoTextBox.Text = transactionNo;
-            }
-
-            sqlDataReader.Close();
-            sqlConnection.Close();
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-            throw;
-        }
+
+
+        else
+            transactionNoTextBox.Text = saleDate + "1001";
     }
 
     private void cashNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -63,107 +42,71 @@ public partial class SettlePaymentForm : Form
         changeTextBox.Text = (cashNumericUpDown.Value - Convert.ToDecimal(totalTextBox.Text)).ToString();
     }
 
-    private int GetSaleId()
+    private async void payButton_Click(object sender, EventArgs e)
     {
-        int saleId = 1;
+        #region Sale Master Table
 
-        sqlConnection.Open();
-        sqlCommand = new SqlCommand("SELECT MAX(id) FROM Sale", sqlConnection);
-        sqlDataReader = sqlCommand.ExecuteReader();
-
-        if (sqlDataReader.Read())
+        saleModel = new SaleModel
         {
-            if (sqlDataReader.IsDBNull(0))
+            SaleId = 0,
+            TransactionNo = transactionNoTextBox.Text,
+            SaleDate = saleForm.saleDateTimePicker.Value,
+            SubTotal = Convert.ToDecimal(saleForm.subTotalBeforeDiscountTextBox.Text),
+            Discount = Convert.ToDecimal(saleForm.finalDiscountTextBox.Text),
+            Tax = Convert.ToDecimal(saleForm.totalTaxTextBox.Text),
+            Total = Convert.ToDecimal(saleForm.totalTextBox.Text),
+            CashGiven = cashNumericUpDown.Value,
+            Change = Convert.ToDecimal(changeTextBox.Text)
+        };
+
+        await saleData.InsertSale(saleModel);
+
+        #endregion
+
+        int saleId = await saleData.GetSaleId(transactionNoTextBox.Text);
+
+        #region Sale Detail Table
+
+        for (int i = 0; i < saleForm.dataGridViewCart.RowCount; i++)
+        {
+            saleDetailModel = new SaleDetailModel
             {
-                MessageBox.Show("No Sale Record Found! Please retry Bill!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                saleId = sqlDataReader.GetInt32(0);
-            }
+                SaleDetailId = 0,
+                SaleId = saleId,
+                ProductId = Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[0].Value),
+                Quantity = Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value),
+                Prize = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[3].Value),
+                DiscountAmount = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[4].Value),
+                DiscountPercent = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[5].Value),
+                TaxPercent = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[6].Value),
+                TaxAmount = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[7].Value),
+                FinalPrize = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[8].Value)
+            };
+
+            await saleData.InsertSaleDetail(saleDetailModel);
         }
 
-        sqlConnection.Close();
+        #endregion
 
-        return saleId;
-    }
+        #region Inventory Table
 
-    private void payButton_Click(object sender, EventArgs e)
-    {
-        try
+        for (int i = 0; i < saleForm.dataGridViewCart.RowCount; i++)
         {
-            #region Sale Master Table
-
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("INSERT INTO Sale (transactionNo, saleDate, subTotal, discount, tax, total, cashGiven, change) VALUES" +
-                " (@transactionNo, @saleDate, @subTotal, @discount, @tax, @total, @cashGiven, @change)", sqlConnection);
-
-            sqlCommand.Parameters.AddWithValue("@transactionNo", transactionNoTextBox.Text);
-            sqlCommand.Parameters.AddWithValue("@saleDate", saleForm.saleDateTimePicker.Value);
-            sqlCommand.Parameters.AddWithValue("@subTotal", Convert.ToDecimal(saleForm.subTotalBeforeDiscountTextBox.Text));
-            sqlCommand.Parameters.AddWithValue("@discount", Convert.ToDecimal(saleForm.finalDiscountTextBox.Text));
-            sqlCommand.Parameters.AddWithValue("@tax", Convert.ToDecimal(saleForm.totalTaxTextBox.Text));
-            sqlCommand.Parameters.AddWithValue("@total", Convert.ToDecimal(saleForm.totalTextBox.Text));
-            sqlCommand.Parameters.AddWithValue("@cashGiven", Convert.ToDecimal(cashNumericUpDown.Value));
-            sqlCommand.Parameters.AddWithValue("@change", Convert.ToDecimal(changeTextBox.Text));
-
-            sqlCommand.ExecuteNonQuery();
-
-            sqlConnection.Close();
-
-            #endregion
-
-            int saleId = GetSaleId();
-
-            #region Sale Detail Table
-
-            sqlConnection.Open();
-            for (int i = 0; i < saleForm.dataGridViewCart.RowCount; i++)
+            inventoryModel = new InventoryModel
             {
-                sqlCommand = new SqlCommand("INSERT INTO SaleDetail (saleId, productId, quantity, price, discountAmount, discountPercent, taxPercent, taxAmount, finalPrize) VALUES" +
-                                           " (@saleId, @productId, @quantity, @price, @discountAmount, @discountPercent, @taxPercent, @taxAmount, @finalPrize)", sqlConnection);
+                InventoryId = 0,
+                ProductId = Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[0].Value),
+                Quantity = -Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value),
+                BillNo = transactionNoTextBox.Text,
+                Prize = Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[8].Value)
+            };
 
-                sqlCommand.Parameters.AddWithValue("@saleId", saleId);
-                sqlCommand.Parameters.AddWithValue("@productId", Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[0].Value));
-                sqlCommand.Parameters.AddWithValue("@quantity", Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value));
-                sqlCommand.Parameters.AddWithValue("@price", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[3].Value));
-                sqlCommand.Parameters.AddWithValue("@discountAmount", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[4].Value));
-                sqlCommand.Parameters.AddWithValue("@discountPercent", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[5].Value));
-                sqlCommand.Parameters.AddWithValue("@taxPercent", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[6].Value));
-                sqlCommand.Parameters.AddWithValue("@taxAmount", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[7].Value));
-                sqlCommand.Parameters.AddWithValue("@finalPrize", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[8].Value));
-
-                sqlCommand.ExecuteNonQuery();
-            }
-            sqlConnection.Close();
-
-            #endregion
-
-            #region Inventory Table
-
-            sqlConnection.Open();
-            for (int i = 0; i < saleForm.dataGridViewCart.RowCount; i++)
-            {
-                sqlCommand = new SqlCommand("INSERT INTO Inventory(productId, quantity, billNo, price) VALUES" +
-                               " (@productId, @quantity, @billNo, @price)", sqlConnection);
-
-                sqlCommand.Parameters.AddWithValue("@productId", Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[0].Value));
-                sqlCommand.Parameters.AddWithValue("@quantity", -Convert.ToInt32(saleForm.dataGridViewCart.Rows[i].Cells[2].Value));
-                sqlCommand.Parameters.AddWithValue("@billNo", transactionNoTextBox.Text);
-                sqlCommand.Parameters.AddWithValue("@price", Convert.ToDecimal(saleForm.dataGridViewCart.Rows[i].Cells[8].Value));
-
-                sqlCommand.ExecuteNonQuery();
-            }
-            sqlConnection.Close();
-
-            #endregion
-
-            Close();
-            saleForm.Close();
+            await saleData.InsertInventory(inventoryModel);
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+
+        #endregion
+
+        Close();
+        saleForm.Close();
     }
 }

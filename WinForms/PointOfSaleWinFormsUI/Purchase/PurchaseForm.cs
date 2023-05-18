@@ -32,8 +32,7 @@ public partial class PurchaseForm : Form
             if (transactionNo is not null)
             {
                 string i = transactionNo.Substring(9);
-                int count = int.Parse(i);
-                transactionNoTextBox.Text = transactionNo.Substring(0, 9) + (count + 1);
+                transactionNoTextBox.Text = transactionNo.Substring(0, 9) + (int.Parse(i) + 1);
             }
         }
 
@@ -127,7 +126,8 @@ public partial class PurchaseForm : Form
             {
                 if (MessageBox.Show("Are you sure you want to save these Records?", "Save Records", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // Purchase Table
+                    #region Purchase Master Table
+
                     purchaseModel = new PurchaseModel
                     {
                         PurchaseId = 0,
@@ -141,11 +141,12 @@ public partial class PurchaseForm : Form
 
                     await purchaseData.InsertPurchase(purchaseModel);
 
+                    #endregion
 
                     int purchaseId = await purchaseData.GetPurchaseId(transactionNoTextBox.Text);
 
+                    #region Purchase Detail Table
 
-                    // Purchase Detail Table
                     for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
                     {
                         purchaseDetailModel = new PurchaseDetailModel
@@ -163,8 +164,10 @@ public partial class PurchaseForm : Form
                         await purchaseData.InsertPurchaseDetail(purchaseDetailModel);
                     }
 
+                    #endregion
 
-                    // Inventory Table
+                    #region Inventory Table
+
                     for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
                     {
                         inventoryModel = new InventoryModel
@@ -178,6 +181,8 @@ public partial class PurchaseForm : Form
 
                         await purchaseData.InsertInventory(inventoryModel);
                     }
+
+                    #endregion
 
                     TextBoxClear();
                 }

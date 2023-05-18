@@ -14,8 +14,8 @@ public partial class PurchaseHistoryForm : Form
     public async Task LoadPurchase()
     {
         purchases = (await purchaseData.GetPurchase()).ToList();
-        dataGridViewPurchase.DataSource = new BindingSource(purchases, null);
 
+        dataGridViewPurchase.DataSource = new BindingSource(purchases, null);
         dataGridViewPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 

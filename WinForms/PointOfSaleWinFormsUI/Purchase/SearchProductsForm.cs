@@ -16,7 +16,6 @@ public partial class SearchProductsForm : Form
         InitializeComponent();
 
         this.purchaseForm = purchaseForm;
-
         isSaleForm = false;
 
         Task task = DataGridRefresh();
@@ -27,8 +26,9 @@ public partial class SearchProductsForm : Form
         InitializeComponent();
 
         this.saleForm = saleForm;
-
         isSaleForm = true;
+
+        Task task = DataGridRefresh();
     }
 
     public async Task DataGridRefresh(string searchText = "")

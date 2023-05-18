@@ -2,24 +2,32 @@
 
 public partial class SaleHistory : Form
 {
+    SaleData saleData = new();
+    List<ShowSaleModel> sales = new();
+
     public SaleHistory()
     {
         InitializeComponent();
+
+        Task task = LoadSale();
     }
 
-    private void SaleHistory_Load(object sender, EventArgs e)
+    private async Task LoadSale()
     {
-        // TODO: This line of code loads data into the 'pointOfSaleDataSet.Sale' table. You can move, or remove it, as needed.
-        this.saleTableAdapter.Fill(this.pointOfSaleDataSet.Sale);
+        sales = (await saleData.GetSale()).ToList();
+
+        dataGridViewSale.DataSource = new BindingSource(sales, null);
+        dataGridViewSale.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 
-    private void loadRecordsButton_Click(object sender, EventArgs e)
+    private async void loadRecordsButton_Click(object sender, EventArgs e)
     {
-        var startDate = startDateTimePicker.Value.Date;
-        var endDate = endDateTimePicker.Value.Date.AddDays(1);
+        var startDate = startDateTimePicker.Value.Date.ToString("yyyy-MM-dd");
+        var endDate = endDateTimePicker.Value.Date.AddDays(1).ToString("yyyy-MM-dd");
 
-        string filterExpression = string.Format("{0} >= #{1}# AND {0} <= #{2}#", dataGridViewSale.Columns[2].DataPropertyName, startDate.ToString("MM/dd/yyyy"), endDate.ToString("MM/dd/yyyy"));
+        sales = (await saleData.GetSaleByDate(startDate, endDate)).ToList();
 
-        (dataGridViewSale.DataSource as BindingSource).Filter = filterExpression;
+        dataGridViewSale.DataSource = new BindingSource(sales, null);
+        dataGridViewSale.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
     }
 }

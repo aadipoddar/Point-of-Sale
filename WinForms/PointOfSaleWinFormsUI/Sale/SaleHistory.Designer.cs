@@ -28,201 +28,99 @@ partial class SaleHistory
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.loadRecordsButton = new System.Windows.Forms.Button();
-        this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
-        this.toLabel = new System.Windows.Forms.Label();
-        this.filterByDateLabel = new System.Windows.Forms.Label();
-        this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
-        this.dataGridViewSale = new System.Windows.Forms.DataGridView();
-        this.pointOfSaleDataSet = new PointOfSale.PointOfSaleDataSet();
-        this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-        this.saleTableAdapter = new PointOfSale.PointOfSaleDataSetTableAdapters.SaleTableAdapter();
-        this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.transactionNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.saleDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.cashGivenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSale)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
-        this.SuspendLayout();
+        loadRecordsButton = new Button();
+        endDateTimePicker = new DateTimePicker();
+        toLabel = new Label();
+        filterByDateLabel = new Label();
+        startDateTimePicker = new DateTimePicker();
+        dataGridViewSale = new DataGridView();
+        ((System.ComponentModel.ISupportInitialize)dataGridViewSale).BeginInit();
+        SuspendLayout();
         // 
         // loadRecordsButton
         // 
-        this.loadRecordsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.loadRecordsButton.Location = new System.Drawing.Point(786, 5);
-        this.loadRecordsButton.Name = "loadRecordsButton";
-        this.loadRecordsButton.Size = new System.Drawing.Size(205, 40);
-        this.loadRecordsButton.TabIndex = 19;
-        this.loadRecordsButton.Text = "Load Records";
-        this.loadRecordsButton.UseVisualStyleBackColor = true;
-        this.loadRecordsButton.Click += new System.EventHandler(this.loadRecordsButton_Click);
+        loadRecordsButton.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        loadRecordsButton.Location = new Point(1048, 6);
+        loadRecordsButton.Margin = new Padding(4, 3, 4, 3);
+        loadRecordsButton.Name = "loadRecordsButton";
+        loadRecordsButton.Size = new Size(239, 46);
+        loadRecordsButton.TabIndex = 19;
+        loadRecordsButton.Text = "Load Records";
+        loadRecordsButton.UseVisualStyleBackColor = true;
+        loadRecordsButton.Click += loadRecordsButton_Click;
         // 
         // endDateTimePicker
         // 
-        this.endDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.endDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-        this.endDateTimePicker.Location = new System.Drawing.Point(414, 13);
-        this.endDateTimePicker.Name = "endDateTimePicker";
-        this.endDateTimePicker.Size = new System.Drawing.Size(155, 31);
-        this.endDateTimePicker.TabIndex = 18;
+        endDateTimePicker.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        endDateTimePicker.Format = DateTimePickerFormat.Short;
+        endDateTimePicker.Location = new Point(483, 15);
+        endDateTimePicker.Margin = new Padding(4, 3, 4, 3);
+        endDateTimePicker.Name = "endDateTimePicker";
+        endDateTimePicker.Size = new Size(180, 31);
+        endDateTimePicker.TabIndex = 18;
         // 
         // toLabel
         // 
-        this.toLabel.AutoSize = true;
-        this.toLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.toLabel.Location = new System.Drawing.Point(355, 14);
-        this.toLabel.Name = "toLabel";
-        this.toLabel.Size = new System.Drawing.Size(52, 31);
-        this.toLabel.TabIndex = 17;
-        this.toLabel.Text = "TO";
+        toLabel.AutoSize = true;
+        toLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        toLabel.Location = new Point(414, 16);
+        toLabel.Margin = new Padding(4, 0, 4, 0);
+        toLabel.Name = "toLabel";
+        toLabel.Size = new Size(52, 31);
+        toLabel.TabIndex = 17;
+        toLabel.Text = "TO";
         // 
         // filterByDateLabel
         // 
-        this.filterByDateLabel.AutoSize = true;
-        this.filterByDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.filterByDateLabel.Location = new System.Drawing.Point(7, 13);
-        this.filterByDateLabel.Name = "filterByDateLabel";
-        this.filterByDateLabel.Size = new System.Drawing.Size(179, 31);
-        this.filterByDateLabel.TabIndex = 16;
-        this.filterByDateLabel.Text = "Filter By Date";
+        filterByDateLabel.AutoSize = true;
+        filterByDateLabel.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+        filterByDateLabel.Location = new Point(8, 15);
+        filterByDateLabel.Margin = new Padding(4, 0, 4, 0);
+        filterByDateLabel.Name = "filterByDateLabel";
+        filterByDateLabel.Size = new Size(179, 31);
+        filterByDateLabel.TabIndex = 16;
+        filterByDateLabel.Text = "Filter By Date";
         // 
         // startDateTimePicker
         // 
-        this.startDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.startDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-        this.startDateTimePicker.Location = new System.Drawing.Point(193, 14);
-        this.startDateTimePicker.Name = "startDateTimePicker";
-        this.startDateTimePicker.Size = new System.Drawing.Size(155, 31);
-        this.startDateTimePicker.TabIndex = 15;
+        startDateTimePicker.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+        startDateTimePicker.Format = DateTimePickerFormat.Short;
+        startDateTimePicker.Location = new Point(225, 16);
+        startDateTimePicker.Margin = new Padding(4, 3, 4, 3);
+        startDateTimePicker.Name = "startDateTimePicker";
+        startDateTimePicker.Size = new Size(180, 31);
+        startDateTimePicker.TabIndex = 15;
         // 
         // dataGridViewSale
         // 
-        this.dataGridViewSale.AllowUserToAddRows = false;
-        this.dataGridViewSale.AllowUserToDeleteRows = false;
-        this.dataGridViewSale.AutoGenerateColumns = false;
-        this.dataGridViewSale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridViewSale.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-        this.idDataGridViewTextBoxColumn,
-        this.transactionNoDataGridViewTextBoxColumn,
-        this.saleDateDataGridViewTextBoxColumn,
-        this.subTotalDataGridViewTextBoxColumn,
-        this.discountDataGridViewTextBoxColumn,
-        this.taxDataGridViewTextBoxColumn,
-        this.totalDataGridViewTextBoxColumn,
-        this.cashGivenDataGridViewTextBoxColumn,
-        this.changeDataGridViewTextBoxColumn});
-        this.dataGridViewSale.DataSource = this.saleBindingSource;
-        this.dataGridViewSale.Location = new System.Drawing.Point(12, 54);
-        this.dataGridViewSale.Name = "dataGridViewSale";
-        this.dataGridViewSale.ReadOnly = true;
-        this.dataGridViewSale.Size = new System.Drawing.Size(979, 395);
-        this.dataGridViewSale.TabIndex = 20;
-        // 
-        // pointOfSaleDataSet
-        // 
-        this.pointOfSaleDataSet.DataSetName = "PointOfSaleDataSet";
-        this.pointOfSaleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-        // 
-        // saleBindingSource
-        // 
-        this.saleBindingSource.DataMember = "Sale";
-        this.saleBindingSource.DataSource = this.pointOfSaleDataSet;
-        // 
-        // saleTableAdapter
-        // 
-        this.saleTableAdapter.ClearBeforeFill = true;
-        // 
-        // idDataGridViewTextBoxColumn
-        // 
-        this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-        this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-        this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-        this.idDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // transactionNoDataGridViewTextBoxColumn
-        // 
-        this.transactionNoDataGridViewTextBoxColumn.DataPropertyName = "transactionNo";
-        this.transactionNoDataGridViewTextBoxColumn.HeaderText = "Bill No";
-        this.transactionNoDataGridViewTextBoxColumn.Name = "transactionNoDataGridViewTextBoxColumn";
-        this.transactionNoDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // saleDateDataGridViewTextBoxColumn
-        // 
-        this.saleDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-        this.saleDateDataGridViewTextBoxColumn.DataPropertyName = "saleDate";
-        this.saleDateDataGridViewTextBoxColumn.HeaderText = "Date";
-        this.saleDateDataGridViewTextBoxColumn.Name = "saleDateDataGridViewTextBoxColumn";
-        this.saleDateDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // subTotalDataGridViewTextBoxColumn
-        // 
-        this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "subTotal";
-        this.subTotalDataGridViewTextBoxColumn.HeaderText = "Sub Total";
-        this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
-        this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // discountDataGridViewTextBoxColumn
-        // 
-        this.discountDataGridViewTextBoxColumn.DataPropertyName = "discount";
-        this.discountDataGridViewTextBoxColumn.HeaderText = "Discount";
-        this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
-        this.discountDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // taxDataGridViewTextBoxColumn
-        // 
-        this.taxDataGridViewTextBoxColumn.DataPropertyName = "tax";
-        this.taxDataGridViewTextBoxColumn.HeaderText = "Tax";
-        this.taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
-        this.taxDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // totalDataGridViewTextBoxColumn
-        // 
-        this.totalDataGridViewTextBoxColumn.DataPropertyName = "total";
-        this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-        this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-        this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // cashGivenDataGridViewTextBoxColumn
-        // 
-        this.cashGivenDataGridViewTextBoxColumn.DataPropertyName = "cashGiven";
-        this.cashGivenDataGridViewTextBoxColumn.HeaderText = "Cash Given";
-        this.cashGivenDataGridViewTextBoxColumn.Name = "cashGivenDataGridViewTextBoxColumn";
-        this.cashGivenDataGridViewTextBoxColumn.ReadOnly = true;
-        // 
-        // changeDataGridViewTextBoxColumn
-        // 
-        this.changeDataGridViewTextBoxColumn.DataPropertyName = "change";
-        this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
-        this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
-        this.changeDataGridViewTextBoxColumn.ReadOnly = true;
+        dataGridViewSale.AllowUserToAddRows = false;
+        dataGridViewSale.AllowUserToDeleteRows = false;
+        dataGridViewSale.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridViewSale.Location = new Point(14, 62);
+        dataGridViewSale.Margin = new Padding(4, 3, 4, 3);
+        dataGridViewSale.Name = "dataGridViewSale";
+        dataGridViewSale.ReadOnly = true;
+        dataGridViewSale.Size = new Size(1273, 456);
+        dataGridViewSale.TabIndex = 20;
         // 
         // SaleHistory
         // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(1003, 461);
-        this.Controls.Add(this.dataGridViewSale);
-        this.Controls.Add(this.loadRecordsButton);
-        this.Controls.Add(this.endDateTimePicker);
-        this.Controls.Add(this.toLabel);
-        this.Controls.Add(this.filterByDateLabel);
-        this.Controls.Add(this.startDateTimePicker);
-        this.Name = "SaleHistory";
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "SaleHistory";
-        this.Load += new System.EventHandler(this.SaleHistory_Load);
-        ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSale)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.pointOfSaleDataSet)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1300, 532);
+        Controls.Add(dataGridViewSale);
+        Controls.Add(loadRecordsButton);
+        Controls.Add(endDateTimePicker);
+        Controls.Add(toLabel);
+        Controls.Add(filterByDateLabel);
+        Controls.Add(startDateTimePicker);
+        Margin = new Padding(4, 3, 4, 3);
+        Name = "SaleHistory";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "SaleHistory";
+        ((System.ComponentModel.ISupportInitialize)dataGridViewSale).EndInit();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -233,16 +131,4 @@ partial class SaleHistory
     private System.Windows.Forms.Label filterByDateLabel;
     private System.Windows.Forms.DateTimePicker startDateTimePicker;
     private System.Windows.Forms.DataGridView dataGridViewSale;
-    private PointOfSaleDataSet pointOfSaleDataSet;
-    private System.Windows.Forms.BindingSource saleBindingSource;
-    private PointOfSaleDataSetTableAdapters.SaleTableAdapter saleTableAdapter;
-    private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn transactionNoDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn saleDateDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn cashGivenDataGridViewTextBoxColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn;
 }

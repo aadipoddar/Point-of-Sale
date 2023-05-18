@@ -1,63 +1,42 @@
-﻿using System.Data.SqlClient;
-
-using WinForms.PointOfSale.Purchase;
+﻿using WinForms.PointOfSale.Purchase;
 
 namespace WinForms.PointOfSale.Sale;
 
 public partial class SaleForm : Form
 {
-    SqlConnection sqlConnection = new();
-    SqlCommand sqlCommand = new();
-    SqlDataReader sqlDataReader;
-
-    DBConnection dbConnection = new();
+    SaleData saleData = new();
 
     public SaleForm()
     {
         InitializeComponent();
 
-        sqlConnection = new SqlConnection(dbConnection.MyConnection());
         saleDateTimePicker.Value = DateTime.Now;
-        GetTransactionNo();
-
-        searchProductsButton.Focus();
     }
 
-    private void GetTransactionNo()
+
+    private async void saleDateTimePicker_ValueChanged(object sender, EventArgs e)
     {
-        try
-        {
-            string saleDate = saleDateTimePicker.Value.ToString("yyyyMMdd");
-            string transactionNo = "";
-            int count;
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SELECT TOP 1 transactionNo FROM Sale WHERE transactionNo LIKE '" + saleDate + "%' ORDER BY id DESC", sqlConnection);
-            sqlDataReader = sqlCommand.ExecuteReader();
-            sqlDataReader.Read();
-
-            if (sqlDataReader.HasRows)
-            {
-                transactionNo = sqlDataReader[0].ToString();
-                string i = transactionNo.Substring(8, 4);
-                count = int.Parse(i);
-                transactionNoTextBox.Text = saleDate + (count + 1);
-            }
-
-            else
-            {
-                transactionNo = saleDate + "1001";
-                transactionNoTextBox.Text = transactionNo;
-            }
-
-            sqlDataReader.Close();
-            sqlConnection.Close();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-            throw;
-        }
+        await GetTransactionNoAsync(saleDateTimePicker.Value.ToString("yyyyMMdd"));
     }
+
+    private async Task GetTransactionNoAsync(string saleDate)
+    {
+        string transactionNo = await saleData.GetTransactionNo(saleDate);
+
+        if (transactionNo is not null)
+        {
+            if (transactionNo is not null)
+            {
+                string i = transactionNo.Substring(8, 4);
+                transactionNoTextBox.Text = saleDate + (int.Parse(i) + 1);
+            }
+        }
+
+
+        else
+            transactionNoTextBox.Text = saleDate + "1001";
+    }
+
 
     private void searchProductsButton_Click(object sender, EventArgs e)
     {

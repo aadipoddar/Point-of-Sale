@@ -28,9 +28,9 @@ partial class SaleForm
     /// </summary>
     private void InitializeComponent()
     {
-        DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-        DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         dataGridViewCart = new DataGridView();
         Id = new DataGridViewTextBoxColumn();
         productName = new DataGridViewTextBoxColumn();
@@ -93,9 +93,9 @@ partial class SaleForm
         // 
         // quantity
         // 
-        dataGridViewCellStyle4.Format = "N0";
-        dataGridViewCellStyle4.NullValue = "1";
-        quantity.DefaultCellStyle = dataGridViewCellStyle4;
+        dataGridViewCellStyle1.Format = "N0";
+        dataGridViewCellStyle1.NullValue = "1";
+        quantity.DefaultCellStyle = dataGridViewCellStyle1;
         quantity.HeaderText = "Quantity";
         quantity.Name = "quantity";
         // 
@@ -107,18 +107,18 @@ partial class SaleForm
         // 
         // discountAmount
         // 
-        dataGridViewCellStyle5.Format = "N0";
-        dataGridViewCellStyle5.NullValue = "0";
-        discountAmount.DefaultCellStyle = dataGridViewCellStyle5;
+        dataGridViewCellStyle2.Format = "N0";
+        dataGridViewCellStyle2.NullValue = "0";
+        discountAmount.DefaultCellStyle = dataGridViewCellStyle2;
         discountAmount.HeaderText = "Discount Amount";
         discountAmount.Name = "discountAmount";
         discountAmount.Width = 104;
         // 
         // discountPercentage
         // 
-        dataGridViewCellStyle6.Format = "N2";
-        dataGridViewCellStyle6.NullValue = "0";
-        discountPercentage.DefaultCellStyle = dataGridViewCellStyle6;
+        dataGridViewCellStyle3.Format = "N2";
+        dataGridViewCellStyle3.NullValue = "0";
+        discountPercentage.DefaultCellStyle = dataGridViewCellStyle3;
         discountPercentage.HeaderText = "Discount %";
         discountPercentage.Name = "discountPercentage";
         // 
@@ -197,6 +197,7 @@ partial class SaleForm
         saleDateTimePicker.Size = new Size(276, 26);
         saleDateTimePicker.TabIndex = 16;
         saleDateTimePicker.Value = new DateTime(2023, 4, 25, 18, 29, 32, 0);
+        saleDateTimePicker.ValueChanged += saleDateTimePicker_ValueChanged;
         // 
         // saleDateLabel
         // 
