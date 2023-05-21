@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSaleWinFormsUI", "Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointOfSaleWinFormsLibrary", "WinForms\PointOfSaleWinFormsLibrary\PointOfSaleWinFormsLibrary.csproj", "{D5297A4F-AC77-4208-A809-6288EF84FB31}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{C7A8847F-6AAE-442F-AC40-E79C5571DACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
